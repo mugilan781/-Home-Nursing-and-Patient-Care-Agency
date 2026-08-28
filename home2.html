@@ -11,6 +11,7 @@
     .h2-hero {
       position: relative;
       min-height: 100vh;
+      max-height: 100vh;
       background: var(--porcelain);
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -20,7 +21,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: calc(var(--navbar-h) + 60px) 60px 80px 80px;
+      padding: calc(var(--navbar-h) + 16px) 60px 40px 80px;
       position: relative;
       z-index: 2;
     }
@@ -204,8 +205,8 @@
     .faq-split { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start; }
 
     @media (max-width: 1024px) {
-      .h2-hero { grid-template-columns: 1fr; }
-      .h2-hero-left { padding: calc(var(--navbar-h) + 40px) 24px 60px; }
+      .h2-hero { grid-template-columns: 1fr; max-height: none; }
+      .h2-hero-left { padding: calc(var(--navbar-h) + 24px) 24px 48px; }
       .h2-hero-right { height: 400px; }
     }
     @media (max-width: 768px) {
@@ -258,28 +259,28 @@
 <!-- SECTION 1: SPLIT HERO -->
 <section class="h2-hero">
   <div class="h2-hero-left">
-    <div class="hero-eyebrow" style="display:inline-flex;align-items:center;gap:10px;background:rgba(22,78,99,0.1);border:1px solid rgba(22,78,99,0.2);color:var(--teal);padding:8px 18px;border-radius:999px;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:28px;">
+    <div class="hero-eyebrow" style="display:inline-flex;align-items:center;gap:10px;background:rgba(22,78,99,0.1);border:1px solid rgba(22,78,99,0.2);color:var(--teal);padding:8px 18px;border-radius:999px;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;">
       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span> Professional Home Healthcare
     </div>
-    <h1 style="font-family:var(--font-display);font-size:clamp(3rem,6vw,5.5rem);font-weight:300;color:var(--text-primary);line-height:1.05;margin-bottom:24px;">
+    <h1 style="font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:300;color:var(--text-primary);line-height:1.06;margin-bottom:16px;">
       Expert Care,<br><span style="font-weight:600;color:var(--teal);">Delivered with<br>Dignity</span>
     </h1>
-    <p class="lead" style="margin-bottom:36px;max-width:480px;">Our NABH-certified caregivers bring hospital-standard expertise directly to your home, ensuring your loved ones receive compassionate, professional care without leaving their comfort zone.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:48px;">
+    <p class="lead" style="margin-bottom:24px;max-width:480px;">Our NABH-certified caregivers bring hospital-standard expertise directly to your home, ensuring your loved ones receive compassionate, professional care without leaving their comfort zone.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:24px;">
       <a href="contact.html" class="btn btn-primary btn-lg">Get Started Today</a>
       <a href="services.html" class="btn btn-outline btn-lg">View All Services</a>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:36px;border-top:1px solid var(--border-light);">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:20px;border-top:1px solid var(--border-light);">
       <div style="text-align:center;">
-        <div style="font-family:var(--font-display);font-size:2.2rem;font-weight:600;color:var(--teal);" data-count="5000" data-suffix="+">5000+</div>
+        <div style="font-family:var(--font-display);font-size:1.9rem;font-weight:600;color:var(--teal);" data-count="5000" data-suffix="+">5000+</div>
         <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-top:4px;">Patients Served</div>
       </div>
       <div style="text-align:center;border-left:1px solid var(--border-light);border-right:1px solid var(--border-light);">
-        <div style="font-family:var(--font-display);font-size:2.2rem;font-weight:600;color:var(--teal);" data-count="200" data-suffix="+">200+</div>
+        <div style="font-family:var(--font-display);font-size:1.9rem;font-weight:600;color:var(--teal);" data-count="200" data-suffix="+">200+</div>
         <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-top:4px;">Expert Caregivers</div>
       </div>
       <div style="text-align:center;">
-        <div style="font-family:var(--font-display);font-size:2.2rem;font-weight:600;color:var(--teal);" data-count="15" data-suffix=" yrs">15 yrs</div>
+        <div style="font-family:var(--font-display);font-size:1.9rem;font-weight:600;color:var(--teal);" data-count="15" data-suffix=" yrs">15 yrs</div>
         <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-top:4px;">Experience</div>
       </div>
     </div>
