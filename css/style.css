@@ -102,6 +102,7 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -1466,14 +1467,16 @@ footer {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.12);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.72);
+  color: #FFFFFF;
   text-decoration: none;
   transition: all var(--transition-fast);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .site-footer .footer-social:hover {
@@ -1486,6 +1489,11 @@ footer {
 .site-footer .footer-social:focus-visible {
   outline: 2px solid var(--champagne);
   outline-offset: 2px;
+}
+
+/* Instagram & YouTube use the same solid glyph style as Facebook/X (no extra stroke) */
+.site-footer .footer-social svg {
+  display: block;
 }
 
 .site-footer .footer-heading {
@@ -1590,27 +1598,31 @@ footer {
 
 .site-footer .footer-newsletter-field {
   display: flex;
+  flex-direction: column;
   gap: 10px;
   align-items: stretch;
+  width: 100%;
 }
 
 .site-footer .footer-newsletter-input {
-  flex: 1;
+  width: 100%;
+  flex: none;
   min-width: 0;
-  height: 46px;
-  padding: 0 16px;
+  height: 48px;
+  padding: 0 18px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.12);
   color: var(--white);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-family: var(--font-body);
   outline: none;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  box-sizing: border-box;
 }
 
 .site-footer .footer-newsletter-input::placeholder {
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.55);
 }
 
 .site-footer .footer-newsletter-input:focus {
@@ -1624,7 +1636,8 @@ footer {
 }
 
 .site-footer .footer-newsletter-btn {
-  height: 46px;
+  width: 100%;
+  height: 48px;
   padding: 0 22px;
   border-radius: var(--radius-full);
   border: none;
@@ -1637,11 +1650,12 @@ footer {
   text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;
-  flex-shrink: 0;
+  flex: none;
   transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .site-footer .footer-newsletter-btn:hover {
@@ -1790,9 +1804,15 @@ footer {
 @media (max-width: 600px) {
   .site-footer .footer-newsletter-field {
     flex-direction: column;
+    width: 100%;
+  }
+  .site-footer .footer-newsletter-input {
+    width: 100%;
+    flex: none;
   }
   .site-footer .footer-newsletter-btn {
     width: 100%;
+    flex: none;
   }
   [dir="rtl"] .site-footer .footer-newsletter-field {
     flex-direction: column;
@@ -1815,25 +1835,89 @@ footer {
   }
 }
 
+@media (max-width: 425px) {
+  .site-footer .footer-top {
+    padding: 40px 0 28px;
+  }
+  .site-footer .footer-grid {
+    gap: 28px;
+  }
+  .site-footer .footer-description {
+    font-size: 0.84rem;
+  }
+  .site-footer .footer-contact-item {
+    font-size: 0.84rem;
+  }
+}
+
 @media (max-width: 375px) {
   .site-footer .footer-newsletter-input {
     font-size: 0.82rem;
   }
-}
-
-@media (max-width: 320px) {
   .site-footer .container {
     padding: 0 14px;
   }
 }
 
-/* Ensure no horizontal overflow from footer */
-.site-footer,
-.site-footer .footer-top,
-.site-footer .footer-legal,
-.site-footer .container {
+@media (max-width: 320px) {
+  .site-footer .container {
+    padding: 0 12px;
+  }
+  .site-footer .footer-grid {
+    gap: 24px;
+  }
+  .site-footer .footer-social {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* ─── Footer Overflow & Box-Sizing Fix — Prevent layout vittu veliya pogudhu ─── */
+.site-footer {
   max-width: 100%;
-  overflow-wrap: break-word;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+.site-footer .footer-top,
+.site-footer .footer-legal {
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.site-footer .container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--container-w);
+  min-width: 0;
+}
+.site-footer * {
+  box-sizing: border-box;
+}
+.site-footer .footer-grid {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+.site-footer .footer-col,
+.site-footer .footer-contact-item,
+.site-footer .footer-links,
+.site-footer .footer-contact-list,
+.site-footer .footer-newsletter-field,
+.site-footer .footer-newsletter-form {
+  min-width: 0;
+  max-width: 100%;
+}
+.site-footer .footer-description,
+.site-footer .footer-contact-link,
+.site-footer .footer-contact-text,
+.site-footer .footer-newsletter-desc,
+.site-footer .footer-bottom-text {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.site-footer .footer-newsletter-input,
+.site-footer .footer-newsletter-btn {
+  max-width: 100%;
 }
 
 /* ─── Scroll Reveal ─── */
