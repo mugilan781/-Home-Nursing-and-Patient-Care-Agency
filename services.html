@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CareHaven Services — Post-surgery home care, elderly companion care, physiotherapy assistance, wound dressing, medication management, and palliative care delivered at home.">
+  <title>Our Services — CareHaven Home Nursing & Patient Care</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .service-hero-img {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1800&auto=format&fit=crop&q=80') center/cover no-repeat;
+    }
+    /* Service Detail Card */
+    .service-detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .service-detail:last-child { border-bottom: none; }
+    .service-detail.reverse { direction: rtl; }
+    .service-detail.reverse > * { direction: ltr; }
+    .service-detail-img {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .service-detail-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+    .service-detail-img:hover img { transform: scale(1.04); }
+    .service-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 14px;
+    }
+    .service-feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 24px 0;
+    }
+    .svc-feat {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .svc-feat::before {
+      content: '✓';
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--mist);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Service Tabs */
+    .service-tabs {
+      display: flex;
+      gap: 0;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-full);
+      padding: 5px;
+      width: fit-content;
+      margin: 0 auto 60px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .service-tab {
+      padding: 10px 22px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+    .service-tab.active {
+      background: var(--teal);
+      color: white;
+      box-shadow: var(--shadow-sm);
+    }
+    .service-tab:hover:not(.active) { color: var(--teal); }
+
+    /* Include section */
+    .includes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .include-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      text-align: center;
+      transition: all var(--transition-fast);
+    }
+    .include-item:hover { border-color: var(--champagne); background: var(--mist); }
+    .include-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .include-item p { font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); }
+
+    /* Emergency bar */
+    .emergency-bar {
+      background: linear-gradient(90deg, #E53935, #B71C1C);
+      color: white;
+      padding: 14px 0;
+      text-align: center;
+    }
+    .emergency-bar a { color: white; font-weight: 700; text-decoration: underline; }
+    .emergency-bar p { font-size: 0.88rem; font-weight: 600; letter-spacing: 0.03em; }
+
+    @media(max-width:768px) {
+      .service-detail { grid-template-columns: 1fr; gap: 36px; direction: ltr !important; }
+      .service-detail.reverse { direction: ltr !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-transition" id="pageTransition"></div>
+
+<!-- EMERGENCY BAR -->
+<div class="emergency-bar">
+  <p>🚨 Need Urgent Home Care? Call Our 24/7 Emergency Line: <a href="tel:+919876543210">+91 98765 43210</a></p>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar" class="transparent" data-transparent="false" style="top:48px;">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🏥</div><span class="nav-logo-text">Care<span>Haven</span></span></a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="services.html" class="nav-link active">Services</a></li>
+      <li><a href="caregivers.html" class="nav-link">Caregivers</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-toggle-btn" data-theme-toggle><span id="themeIcon">🌙</span></button>
+      <button class="nav-toggle-btn" id="dirToggle" data-dir-toggle style="font-size:0.7rem;font-weight:700;">RTL</button>
+      <a href="contact.html" class="btn btn-champagne btn-sm nav-cta">Book Now</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav-overlay" id="mobileOverlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="services.html" class="mobile-nav-link active">Services</a>
+  <a href="caregivers.html" class="mobile-nav-link">Caregivers</a>
+  <a href="about.html" class="mobile-nav-link">About</a>
+  <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+  <a href="blog.html" class="mobile-nav-link">Blog</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+  <a href="contact.html" class="btn btn-primary">Book Now</a>
+  <div style="display:flex;gap:12px;margin-top:24px;"><button class="btn btn-outline btn-sm" data-theme-toggle><span id="themeIcon2">🌙</span></button><button class="btn btn-outline btn-sm" data-dir-toggle id="dirToggle2">RTL</button></div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="min-height:48vh;position:relative;margin-top:48px;">
+  <div class="service-hero-img"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,53,69,0.9),rgba(22,78,99,0.55));"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="page-hero-content">
+      <nav class="breadcrumb" style="margin-bottom:16px;">
+        <a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Our Services</span>
+      </nav>
+      <h1>Our Care Services</h1>
+      <p style="color:rgba(255,255,255,0.75);max-width:560px;font-size:1.05rem;line-height:1.75;">Comprehensive, medically-guided home nursing services tailored to your loved one's unique needs — from post-surgery recovery to long-term compassionate care.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;">
+        <a href="#post-surgery" class="btn btn-champagne btn-sm">Post-Surgery Care</a>
+        <a href="#elderly-care" class="btn btn-outline-white btn-sm">Elderly Care</a>
+        <a href="#physiotherapy" class="btn btn-outline-white btn-sm">Physiotherapy</a>
+        <a href="#wound-care" class="btn btn-outline-white btn-sm">Wound Dressing</a>
+        <a href="#medication" class="btn btn-outline-white btn-sm">Medication Mgmt</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1: SERVICE OVERVIEW CARDS -->
+<section class="section-py" style="background:var(--bg-secondary);">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <span class="label">What We Do</span>
+      <h2 class="h2">Six Pillars of Expert Home Care</h2>
+      <div class="divider-line"></div>
+      <p>Each of our core services is designed and delivered under strict clinical guidelines, with compassion and dignity at the forefront of everything we do.</p>
+    </div>
+    <div class="grid-3">
+      <a href="#post-surgery" class="service-card reveal" style="text-decoration:none;">
+        <div class="service-icon">🏥</div>
+        <h3>Post-Surgery Home Care</h3>
+        <p>Expert nursing for safe recovery after surgery — wound management, IV therapy, vital monitoring, and rehabilitation support.</p>
+        <span class="service-link">Explore →</span>
+      </a>
+      <a href="#elderly-care" class="service-card reveal reveal-delay-1" style="text-decoration:none;">
+        <div class="service-icon">🧓</div>
+        <h3>Elderly Companion Care</h3>
+        <p>Warm daily companionship, personal assistance, mobility support, and cognitive engagement for seniors at home.</p>
+        <span class="service-link">Explore →</span>
+      </a>
+      <a href="#physiotherapy" class="service-card reveal reveal-delay-2" style="text-decoration:none;">
+        <div class="service-icon">🤸</div>
+        <h3>Physiotherapy Assistance</h3>
+        <p>Certified physiotherapy support for stroke, fracture, and joint replacement patients — delivered in the comfort of home.</p>
+        <span class="service-link">Explore →</span>
+      </a>
+      <a href="#wound-care" class="service-card reveal reveal-delay-1" style="text-decoration:none;">
+        <div class="service-icon">🩹</div>
+        <h3>Wound Dressing & Care</h3>
+        <p>Sterile wound assessment, professional dressing, and infection monitoring using medical-grade supplies.</p>
+        <span class="service-link">Explore →</span>
+      </a>
+      <a href="#medication" class="service-card reveal reveal-delay-2" style="text-decoration:none;">
+        <div class="service-icon">💊</div>
+        <h3>Medication Management</h3>
+        <p>Safe, accurate medication administration with adherence tracking, pharmacy coordination, and reaction monitoring.</p>
+        <span class="service-link">Explore →</span>
+      </a>
+      <a href="#palliative" class="service-card reveal reveal-delay-3" style="text-decoration:none;">
+        <div class="service-icon">❤️</div>
+        <h3>Palliative & Chronic Care</h3>
+        <p>Long-term compassionate support for patients with chronic conditions — focused on comfort, dignity, and quality of life.</p>
+        <span class="service-link">Explore →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: DETAILED SERVICE PAGES -->
+<section class="section-py" style="background:var(--bg-primary);" id="post-surgery">
+  <div class="container">
+    <div class="service-detail reveal">
+      <div class="service-detail-img">
+        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&auto=format&fit=crop&q=80" alt="Post-surgery home care nurse assisting patient" data-zoom>
+      </div>
+      <div>
+        <span class="service-tag">🏥 Service 01</span>
+        <h2 class="h2">Post-Surgery Home Care</h2>
+        <div class="divider-line"></div>
+        <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:16px;">Returning home after surgery is a critical transition. Our specialized post-operative nursing team ensures a safe, comfortable, and complication-free recovery — bringing ICU-standard care right to your bedroom.</p>
+        <div class="service-feature-list">
+          <div class="svc-feat">Wound assessment, cleaning, and professional dressing changes</div>
+          <div class="svc-feat">IV line management and catheter care</div>
+          <div class="svc-feat">Vital signs monitoring (BP, temperature, SpO2, pulse)</div>
+          <div class="svc-feat">Post-surgical medication administration</div>
+          <div class="svc-feat">Mobility assistance and fall prevention</div>
+          <div class="svc-feat">Physician liaison and discharge planning support</div>
+          <div class="svc-feat">Family education on home care protocols</div>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Book This Service</a>
+          <a href="pricing.html" class="btn btn-outline">View Pricing</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-detail reverse reveal" id="elderly-care" style="padding-top:80px;">
+      <div class="service-detail-img">
+        <img src="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?w=800&auto=format&fit=crop&q=80" alt="Elderly companion care at home" data-zoom>
+      </div>
+      <div>
+        <span class="service-tag">🧓 Service 02</span>
+        <h2 class="h2">Elderly Companion Care</h2>
+        <div class="divider-line"></div>
+        <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:16px;">Our elderly care program is designed to help seniors live with independence, safety, and joy in their own homes. Our compassionate caregivers become true companions — supporting daily life, health, and emotional wellbeing.</p>
+        <div class="service-feature-list">
+          <div class="svc-feat">Daily companionship, conversation, and social engagement</div>
+          <div class="svc-feat">Personal hygiene assistance — bathing, dressing, grooming</div>
+          <div class="svc-feat">Meal preparation and nutritional monitoring</div>
+          <div class="svc-feat">Mobility support and fall prevention</div>
+          <div class="svc-feat">Memory care and cognitive stimulation activities</div>
+          <div class="svc-feat">Appointment accompaniment and errand assistance</div>
+          <div class="svc-feat">Family updates and health progress reporting</div>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Book This Service</a>
+          <a href="pricing.html" class="btn btn-outline">View Pricing</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-detail reveal" id="physiotherapy" style="padding-top:80px;">
+      <div class="service-detail-img">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&auto=format&fit=crop&q=80" alt="Home physiotherapy session" data-zoom>
+      </div>
+      <div>
+        <span class="service-tag">🤸 Service 03</span>
+        <h2 class="h2">Physiotherapy Assistance</h2>
+        <div class="divider-line"></div>
+        <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:16px;">Our certified physiotherapy assistants work under the supervision of registered physiotherapists to deliver prescribed therapeutic exercises, mobility training, and pain management directly in your home — accelerating recovery and improving functional independence.</p>
+        <div class="service-feature-list">
+          <div class="svc-feat">Doctor-prescribed exercise plan implementation</div>
+          <div class="svc-feat">Stroke rehabilitation and neurological recovery support</div>
+          <div class="svc-feat">Post-fracture and joint replacement mobility training</div>
+          <div class="svc-feat">Gait training and balance improvement</div>
+          <div class="svc-feat">TENS therapy and pain management techniques</div>
+          <div class="svc-feat">Respiratory physiotherapy for pulmonary conditions</div>
+          <div class="svc-feat">Progress documentation and physician reporting</div>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Book This Service</a>
+          <a href="pricing.html" class="btn btn-outline">View Pricing</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-detail reverse reveal" id="wound-care" style="padding-top:80px;">
+      <div class="service-detail-img">
+        <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=800&auto=format&fit=crop&q=80" alt="Professional wound dressing at home" data-zoom>
+      </div>
+      <div>
+        <span class="service-tag">🩹 Service 04</span>
+        <h2 class="h2">Wound Dressing & Care</h2>
+        <div class="divider-line"></div>
+        <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:16px;">Proper wound management at home significantly reduces hospitalization risk and accelerates healing. Our trained nurses use sterile techniques and medical-grade materials to manage all types of wounds — from surgical incisions to diabetic foot ulcers.</p>
+        <div class="service-feature-list">
+          <div class="svc-feat">Comprehensive wound assessment and documentation</div>
+          <div class="svc-feat">Sterile wound cleaning and debridement (where indicated)</div>
+          <div class="svc-feat">Professional dressing application and change</div>
+          <div class="svc-feat">Infection surveillance and early warning detection</div>
+          <div class="svc-feat">Diabetic foot ulcer specialized care</div>
+          <div class="svc-feat">Pressure sore prevention and management</div>
+          <div class="svc-feat">Wound photography and physician reporting</div>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Book This Service</a>
+          <a href="pricing.html" class="btn btn-outline">View Pricing</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-detail reveal" id="medication" style="padding-top:80px;">
+      <div class="service-detail-img">
+        <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=800&auto=format&fit=crop&q=80" alt="Medication management by home nurse" data-zoom>
+      </div>
+      <div>
+        <span class="service-tag">💊 Service 05</span>
+        <h2 class="h2">Medication Management</h2>
+        <div class="divider-line"></div>
+        <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:16px;">Medication errors are among the most common and preventable causes of patient harm. Our certified nurses implement rigorous medication safety protocols to ensure every dose is administered correctly, on time, and with full documentation.</p>
+        <div class="service-feature-list">
+          <div class="svc-feat">Accurate dose preparation and administration</div>
+          <div class="svc-feat">Prescription adherence monitoring and tracking</div>
+          <div class="svc-feat">Multi-drug interaction surveillance</div>
+          <div class="svc-feat">Pharmacy coordination and prescription refills</div>
+          <div class="svc-feat">Adverse reaction identification and reporting</div>
+          <div class="svc-feat">Insulin administration for diabetic patients</div>
+          <div class="svc-feat">Detailed medication log maintenance</div>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Book This Service</a>
+          <a href="pricing.html" class="btn btn-outline">View Pricing</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: WHAT'S INCLUDED -->
+<section class="section-py" style="background:var(--bg-secondary);" id="palliative">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <span class="label">Every Visit Includes</span>
+      <h2 class="h2">Our Standard of Care — Always Included</h2>
+      <div class="divider-line"></div>
+      <p>Regardless of the service you book, every CareHaven visit comes with our full standard of care — because excellence should never be an add-on.</p>
+    </div>
+    <div class="includes-grid">
+      <div class="include-item reveal"><div class="include-icon">📋</div><p>Pre-visit care plan review</p></div>
+      <div class="include-item reveal reveal-delay-1"><div class="include-icon">🧤</div><p>Full PPE & infection control</p></div>
+      <div class="include-item reveal reveal-delay-2"><div class="include-icon">📊</div><p>Vital signs documentation</p></div>
+      <div class="include-item reveal reveal-delay-3"><div class="include-icon">📱</div><p>Family progress update</p></div>
+      <div class="include-item reveal"><div class="include-icon">🩺</div><p>Physician liaison service</p></div>
+      <div class="include-item reveal reveal-delay-1"><div class="include-icon">🚨</div><p>Emergency response plan</p></div>
+      <div class="include-item reveal reveal-delay-2"><div class="include-icon">📞</div><p>24/7 coordinator access</p></div>
+      <div class="include-item reveal reveal-delay-3"><div class="include-icon">💊</div><p>Medication cross-check</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: CARE COMPARISON TABLE -->
+<section class="section-py" style="background:var(--bg-primary);">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <span class="label">Why Home Care</span>
+      <h2 class="h2">Home Care vs. Hospital Stay</h2>
+      <div class="divider-line"></div>
+      <p>Studies consistently show that patients recover faster, more comfortably, and with fewer complications in a familiar home environment with professional nursing support.</p>
+    </div>
+    <div style="overflow-x:auto;" class="reveal">
+      <table style="width:100%;border-collapse:collapse;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--border-light);">
+        <thead>
+          <tr style="background:var(--teal);color:white;">
+            <th style="padding:18px 24px;text-align:left;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;">Factor</th>
+            <th style="padding:18px 24px;text-align:center;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;">CareHaven Home Care</th>
+            <th style="padding:18px 24px;text-align:center;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;">Hospital Stay</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:var(--bg-card);border-bottom:1px solid var(--border-light);">
+            <td style="padding:16px 24px;font-weight:600;font-size:0.9rem;">Comfort Level</td>
+            <td style="padding:16px 24px;text-align:center;color:var(--teal);font-weight:700;">⭐ Home environment, familiar surroundings</td>
+            <td style="padding:16px 24px;text-align:center;color:var(--text-muted);">Clinical, institutional setting</td>
+          </tr>
+          <tr style="background:var(--bg-secondary);border-bottom:1px solid var(--border-light);">
+            <td style="padding:16px 24px;font-weight:600;font-size:0.9rem;">Risk of Infection</td>
+            <td style="padding:16px 24px;text-align:center;color:var(--teal);font-weight:700;">✓ Significantly lower (no hospital pathogens)</td>
+            <td style="padding:16px 24px;text-align:center;color:var(--text-muted);">Higher (HAI risk: 5–10%)</td>
+          </tr>
+          <tr style="background:var(--bg-card);border-bottom:1px solid var(--border-light);">
+            <td style="padding:16px 24px;font-weight:600;font-size:0.9rem;">Family Involvement</td>
+            <td style="padding:16px 24px;text-align:center;color:var(--teal);font-weight:700;">✓ Continuous, unrestricted</td>
+            <td style="padding:16px 24px;text-align:center;color:var(--text-muted);">Restricted visiting hours</td>
+          </tr>
+          <tr style="background:var(--bg-secondary);border-bottom:1px solid var(--border-light);">
+            <td style="padding:16px 24px;font-weight:600;font-size:0.9rem;">Recovery Speed</td>
+            <td style="padding:16px 24px;text-align:center;color:var(--teal);font-weight:700;">✓ 30–40% faster (proven studies)</td>
+            <td style="padding:16px 24px;text-align:center;color:var(--text-muted);">Standard recovery</td>
+          </tr>
+          <tr style="background:var(--bg-card);">
+            <td style="padding:16px 24px;font-weight:600;font-size:0.9rem;">Cost</td>
+            <td style="padding:16px 24px;text-align:center;color:var(--teal);font-weight:700;">✓ 60–70% more cost-effective</td>
+            <td style="padding:16px 24px;text-align:center;color:var(--text-muted);">High institutional cost</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: PATIENT SAFETY -->
+<section class="section-py" style="background:linear-gradient(135deg,var(--teal-dark),var(--teal));">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;">
+      <div class="reveal">
+        <span class="label" style="color:var(--champagne);">Safety First</span>
+        <h2 class="h2" style="color:white;margin-top:12px;">Our Patient Safety Framework</h2>
+        <div class="divider-line"></div>
+        <p style="color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:28px;">Patient safety is not an afterthought — it is the foundation upon which every CareHaven service is built. Our multi-layered safety protocols protect your loved one at every stage of care.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(200,178,125,0.25);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🧤</div>
+            <div><h4 style="color:white;font-size:0.95rem;margin-bottom:4px;">Infection Control Protocols</h4><p style="color:rgba(255,255,255,0.65);font-size:0.87rem;line-height:1.65;">Full PPE compliance, hand hygiene audit, and sterile technique for all clinical procedures.</p></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(200,178,125,0.25);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">📱</div>
+            <div><h4 style="color:white;font-size:0.95rem;margin-bottom:4px;">Real-Time Health Monitoring</h4><p style="color:rgba(255,255,255,0.65);font-size:0.87rem;line-height:1.65;">Vital signs logged digitally every visit with instant alerts to family and physicians via our app.</p></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(200,178,125,0.25);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🚨</div>
+            <div><h4 style="color:white;font-size:0.95rem;margin-bottom:4px;">Emergency Response Readiness</h4><p style="color:rgba(255,255,255,0.65);font-size:0.87rem;line-height:1.65;">All caregivers BLS-certified with direct connection to our 24/7 medical emergency coordination center.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&auto=format&fit=crop&q=80" alt="CareHaven nurse safety protocols" style="border-radius:var(--radius-xl);width:100%;object-fit:cover;aspect-ratio:4/5;" data-zoom>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: CTA -->
+<section style="background:var(--bg-secondary);padding:80px 0;text-align:center;">
+  <div class="container">
+    <div class="reveal">
+      <span class="label">Get Started</span>
+      <h2 class="h2" style="margin-top:12px;margin-bottom:16px;">Ready to Begin Your Care Journey?</h2>
+      <p style="color:var(--text-secondary);font-size:1.05rem;max-width:500px;margin:0 auto 32px;line-height:1.75;">Contact us today for a free care consultation. Our coordinators will design the perfect care plan within hours.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary btn-lg">Request a Consultation</a>
+        <a href="pricing.html" class="btn btn-outline btn-lg">View All Pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top"><div class="container"><div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:48px;">
+    <div><a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex;"><div class="nav-logo-icon">🏥</div><span class="nav-logo-text" style="color:white;">Care<span>Haven</span></span></a><p class="footer-tagline">Delivering compassionate, professional home nursing since 2010.</p><div class="footer-socials"><a href="#" class="footer-social">f</a><a href="#" class="footer-social">𝕏</a><a href="#" class="footer-social">▣</a><a href="#" class="footer-social">in</a></div></div>
+    <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="#post-surgery" class="footer-link">Post-Surgery Care</a></li><li><a href="#elderly-care" class="footer-link">Elderly Care</a></li><li><a href="#physiotherapy" class="footer-link">Physiotherapy</a></li><li><a href="#wound-care" class="footer-link">Wound Dressing</a></li><li><a href="#medication" class="footer-link">Medication Mgmt</a></li></ul></div>
+    <div><h4 class="footer-heading">Company</h4><ul class="footer-links"><li><a href="about.html" class="footer-link">About Us</a></li><li><a href="caregivers.html" class="footer-link">Our Team</a></li><li><a href="pricing.html" class="footer-link">Pricing</a></li><li><a href="blog.html" class="footer-link">Blog</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div>
+    <div><h4 class="footer-heading">Contact</h4><div class="footer-contact-item"><span class="footer-contact-icon">📞</span><span>+91 98765 43210</span></div><div class="footer-contact-item"><span class="footer-contact-icon">✉️</span><span>care@carehaven.in</span></div><div class="footer-contact-item"><span class="footer-contact-icon">🕐</span><span>24/7 Available</span></div></div>
+  </div></div></div>
+  <div class="container"><div class="footer-bottom"><p class="footer-bottom-text">© 2025 CareHaven. All rights reserved.</p><div class="footer-bottom-links"><a href="privacy.html" class="footer-bottom-link">Privacy</a><a href="terms.html" class="footer-bottom-link">Terms</a><a href="sitemap.html" class="footer-bottom-link">Sitemap</a></div></div></div>
+</footer>
+
+<div class="fab-container">
+  <button class="fab fab-top" id="fabTop">↑</button>
+  <a href="tel:+919876543210" class="fab fab-phone">📞</a>
+</div>
+<script src="js/main.js"></script>
+<style>
+@media(max-width:768px){
+  [style*="grid-template-columns:1.5fr 1fr 1fr 1.2fr"]{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:1fr 1fr;gap:72px"]{grid-template-columns:1fr!important;}
+  nav[style*="top:48px"]{top:0!important;}
+  .page-hero{margin-top:68px!important;}
+  .emergency-bar{display:none;}
+}
+</style>
+</body>
+</html>

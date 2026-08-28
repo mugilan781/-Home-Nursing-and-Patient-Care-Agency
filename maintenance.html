@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Site Under Maintenance — CareHaven Home Nursing & Patient Care</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #164E63;
+      --teal-dark: #0D3545;
+      --champagne: #C8B27D;
+      --mist: #E8F0EF;
+      --porcelain: #FAFBF8;
+      --charcoal: #263238;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Manrope', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--porcelain);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Animated background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #0D3545 0%, #164E63 40%, #1E6A82 70%, #0D3545 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* Floating orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,178,125,0.15), transparent);
+      animation: floatOrb linear infinite;
+      pointer-events: none;
+    }
+    .orb-1 { width: 400px; height: 400px; top: -100px; right: -100px; animation-duration: 18s; }
+    .orb-2 { width: 300px; height: 300px; bottom: -100px; left: -50px; animation-duration: 24s; animation-delay: -8s; }
+    .orb-3 { width: 200px; height: 200px; top: 50%; left: 20%; animation-duration: 15s; animation-delay: -4s; opacity: 0.5; }
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(20px, -30px) scale(1.05); }
+      50% { transform: translate(-10px, 20px) scale(0.95); }
+      75% { transform: translate(30px, 10px) scale(1.02); }
+    }
+    /* Grid overlay */
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .maintenance-card {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 640px;
+      width: 100%;
+    }
+
+    .maintenance-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+    .logo-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(200,178,125,0.2);
+      border: 2px solid rgba(200,178,125,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .logo-text {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: white;
+      font-weight: 500;
+    }
+    .logo-text span { color: var(--champagne); }
+
+    .maintenance-icon {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 20px;
+      animation: spin 8s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .maintenance-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,178,125,0.2);
+      border: 1px solid rgba(200,178,125,0.4);
+      color: var(--champagne);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--champagne);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    .maintenance-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 500;
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .maintenance-subtitle {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+      margin-bottom: 40px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Countdown */
+    .countdown {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 44px;
+      flex-wrap: wrap;
+    }
+    .countdown-unit {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 20px 28px;
+      min-width: 90px;
+    }
+    .countdown-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: white;
+      line-height: 1;
+      display: block;
+    }
+    .countdown-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      display: block;
+      margin-top: 6px;
+    }
+
+    /* Progress bar */
+    .progress-container {
+      margin-bottom: 40px;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 10px;
+    }
+    .progress-bar {
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--champagne), #E8D4A0);
+      border-radius: 999px;
+      width: 0%;
+      animation: progressLoad 2s ease forwards 0.5s;
+    }
+    @keyframes progressLoad { to { width: 73%; } }
+
+    /* Contact section */
+    .contact-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .contact-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .contact-chip:hover { background: rgba(200,178,125,0.2); border-color: rgba(200,178,125,0.4); color: var(--champagne); }
+
+    /* Notify form */
+    .notify-form {
+      display: flex;
+      gap: 10px;
+      max-width: 420px;
+      margin: 0 auto 32px;
+    }
+    .notify-form input {
+      flex: 1;
+      padding: 13px 18px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: white;
+      outline: none;
+      font-family: var(--font-body);
+      transition: border-color 0.2s;
+    }
+    .notify-form input::placeholder { color: rgba(255,255,255,0.4); }
+    .notify-form input:focus { border-color: var(--champagne); }
+    .notify-btn {
+      padding: 13px 24px;
+      background: var(--champagne);
+      color: var(--charcoal);
+      border: none;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: var(--font-body);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .notify-btn:hover { background: #E8D4A0; transform: scale(1.02); }
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-note a { color: rgba(200,178,125,0.7); }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: white;
+      color: var(--charcoal);
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      z-index: 9999;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.success { border-left: 4px solid #4CAF50; }
+
+    @media(max-width:480px) {
+      .countdown-unit { padding: 14px 18px; min-width: 70px; }
+      .countdown-num { font-size: 2rem; }
+      .maintenance-title { font-size: 2.2rem; }
+      .notify-form { flex-direction: column; }
+      .notify-form input, .notify-btn { width: 100%; border-radius: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="grid-overlay"></div>
+
+  <div class="maintenance-card">
+    <!-- Logo -->
+    <div class="maintenance-logo">
+      <div class="logo-icon">🏥</div>
+      <div class="logo-text">Care<span>Haven</span></div>
+    </div>
+
+    <!-- Status badge -->
+    <div class="maintenance-badge">
+      <span class="badge-dot"></span>
+      Scheduled Maintenance
+    </div>
+
+    <!-- Icon -->
+    <span class="maintenance-icon">⚙️</span>
+
+    <h1 class="maintenance-title">We're Making<br>Things Better</h1>
+    <p class="maintenance-subtitle">Our team is performing scheduled maintenance to enhance your care experience. We'll be back online shortly — even better than before. Our 24/7 care line remains fully operational.</p>
+
+    <!-- Countdown -->
+    <div class="countdown">
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-hours">04</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-mins">00</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-secs">00</span>
+        <span class="countdown-label">Seconds</span>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-container">
+      <div class="progress-label">
+        <span>Website Restoration Progress</span>
+        <span>73%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- Emergency Contact -->
+    <p style="color:rgba(200,178,125,0.9);font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">🚨 Urgent Care? We're Still Here</p>
+    <div class="contact-row">
+      <a href="tel:+919876543210" class="contact-chip">📞 +91 98765 43210</a>
+      <a href="https://wa.me/919876543210" class="contact-chip">💬 WhatsApp</a>
+      <a href="mailto:care@carehaven.in" class="contact-chip">✉️ care@carehaven.in</a>
+    </div>
+
+    <!-- Notify Form -->
+    <p style="color:rgba(255,255,255,0.5);font-size:0.82rem;margin-bottom:14px;">Get notified when we're back online:</p>
+    <div class="notify-form">
+      <input type="email" id="notifyEmail" placeholder="Your email address">
+      <button class="notify-btn" onclick="subscribeNotify()">Notify Me</button>
+    </div>
+
+    <p class="footer-note">© 2025 CareHaven Home Nursing. All rights reserved. | <a href="mailto:support@carehaven.in">Emergency Support</a></p>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // Countdown timer — set to 4 hours from page load
+    const endTime = Date.now() + 4 * 60 * 60 * 1000;
+    function updateCountdown() {
+      const remaining = Math.max(0, endTime - Date.now());
+      const h = Math.floor(remaining / 3600000);
+      const m = Math.floor((remaining % 3600000) / 60000);
+      const s = Math.floor((remaining % 60000) / 1000);
+      document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+      if (remaining > 0) setTimeout(updateCountdown, 1000);
+    }
+    updateCountdown();
+
+    function subscribeNotify() {
+      const email = document.getElementById('notifyEmail').value;
+      if (!email || !email.includes('@')) {
+        showToast('Please enter a valid email address.', false);
+        return;
+      }
+      showToast('✓ You\'ll be notified the moment we\'re back online!', true);
+      document.getElementById('notifyEmail').value = '';
+    }
+
+    function showToast(msg, success = true) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.className = `toast ${success ? 'success' : ''}`;
+      setTimeout(() => t.classList.add('show'), 10);
+      setTimeout(() => t.classList.remove('show'), 4000);
+    }
+
+    // Theme from localStorage
+    const savedTheme = localStorage.getItem('careHavenTheme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
+</body>
+</html>

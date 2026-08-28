@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CareHaven Sitemap — Complete directory of all pages on the CareHaven Home Nursing website for easy navigation.">
+  <title>Sitemap — CareHaven Home Nursing & Patient Care</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .sitemap-section { background: var(--bg-primary); }
+    .sitemap-group {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      border: 1px solid var(--border-light);
+      transition: all var(--transition-smooth);
+    }
+    .sitemap-group:hover { box-shadow: var(--shadow-sm); border-color: var(--sage-light); }
+    .sitemap-group-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 20px;
+    }
+    .sitemap-group-icon { font-size: 1.3rem; }
+    .sitemap-link-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-light);
+      transition: all var(--transition-fast);
+    }
+    .sitemap-link-item:last-child { border-bottom: none; }
+    .sitemap-link-item:hover { padding-left: 4px; }
+    .sitemap-link-arrow { color: var(--champagne); font-size: 0.8rem; margin-top: 3px; flex-shrink: 0; }
+    .sitemap-link-item a {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      transition: color var(--transition-fast);
+    }
+    .sitemap-link-item a:hover { color: var(--teal); }
+    .sitemap-link-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+<div class="page-transition" id="pageTransition"></div>
+<nav id="navbar" class="transparent">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🏥</div><span class="nav-logo-text">Care<span>Haven</span></span></a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="caregivers.html" class="nav-link">Caregivers</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-toggle-btn" data-theme-toggle><span id="themeIcon">🌙</span></button>
+      <button class="nav-toggle-btn" id="dirToggle" data-dir-toggle style="font-size:0.7rem;font-weight:700;">RTL</button>
+      <a href="contact.html" class="btn btn-champagne btn-sm nav-cta">Book Now</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav-overlay" id="mobileOverlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="services.html" class="mobile-nav-link">Services</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+  <a href="contact.html" class="btn btn-primary">Book Now</a>
+  <div style="display:flex;gap:12px;margin-top:24px;"><button class="btn btn-outline btn-sm" data-theme-toggle><span id="themeIcon2">🌙</span></button><button class="btn btn-outline btn-sm" data-dir-toggle id="dirToggle2">RTL</button></div>
+</div>
+
+<section class="page-hero" style="background:linear-gradient(135deg,var(--teal-dark),var(--teal));min-height:32vh;">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="page-hero-content">
+      <nav class="breadcrumb" style="margin-bottom:16px;"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Sitemap</span></nav>
+      <h1>Website Sitemap</h1>
+      <p style="color:rgba(255,255,255,0.7);max-width:500px;font-size:1rem;line-height:1.75;">A complete directory of all pages on the CareHaven website to help you quickly find what you're looking for.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sitemap-section section-py">
+  <div class="container">
+    <div class="grid-3">
+      <!-- Main Pages -->
+      <div class="sitemap-group reveal">
+        <div class="sitemap-group-title"><span class="sitemap-group-icon">🏠</span> Main Pages</div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="index.html">Home — Primary Homepage</a><div class="sitemap-link-desc">Hero slider, services overview, testimonials, and care inquiry form</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="home2.html">Home 2 — Alternative Homepage</a><div class="sitemap-link-desc">Split-hero layout, caregiver qualifications, packages, and FAQ</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="about.html">About Us</a><div class="sitemap-link-desc">Our story, mission, values, leadership team, and accreditations</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="contact.html">Contact Us</a><div class="sitemap-link-desc">Care inquiry form, office locations, emergency helpline, and WhatsApp</div></div>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="sitemap-group reveal reveal-delay-1">
+        <div class="sitemap-group-title"><span class="sitemap-group-icon">🩺</span> Services</div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="services.html">All Services</a><div class="sitemap-link-desc">Complete overview of all home nursing and care services</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="services.html#post-surgery">Post-Surgery Home Care</a><div class="sitemap-link-desc">Wound care, IV therapy, vital monitoring after surgery</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="services.html#elderly-care">Elderly Companion Care</a><div class="sitemap-link-desc">Companionship, personal assistance, and cognitive support for seniors</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="services.html#physiotherapy">Physiotherapy Assistance</a><div class="sitemap-link-desc">Home physiotherapy support for stroke, fracture, and joint recovery</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="services.html#wound-care">Wound Dressing & Care</a><div class="sitemap-link-desc">Sterile wound management, dressing changes, and infection control</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="services.html#medication">Medication Management</a><div class="sitemap-link-desc">Safe medication administration and adherence monitoring</div></div>
+        </div>
+      </div>
+
+      <!-- Caregivers & Pricing -->
+      <div class="sitemap-group reveal reveal-delay-2">
+        <div class="sitemap-group-title"><span class="sitemap-group-icon">👩‍⚕️</span> Caregivers & Pricing</div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="caregivers.html">Our Caregivers</a><div class="sitemap-link-desc">Meet our certified nurses, physiotherapists, and care specialists</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="pricing.html">Pricing Plans</a><div class="sitemap-link-desc">Hourly, daily, and monthly care packages with transparent pricing</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="pricing.html#addons">Add-On Services</a><div class="sitemap-link-desc">Physiotherapy sessions, IV therapy, lab collection, and more</div></div>
+        </div>
+      </div>
+
+      <!-- Blog -->
+      <div class="sitemap-group reveal">
+        <div class="sitemap-group-title"><span class="sitemap-group-icon">📖</span> Health Blog</div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="blog.html">Blog — All Articles</a><div class="sitemap-link-desc">Expert health insights from our certified medical team</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="blog-details.html">Post-Surgery Recovery Guide</a><div class="sitemap-link-desc">Complete guide to safe home recovery after surgery</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="blog.html">Dementia Care for Families</a><div class="sitemap-link-desc">Understanding and managing dementia with compassion</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="blog.html">Stroke Recovery Exercises</a><div class="sitemap-link-desc">5 gentle home exercises for stroke rehabilitation</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="blog.html">Medication Safety at Home</a><div class="sitemap-link-desc">Avoiding the 5 most common medication errors</div></div>
+        </div>
+      </div>
+
+      <!-- Legal -->
+      <div class="sitemap-group reveal reveal-delay-1">
+        <div class="sitemap-group-title"><span class="sitemap-group-icon">⚖️</span> Legal & Policies</div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="privacy.html">Privacy Policy</a><div class="sitemap-link-desc">How we collect, use, and protect your personal and medical information</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="terms.html">Terms & Conditions</a><div class="sitemap-link-desc">Service agreements, billing terms, and legal provisions</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="sitemap.html">Sitemap</a><div class="sitemap-link-desc">Complete directory of all website pages</div></div>
+        </div>
+      </div>
+
+      <!-- Special Pages -->
+      <div class="sitemap-group reveal reveal-delay-2">
+        <div class="sitemap-group-title"><span class="sitemap-group-icon">🔧</span> Special Pages</div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="404.html">404 — Page Not Found</a><div class="sitemap-link-desc">Helpful error page with navigation back to key pages</div></div>
+        </div>
+        <div class="sitemap-link-item">
+          <span class="sitemap-link-arrow">→</span>
+          <div><a href="maintenance.html">Maintenance Mode</a><div class="sitemap-link-desc">Site maintenance page with contact information</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div style="margin-top:60px;padding:40px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:var(--radius-xl);text-align:center;" class="reveal">
+      <span class="label" style="color:var(--champagne);">Quick Actions</span>
+      <h2 style="font-family:var(--font-display);font-size:2rem;color:white;margin:14px 0 20px;font-weight:400;">What Would You Like to Do?</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+        <a href="contact.html" class="btn btn-champagne">📋 Book a Caregiver</a>
+        <a href="services.html" class="btn btn-outline-white">🩺 View Services</a>
+        <a href="pricing.html" class="btn btn-outline-white">💰 See Pricing</a>
+        <a href="tel:+919876543210" class="btn btn-outline-white">📞 Call Us Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top"><div class="container"><div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:48px;">
+    <div><a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex;"><div class="nav-logo-icon">🏥</div><span class="nav-logo-text" style="color:white;">Care<span>Haven</span></span></a><p class="footer-tagline">Your complete guide to CareHaven's home nursing services across India.</p></div>
+    <div><h4 class="footer-heading">Main Pages</h4><ul class="footer-links"><li><a href="index.html" class="footer-link">Home</a></li><li><a href="about.html" class="footer-link">About</a></li><li><a href="services.html" class="footer-link">Services</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div>
+    <div><h4 class="footer-heading">Resources</h4><ul class="footer-links"><li><a href="blog.html" class="footer-link">Blog</a></li><li><a href="caregivers.html" class="footer-link">Caregivers</a></li><li><a href="pricing.html" class="footer-link">Pricing</a></li></ul></div>
+    <div><h4 class="footer-heading">Contact</h4><div class="footer-contact-item"><span class="footer-contact-icon">📞</span><span>+91 98765 43210</span></div><div class="footer-contact-item"><span class="footer-contact-icon">✉️</span><span>care@carehaven.in</span></div></div>
+  </div></div></div>
+  <div class="container"><div class="footer-bottom"><p class="footer-bottom-text">© 2025 CareHaven Home Nursing. All rights reserved.</p><div class="footer-bottom-links"><a href="privacy.html" class="footer-bottom-link">Privacy</a><a href="terms.html" class="footer-bottom-link">Terms</a><a href="sitemap.html" class="footer-bottom-link">Sitemap</a></div></div></div>
+</footer>
+<div class="fab-container"><button class="fab fab-top" id="fabTop">↑</button><a href="tel:+919876543210" class="fab fab-phone">📞</a></div>
+<script src="js/main.js"></script>
+<style>@media(max-width:768px){[style*="grid-template-columns:1.5fr 1fr 1fr 1.2fr"]{grid-template-columns:1fr!important;}}</style>
+</body>
+</html>

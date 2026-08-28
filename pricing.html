@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CareHaven Pricing — Transparent hourly, daily, and monthly home care packages for post-surgery, elderly care, physiotherapy, and nursing services.">
+  <title>Pricing Plans — CareHaven Home Nursing & Patient Care</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .billing-toggle {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 52px;
+    }
+    .toggle-label { font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); }
+    .toggle-switch {
+      width: 52px;
+      height: 28px;
+      background: var(--teal);
+      border-radius: 14px;
+      position: relative;
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: white;
+      transition: transform var(--transition-fast);
+    }
+    .toggle-switch.monthly::after { transform: translateX(24px); }
+    .save-badge {
+      background: rgba(200,178,125,0.2);
+      color: var(--champagne);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(200,178,125,0.3);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .add-on-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      border: 1px solid var(--border-light);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: all var(--transition-smooth);
+    }
+    .add-on-card:hover { border-color: var(--champagne); box-shadow: var(--shadow-sm); transform: translateY(-3px); }
+    .add-on-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .add-on-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+    .add-on-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; }
+    .add-on-price { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; color: var(--teal); margin-top: 8px; }
+
+    .insurance-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      border: 1px solid var(--border-light);
+      text-align: center;
+      transition: all var(--transition-smooth);
+    }
+    .insurance-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); }
+    .insurance-logo { font-size: 2rem; margin-bottom: 10px; }
+    .insurance-name { font-weight: 700; font-size: 0.9rem; }
+    .insurance-coverage { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+
+    .guarantee-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 22px;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+    }
+    .guarantee-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .guarantee-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+    .guarantee-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; }
+
+    @media(max-width:768px) { .pricing-grid { grid-template-columns: 1fr; } }
+    @media(max-width:480px) { .pricing-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="page-transition" id="pageTransition"></div>
+<nav id="navbar" class="transparent">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🏥</div><span class="nav-logo-text">Care<span>Haven</span></span></a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="caregivers.html" class="nav-link">Caregivers</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="pricing.html" class="nav-link active">Pricing</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-toggle-btn" data-theme-toggle><span id="themeIcon">🌙</span></button>
+      <button class="nav-toggle-btn" id="dirToggle" data-dir-toggle style="font-size:0.7rem;font-weight:700;">RTL</button>
+      <a href="contact.html" class="btn btn-champagne btn-sm nav-cta">Get Started</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav-overlay" id="mobileOverlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="services.html" class="mobile-nav-link">Services</a>
+  <a href="caregivers.html" class="mobile-nav-link">Caregivers</a>
+  <a href="about.html" class="mobile-nav-link">About</a>
+  <a href="pricing.html" class="mobile-nav-link active">Pricing</a>
+  <a href="blog.html" class="mobile-nav-link">Blog</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+  <a href="contact.html" class="btn btn-primary">Get Started</a>
+  <div style="display:flex;gap:12px;margin-top:24px;"><button class="btn btn-outline btn-sm" data-theme-toggle><span id="themeIcon2">🌙</span></button><button class="btn btn-outline btn-sm" data-dir-toggle id="dirToggle2">RTL</button></div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="background:linear-gradient(135deg,#0D3545,#164E63);position:relative;">
+  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1576671081837-49000212a370?w=1800&auto=format&fit=crop&q=80');background-size:cover;background-position:center;opacity:0.15;"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="page-hero-content" style="text-align:center;max-width:680px;margin:0 auto;">
+      <nav class="breadcrumb" style="margin-bottom:16px;justify-content:center;"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Pricing</span></nav>
+      <h1>Simple, Transparent Pricing</h1>
+      <p style="color:rgba(255,255,255,0.75);max-width:520px;margin:0 auto;font-size:1.05rem;line-height:1.75;">No hidden charges. No surprise bills. Our pricing is clear, honest, and designed to make expert home care accessible to every family.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1: PRICING PLANS -->
+<section class="section-py" style="background:var(--bg-secondary);">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <span class="label">Care Packages</span>
+      <h2 class="h2">Choose the Right Plan for Your Loved One</h2>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="billing-toggle reveal">
+      <span class="toggle-label" id="label-hourly" style="color:var(--teal);font-weight:700;">Hourly / Daily</span>
+      <div class="toggle-switch" id="billingToggle" onclick="toggleBilling()"></div>
+      <span class="toggle-label" id="label-monthly">Monthly Plans</span>
+      <span class="save-badge">Save up to 25%</span>
+    </div>
+
+    <div id="hourly-plans" class="pricing-grid">
+      <div class="pricing-card reveal">
+        <span class="pricing-plan">Companion</span>
+        <div style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:12px;">Hourly companion & daily living support</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">₹</span>
+          <span class="pricing-amount">350</span>
+          <span class="pricing-period">/hour<br>(min 3 hrs)</span>
+        </div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Personal hygiene assistance</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Meal preparation & feeding</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Companionship & conversation</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Mobility support</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Basic vital monitoring</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Family progress updates</div>
+        </div>
+        <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;">Book Now</a>
+      </div>
+
+      <div class="pricing-card featured reveal reveal-delay-1">
+        <span class="pricing-badge">Most Popular</span>
+        <span class="pricing-plan" style="color:rgba(255,255,255,0.7);">Clinical Nursing</span>
+        <div style="font-size:0.88rem;color:rgba(255,255,255,0.6);margin-bottom:12px;">Full nursing care with clinical procedures</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">₹</span>
+          <span class="pricing-amount">650</span>
+          <span class="pricing-period">/hour<br>(min 4 hrs)</span>
+        </div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Everything in Companion</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Wound dressing & care</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Medication administration</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>IV line management</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Catheter & tube care</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Physician liaison</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Digital health records</div>
+        </div>
+        <a href="contact.html" class="btn btn-champagne" style="width:100%;justify-content:center;">Book Now</a>
+      </div>
+
+      <div class="pricing-card reveal reveal-delay-2">
+        <span class="pricing-plan">Intensive 24/7</span>
+        <div style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:12px;">Round-the-clock dedicated nursing</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">₹</span>
+          <span class="pricing-amount">3,800</span>
+          <span class="pricing-period">/day<br>(24 hours)</span>
+        </div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Everything in Clinical Nursing</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Dedicated live-in nurse</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Physiotherapy assistance</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Emergency response coverage</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Night monitoring included</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Daily family video briefing</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Priority coordinator access</div>
+        </div>
+        <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;">Book Now</a>
+      </div>
+    </div>
+
+    <div id="monthly-plans" class="pricing-grid" style="display:none;">
+      <div class="pricing-card reveal">
+        <span class="pricing-plan">Essential Monthly</span>
+        <div style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:12px;">Daily companion visits, Mon–Sat</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">₹</span>
+          <span class="pricing-amount">18,500</span>
+          <span class="pricing-period">/month<br>Save 15%</span>
+        </div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><div class="pricing-check">✓</div>4 hours/day, 6 days/week</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Companion & daily care</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Weekly health report</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Dedicated coordinator</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Emergency helpline access</div>
+        </div>
+        <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+
+      <div class="pricing-card featured reveal reveal-delay-1">
+        <span class="pricing-badge">Best Value</span>
+        <span class="pricing-plan" style="color:rgba(255,255,255,0.7);">Premium Monthly</span>
+        <div style="font-size:0.88rem;color:rgba(255,255,255,0.6);margin-bottom:12px;">Daily clinical nursing, 7 days/week</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">₹</span>
+          <span class="pricing-amount">32,000</span>
+          <span class="pricing-period">/month<br>Save 20%</span>
+        </div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><div class="pricing-check">✓</div>8 hours/day, 7 days/week</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Full clinical nursing care</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Wound care & medication</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Physiotherapy 3x/week</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Daily digital health log</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Priority caregiver matching</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Weekly physician briefing</div>
+        </div>
+        <a href="contact.html" class="btn btn-champagne" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+
+      <div class="pricing-card reveal reveal-delay-2">
+        <span class="pricing-plan">Elite 24/7 Monthly</span>
+        <div style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:12px;">Round-the-clock live-in nursing</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">₹</span>
+          <span class="pricing-amount">85,000</span>
+          <span class="pricing-period">/month<br>Save 25%</span>
+        </div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><div class="pricing-check">✓</div>24/7 dedicated live-in nurse</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>All clinical services</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Daily physiotherapy</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Emergency response team</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Smart health monitoring</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>VIP care coordinator</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div>Monthly care review with MD</div>
+        </div>
+        <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: ADD-ON SERVICES -->
+<section class="section-py" style="background:var(--bg-primary);">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <span class="label">Customize Your Care</span>
+      <h2 class="h2">Add-On Services</h2>
+      <div class="divider-line"></div>
+      <p>Enhance any plan with specialized add-on services tailored to your loved one's specific needs.</p>
+    </div>
+    <div class="grid-3">
+      <div class="add-on-card reveal">
+        <div class="add-on-icon">🤸</div>
+        <div>
+          <div class="add-on-name">Physiotherapy Session</div>
+          <div class="add-on-desc">60-minute one-on-one session with a certified physiotherapy assistant, following doctor's prescribed plan.</div>
+          <div class="add-on-price">₹800/session</div>
+        </div>
+      </div>
+      <div class="add-on-card reveal reveal-delay-1">
+        <div class="add-on-icon">💉</div>
+        <div>
+          <div class="add-on-name">IV Therapy Management</div>
+          <div class="add-on-desc">Professional IV line insertion, maintenance, and monitoring by an experienced clinical nurse.</div>
+          <div class="add-on-price">₹600/visit</div>
+        </div>
+      </div>
+      <div class="add-on-card reveal reveal-delay-2">
+        <div class="add-on-icon">🔬</div>
+        <div>
+          <div class="add-on-name">Home Lab Sample Collection</div>
+          <div class="add-on-desc">Blood draws, urine, and other sample collection at home — coordinated with your nearest lab partner.</div>
+          <div class="add-on-price">₹350/visit</div>
+        </div>
+      </div>
+      <div class="add-on-card reveal reveal-delay-1">
+        <div class="add-on-icon">🩺</div>
+        <div>
+          <div class="add-on-name">Telemedicine Consultation</div>
+          <div class="add-on-desc">Video consultation with a certified physician, coordinated by your CareHaven nurse during visits.</div>
+          <div class="add-on-price">₹500/session</div>
+        </div>
+      </div>
+      <div class="add-on-card reveal reveal-delay-2">
+        <div class="add-on-icon">🫁</div>
+        <div>
+          <div class="add-on-name">Respiratory Therapy</div>
+          <div class="add-on-desc">Nebulization, chest physiotherapy, and respiratory monitoring for COPD, asthma, and post-COVID patients.</div>
+          <div class="add-on-price">₹750/session</div>
+        </div>
+      </div>
+      <div class="add-on-card reveal reveal-delay-3">
+        <div class="add-on-icon">📊</div>
+        <div>
+          <div class="add-on-name">Monthly Care Report</div>
+          <div class="add-on-desc">Comprehensive monthly health status report compiled by our clinical team for family and referring physicians.</div>
+          <div class="add-on-price">₹1,200/report</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: INSURANCE PARTNERS -->
+<section class="section-py" style="background:var(--bg-secondary);">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <span class="label">Coverage</span>
+      <h2 class="h2">Insurance & Reimbursement Partners</h2>
+      <div class="divider-line"></div>
+      <p>CareHaven works with all major Indian health insurance providers. Our billing team will assist you with documentation and reimbursement claims.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;" class="reveal">
+      <div class="insurance-card"><div class="insurance-logo">🛡️</div><div class="insurance-name">Star Health Insurance</div><div class="insurance-coverage">Domiciliary care covered</div></div>
+      <div class="insurance-card"><div class="insurance-logo">🏛️</div><div class="insurance-name">ICICI Lombard</div><div class="insurance-coverage">Home nursing covered</div></div>
+      <div class="insurance-card"><div class="insurance-logo">🔵</div><div class="insurance-name">HDFC Ergo Health</div><div class="insurance-coverage">OPD & home care</div></div>
+      <div class="insurance-card"><div class="insurance-logo">🟢</div><div class="insurance-name">Niva Bupa Health</div><div class="insurance-coverage">Post-surgery coverage</div></div>
+      <div class="insurance-card"><div class="insurance-logo">🔴</div><div class="insurance-name">Bajaj Allianz</div><div class="insurance-coverage">Nursing care covered</div></div>
+      <div class="insurance-card"><div class="insurance-logo">🟡</div><div class="insurance-name">Care Health Insurance</div><div class="insurance-coverage">Home care packages</div></div>
+    </div>
+    <p style="text-align:center;font-size:0.85rem;color:var(--text-muted);margin-top:24px;">Coverage varies by plan. Contact us to verify your specific policy benefits.</p>
+  </div>
+</section>
+
+<!-- SECTION 4: GUARANTEES -->
+<section class="section-py" style="background:var(--bg-primary);">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <span class="label">Our Commitment</span>
+      <h2 class="h2">Our Service Guarantees</h2>
+      <div class="divider-line"></div>
+    </div>
+    <div class="grid-2">
+      <div class="guarantee-item reveal">
+        <div class="guarantee-icon">🔄</div>
+        <div>
+          <div class="guarantee-title">Free Caregiver Replacement</div>
+          <div class="guarantee-desc">Not completely satisfied with your assigned caregiver? We'll arrange a replacement within 24 hours — no questions asked and no extra charge.</div>
+        </div>
+      </div>
+      <div class="guarantee-item reveal reveal-delay-1">
+        <div class="guarantee-icon">💰</div>
+        <div>
+          <div class="guarantee-title">Transparent Billing — No Hidden Charges</div>
+          <div class="guarantee-desc">You'll receive a detailed invoice after every visit. We never add surprise fees, travel charges, or equipment costs without prior written agreement.</div>
+        </div>
+      </div>
+      <div class="guarantee-item reveal reveal-delay-2">
+        <div class="guarantee-icon">⏰</div>
+        <div>
+          <div class="guarantee-title">On-Time Arrival, Every Time</div>
+          <div class="guarantee-desc">Our caregivers arrive within the agreed appointment window. If delayed more than 30 minutes, your first hour is complimentary.</div>
+        </div>
+      </div>
+      <div class="guarantee-item reveal reveal-delay-3">
+        <div class="guarantee-icon">📱</div>
+        <div>
+          <div class="guarantee-title">24/7 Coordinator Accessibility</div>
+          <div class="guarantee-desc">Your dedicated care coordinator is reachable around the clock for emergencies, schedule changes, or any concerns about your loved one's care.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: PRICING FAQ -->
+<section class="section-py" style="background:var(--bg-secondary);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:72px;">
+      <div class="reveal">
+        <span class="label">Pricing Questions</span>
+        <h2 class="h2" style="margin-top:12px;">Common Billing & Payment Questions</h2>
+        <div class="divider-line"></div>
+        <p style="color:var(--text-secondary);line-height:1.75;margin-bottom:24px;">Questions about our pricing, payment methods, or insurance claims? Our billing team is here to help.</p>
+        <a href="contact.html" class="btn btn-primary">Contact Billing Team</a>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="faq-item">
+          <div class="faq-question"><h4>What payment methods do you accept?</h4><div class="faq-icon">+</div></div>
+          <div class="faq-answer"><p>We accept all major payment methods: cash, UPI (GPay, PhonePe, Paytm), bank transfer (NEFT/RTGS), and all major debit/credit cards including EMI options for monthly plans.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><h4>Is there a minimum booking duration?</h4><div class="faq-icon">+</div></div>
+          <div class="faq-answer"><p>For hourly visits, the minimum booking is 3 hours. This ensures the caregiver has adequate time to complete all necessary clinical procedures and documentation without rushing.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><h4>Can I cancel or modify my booking?</h4><div class="faq-icon">+</div></div>
+          <div class="faq-answer"><p>Yes. Cancellations with 24+ hours notice are fully refunded or rescheduled at no charge. For same-day cancellations, a 50% session fee applies to compensate the caregiver for their reserved time.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><h4>Are there additional charges for night shifts?</h4><div class="faq-icon">+</div></div>
+          <div class="faq-answer"><p>Night shifts (9pm–6am) carry a 25% premium on the standard hourly rate. This is disclosed upfront during booking and reflected clearly in your invoice.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><h4>How do monthly plan discounts work?</h4><div class="faq-icon">+</div></div>
+          <div class="faq-answer"><p>Monthly plans are pre-paid 30-day packages at discounted rates (15–25% off equivalent daily rates). Unused days due to patient hospitalization can be carried forward or refunded on request.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: CTA -->
+<section style="background:linear-gradient(135deg,var(--teal-dark),var(--teal));padding:90px 0;text-align:center;">
+  <div class="container reveal">
+    <span class="label" style="color:var(--champagne);">Start Today</span>
+    <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);color:white;margin:16px 0 20px;font-weight:400;">Not Sure Which Plan Is Right?</h2>
+    <p style="color:rgba(255,255,255,0.7);max-width:500px;margin:0 auto 32px;line-height:1.75;font-size:1.05rem;">Our care coordinators will conduct a free needs assessment and recommend the ideal package for your loved one — no obligation.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-champagne btn-lg">Get Free Assessment</a>
+      <a href="tel:+919876543210" class="btn btn-outline-white btn-lg">📞 Call Us Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top"><div class="container"><div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:48px;">
+    <div><a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex;"><div class="nav-logo-icon">🏥</div><span class="nav-logo-text" style="color:white;">Care<span>Haven</span></span></a><p class="footer-tagline">Delivering compassionate, professional home nursing since 2010.</p><div class="footer-socials"><a href="#" class="footer-social">f</a><a href="#" class="footer-social">𝕏</a><a href="#" class="footer-social">▣</a><a href="#" class="footer-social">in</a></div></div>
+    <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="services.html" class="footer-link">Post-Surgery Care</a></li><li><a href="services.html" class="footer-link">Elderly Care</a></li><li><a href="services.html" class="footer-link">Physiotherapy</a></li><li><a href="services.html" class="footer-link">Wound Dressing</a></li></ul></div>
+    <div><h4 class="footer-heading">Company</h4><ul class="footer-links"><li><a href="about.html" class="footer-link">About Us</a></li><li><a href="caregivers.html" class="footer-link">Our Team</a></li><li><a href="blog.html" class="footer-link">Blog</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div>
+    <div><h4 class="footer-heading">Contact</h4><div class="footer-contact-item"><span class="footer-contact-icon">📞</span><span>+91 98765 43210</span></div><div class="footer-contact-item"><span class="footer-contact-icon">✉️</span><span>care@carehaven.in</span></div><div class="footer-contact-item"><span class="footer-contact-icon">🕐</span><span>24/7 Available</span></div></div>
+  </div></div></div>
+  <div class="container"><div class="footer-bottom"><p class="footer-bottom-text">© 2025 CareHaven Home Nursing. All rights reserved.</p><div class="footer-bottom-links"><a href="privacy.html" class="footer-bottom-link">Privacy</a><a href="terms.html" class="footer-bottom-link">Terms</a><a href="sitemap.html" class="footer-bottom-link">Sitemap</a></div></div></div>
+</footer>
+
+<div class="fab-container">
+  <button class="fab fab-top" id="fabTop">↑</button>
+  <a href="tel:+919876543210" class="fab fab-phone">📞</a>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+  let isMonthly = false;
+  function toggleBilling() {
+    isMonthly = !isMonthly;
+    const toggle = document.getElementById('billingToggle');
+    toggle.classList.toggle('monthly', isMonthly);
+    document.getElementById('label-hourly').style.color = isMonthly ? '' : 'var(--teal)';
+    document.getElementById('label-hourly').style.fontWeight = isMonthly ? '' : '700';
+    document.getElementById('label-monthly').style.color = isMonthly ? 'var(--teal)' : '';
+    document.getElementById('label-monthly').style.fontWeight = isMonthly ? '700' : '';
+    document.getElementById('hourly-plans').style.display = isMonthly ? 'none' : 'grid';
+    document.getElementById('monthly-plans').style.display = isMonthly ? 'grid' : 'none';
+  }
+</script>
+<style>
+@media(max-width:768px){
+  [style*="grid-template-columns:1.5fr 1fr 1fr 1.2fr"]{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:1fr 1.6fr;gap:72px"]{grid-template-columns:1fr!important;}
+  .pricing-grid{grid-template-columns:1fr!important;}
+  .pricing-card.featured{transform:none!important;}
+  [style*="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))"]{grid-template-columns:repeat(2,1fr)!important;}
+}
+</style>
+</body>
+</html>

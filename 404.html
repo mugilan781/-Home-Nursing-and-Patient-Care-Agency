@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Page Not Found — CareHaven Home Nursing & Patient Care</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-primary);
+    }
+    .error-page {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px;
+      background: linear-gradient(135deg, var(--porcelain), var(--mist));
+      position: relative;
+      overflow: hidden;
+    }
+    .error-page::before {
+      content: '404';
+      position: absolute;
+      font-family: var(--font-display);
+      font-size: clamp(15rem, 30vw, 30rem);
+      font-weight: 700;
+      color: rgba(22,78,99,0.05);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .error-content {
+      text-align: center;
+      max-width: 560px;
+      position: relative;
+      z-index: 1;
+    }
+    .error-icon {
+      font-size: 5rem;
+      display: block;
+      margin-bottom: 20px;
+      animation: float 4s ease-in-out infinite;
+    }
+    .error-code {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 10vw, 7rem);
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .error-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+    }
+    .error-description {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .error-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .helpful-links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .helpful-link {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: all var(--transition-fast);
+      text-decoration: none;
+    }
+    .helpful-link:hover {
+      background: var(--teal);
+      color: white;
+      border-color: var(--teal);
+      transform: translateY(-2px);
+    }
+    .helpful-link-icon { font-size: 1.2rem; }
+    .search-bar {
+      display: flex;
+      gap: 10px;
+      max-width: 420px;
+      margin: 0 auto 36px;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 13px 18px;
+      border: 1.5px solid var(--border-medium);
+      border-radius: var(--radius-full);
+      font-size: 0.95rem;
+      background: var(--bg-card);
+      color: var(--text-primary);
+      outline: none;
+    }
+    .search-bar input:focus { border-color: var(--teal); }
+    .helpful-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+  </style>
+</head>
+<body>
+<div class="page-transition" id="pageTransition"></div>
+<!-- Minimal Navbar -->
+<nav id="navbar" style="position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--navbar-h);display:flex;align-items:center;background:rgba(250,251,248,0.95);backdrop-filter:blur(20px);box-shadow:var(--shadow-sm);">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🏥</div><span class="nav-logo-text" style="color:var(--teal);">Care<span>Haven</span></span></a>
+    <div style="flex:1;"></div>
+    <div class="nav-actions">
+      <button class="nav-toggle-btn" data-theme-toggle style="color:var(--text-primary);border-color:var(--border-light);"><span id="themeIcon">🌙</span></button>
+      <a href="index.html" class="btn btn-primary btn-sm">← Back to Home</a>
+    </div>
+  </div>
+</nav>
+
+<div class="error-page">
+  <div class="error-content">
+    <span class="error-icon">🏥</span>
+    <div class="error-code">404</div>
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-description">We're sorry — the page you're looking for seems to have wandered off. It may have been moved, renamed, or never existed. But don't worry, we can help you find your way back to the care you need.</p>
+
+    <!-- Search -->
+    <div class="helpful-title">Search Our Site</div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search for services, care guides..." onkeypress="if(event.key==='Enter') searchSite()">
+      <button class="btn btn-primary" onclick="searchSite()" style="border-radius:var(--radius-full);">Search</button>
+    </div>
+
+    <div class="error-actions">
+      <a href="index.html" class="btn btn-primary btn-lg">🏠 Go to Homepage</a>
+      <a href="contact.html" class="btn btn-champagne btn-lg">📞 Contact Us</a>
+    </div>
+
+    <div class="helpful-title">Or Go Directly to</div>
+    <div class="helpful-links">
+      <a href="services.html" class="helpful-link"><span class="helpful-link-icon">🩺</span>Our Services</a>
+      <a href="pricing.html" class="helpful-link"><span class="helpful-link-icon">💰</span>Pricing Plans</a>
+      <a href="caregivers.html" class="helpful-link"><span class="helpful-link-icon">👩‍⚕️</span>Our Caregivers</a>
+      <a href="blog.html" class="helpful-link"><span class="helpful-link-icon">📖</span>Health Blog</a>
+    </div>
+
+    <div style="margin-top:36px;padding:20px;background:rgba(22,78,99,0.08);border-radius:var(--radius-lg);display:flex;align-items:center;gap:14px;text-align:left;">
+      <span style="font-size:1.8rem;">📞</span>
+      <div>
+        <div style="font-weight:700;font-size:0.9rem;color:var(--text-primary);">Need immediate care assistance?</div>
+        <div style="font-size:0.85rem;color:var(--text-secondary);">Call us 24/7: <a href="tel:+919876543210" style="color:var(--teal);font-weight:700;">+91 98765 43210</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Simple Footer -->
+<div style="background:var(--charcoal);padding:24px 0;text-align:center;">
+  <p style="font-size:0.82rem;color:rgba(255,255,255,0.4);">© 2025 CareHaven Home Nursing. <a href="index.html" style="color:var(--champagne);">Return to Homepage</a></p>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+  function searchSite() {
+    const query = document.getElementById('searchInput').value.trim();
+    if (query) {
+      // Map common queries to pages
+      const map = {
+        'service': 'services.html', 'nursing': 'services.html', 'care': 'services.html',
+        'surgery': 'services.html#post-surgery', 'elderly': 'services.html#elderly-care',
+        'physio': 'services.html#physiotherapy', 'wound': 'services.html#wound-care',
+        'medication': 'services.html#medication', 'price': 'pricing.html', 'cost': 'pricing.html',
+        'caregiver': 'caregivers.html', 'nurse': 'caregivers.html',
+        'about': 'about.html', 'blog': 'blog.html', 'contact': 'contact.html'
+      };
+      const lower = query.toLowerCase();
+      for (const [key, url] of Object.entries(map)) {
+        if (lower.includes(key)) { window.location.href = url; return; }
+      }
+      window.location.href = 'sitemap.html';
+    }
+  }
+</script>
+</body>
+</html>

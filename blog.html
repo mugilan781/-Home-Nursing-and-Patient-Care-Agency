@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CareHaven Health Journal — Expert articles on home nursing, elderly care, post-surgery recovery, physiotherapy, and patient safety by our medical team.">
+  <title>Health Blog — CareHaven Home Nursing & Patient Care</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .blog-hero-img { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1434494817513-cc112a976e36?w=1800&auto=format&fit=crop&q=80') center/cover; }
+
+    .blog-layout { display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start; }
+
+    .blog-search {
+      position: relative;
+      margin-bottom: 32px;
+    }
+    .blog-search input {
+      width: 100%;
+      padding: 14px 20px 14px 48px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-medium);
+      border-radius: var(--radius-full);
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+    .blog-search input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(22,78,99,0.1); }
+    .blog-search::before {
+      content: '🔍';
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    .sidebar-widget {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      border: 1px solid var(--border-light);
+      margin-bottom: 24px;
+    }
+    .widget-title {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 18px;
+    }
+    .widget-category {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-light);
+      cursor: pointer;
+      transition: color var(--transition-fast);
+    }
+    .widget-category:last-child { border-bottom: none; }
+    .widget-category:hover { color: var(--teal); }
+    .widget-category-name { font-size: 0.88rem; font-weight: 600; }
+    .widget-category-count {
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: var(--mist);
+      color: var(--teal);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .recent-post {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .recent-post:last-child { border-bottom: none; }
+    .recent-post-img {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .recent-post-img img { width: 100%; height: 100%; object-fit: cover; }
+    .recent-post-title { font-size: 0.85rem; font-weight: 600; line-height: 1.4; color: var(--text-primary); transition: color var(--transition-fast); }
+    .recent-post-title:hover { color: var(--teal); }
+    .recent-post-date { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+    .newsletter-widget {
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .newsletter-widget h3 { color: white; font-size: 1.1rem; margin-bottom: 10px; }
+    .newsletter-widget p { color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 16px; line-height: 1.6; }
+    .newsletter-widget input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      border: none;
+      font-size: 0.88rem;
+      margin-bottom: 10px;
+      outline: none;
+      background: rgba(255,255,255,0.15);
+      color: white;
+    }
+    .newsletter-widget input::placeholder { color: rgba(255,255,255,0.5); }
+    .newsletter-widget button { width: 100%; }
+
+    @media(max-width:1024px) { .blog-layout { grid-template-columns: 1fr; } }
+    @media(max-width:768px) { .blog-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="page-transition" id="pageTransition"></div>
+<nav id="navbar" class="transparent">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🏥</div><span class="nav-logo-text">Care<span>Haven</span></span></a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="caregivers.html" class="nav-link">Caregivers</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+      <li><a href="blog.html" class="nav-link active">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-toggle-btn" data-theme-toggle><span id="themeIcon">🌙</span></button>
+      <button class="nav-toggle-btn" id="dirToggle" data-dir-toggle style="font-size:0.7rem;font-weight:700;">RTL</button>
+      <a href="contact.html" class="btn btn-champagne btn-sm nav-cta">Book Now</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav-overlay" id="mobileOverlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="services.html" class="mobile-nav-link">Services</a>
+  <a href="caregivers.html" class="mobile-nav-link">Caregivers</a>
+  <a href="about.html" class="mobile-nav-link">About</a>
+  <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+  <a href="blog.html" class="mobile-nav-link active">Blog</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+  <a href="contact.html" class="btn btn-primary">Book Now</a>
+  <div style="display:flex;gap:12px;margin-top:24px;"><button class="btn btn-outline btn-sm" data-theme-toggle><span id="themeIcon2">🌙</span></button><button class="btn btn-outline btn-sm" data-dir-toggle id="dirToggle2">RTL</button></div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="min-height:48vh;position:relative;">
+  <div class="blog-hero-img"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,53,69,0.88),rgba(22,78,99,0.55));"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="page-hero-content">
+      <nav class="breadcrumb" style="margin-bottom:16px;"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Health Blog</span></nav>
+      <h1>CareHaven Health Journal</h1>
+      <p style="color:rgba(255,255,255,0.75);max-width:560px;font-size:1.05rem;line-height:1.75;">Expert insights, care guides, and medical knowledge from our certified clinical team — empowering families with the knowledge to make better care decisions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED POST -->
+<section style="background:var(--bg-secondary);padding:60px 0;">
+  <div class="container">
+    <span class="label" style="display:block;margin-bottom:16px;">Featured Article</span>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:0;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg);background:var(--bg-card);" class="reveal">
+      <div style="position:relative;overflow:hidden;min-height:400px;">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&auto=format&fit=crop&q=80" alt="Expert home care guide" style="width:100%;height:100%;object-fit:cover;display:block;" data-zoom>
+        <div style="position:absolute;top:20px;left:20px;background:var(--teal);color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;">Featured</div>
+      </div>
+      <div style="padding:48px 40px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.78rem;color:var(--text-muted);margin-bottom:16px;">
+          <span>🩺 Clinical Guide</span>
+          <span>•</span>
+          <span>Aug 25, 2025</span>
+          <span>•</span>
+          <span>12 min read</span>
+        </div>
+        <h2 style="font-family:var(--font-display);font-size:1.8rem;font-weight:600;line-height:1.25;margin-bottom:16px;">
+          <a href="blog-details.html" style="color:var(--text-primary);transition:color 0.2s;">The Complete Guide to Post-Surgery Home Recovery: What Every Patient and Family Needs to Know</a>
+        </h2>
+        <p style="color:var(--text-secondary);font-size:0.92rem;line-height:1.75;margin-bottom:24px;">Coming home after surgery marks the beginning — not the end — of the recovery journey. This comprehensive guide covers wound care, medication management, mobility, nutrition, and warning signs every caregiver must recognize...</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=60&auto=format&fit=crop&q=80" alt="Dr. Sarah Thomas" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--champagne);">
+            <div>
+              <div style="font-weight:700;font-size:0.88rem;">Dr. Sarah Thomas</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">Clinical Director, CareHaven</div>
+            </div>
+          </div>
+          <a href="blog-details.html" class="btn btn-primary btn-sm">Read Article →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG MAIN CONTENT -->
+<section class="section-py" style="background:var(--bg-primary);">
+  <div class="container">
+    <div class="blog-layout">
+      <!-- Main -->
+      <div>
+        <div class="blog-search">
+          <input type="text" placeholder="Search articles..." id="blogSearch">
+        </div>
+
+        <!-- Category tabs -->
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;">
+          <button class="filter-btn active" data-cat="all">All Posts</button>
+          <button class="filter-btn" data-cat="recovery">Recovery Care</button>
+          <button class="filter-btn" data-cat="elderly">Elderly Care</button>
+          <button class="filter-btn" data-cat="physio">Physiotherapy</button>
+          <button class="filter-btn" data-cat="nutrition">Nutrition</button>
+          <button class="filter-btn" data-cat="safety">Patient Safety</button>
+        </div>
+
+        <div class="blog-grid" id="blogGrid">
+          <div class="blog-card reveal" data-cat="recovery">
+            <div class="blog-card-img">
+              <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=800&auto=format&fit=crop&q=80" alt="Post-surgery recovery tips" loading="lazy">
+              <span class="blog-category">Recovery Care</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-meta"><span>Aug 20, 2025</span><span class="blog-meta-dot">•</span><span>6 min read</span></div>
+              <h3 class="blog-card-title"><a href="blog-details.html">10 Essential Tips for Post-Surgery Home Recovery</a></h3>
+              <p class="blog-excerpt">Coming home after surgery is a milestone, but the recovery journey has just begun. Discover expert-backed strategies for safe healing, wound care, and preventing complications at home.</p>
+              <div class="blog-footer">
+                <div class="blog-author"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=60&auto=format&fit=crop&q=80" alt="Author"><span class="blog-author-name">Dr. Sarah Thomas</span></div>
+                <a href="blog-details.html" class="read-more">Read →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="blog-card reveal reveal-delay-1" data-cat="elderly">
+            <div class="blog-card-img">
+              <img src="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?w=800&auto=format&fit=crop&q=80" alt="Dementia care family guide" loading="lazy">
+              <span class="blog-category">Elderly Care</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-meta"><span>Aug 14, 2025</span><span class="blog-meta-dot">•</span><span>8 min read</span></div>
+              <h3 class="blog-card-title"><a href="blog-details.html">Understanding Dementia: A Family Caregiver's Guide</a></h3>
+              <p class="blog-excerpt">Caring for a loved one with dementia requires specialized knowledge and immense patience. This guide covers communication, safety, and self-care for family caregivers.</p>
+              <div class="blog-footer">
+                <div class="blog-author"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=60&auto=format&fit=crop&q=80" alt="Author"><span class="blog-author-name">Nurse Meera Iyer</span></div>
+                <a href="blog-details.html" class="read-more">Read →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="blog-card reveal" data-cat="physio">
+            <div class="blog-card-img">
+              <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&auto=format&fit=crop&q=80" alt="Home physiotherapy exercises" loading="lazy">
+              <span class="blog-category">Physiotherapy</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-meta"><span>Aug 08, 2025</span><span class="blog-meta-dot">•</span><span>5 min read</span></div>
+              <h3 class="blog-card-title"><a href="blog-details.html">5 Gentle Exercises to Speed Up Stroke Recovery at Home</a></h3>
+              <p class="blog-excerpt">Physiotherapy at home can dramatically accelerate stroke recovery. Our certified team shares proven, safe exercises you can begin today under professional guidance.</p>
+              <div class="blog-footer">
+                <div class="blog-author"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=60&auto=format&fit=crop&q=80" alt="Author"><span class="blog-author-name">Kavitha Raj</span></div>
+                <a href="blog-details.html" class="read-more">Read →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="blog-card reveal reveal-delay-1" data-cat="safety">
+            <div class="blog-card-img">
+              <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=800&auto=format&fit=crop&q=80" alt="Medication safety at home" loading="lazy">
+              <span class="blog-category">Patient Safety</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-meta"><span>Jul 30, 2025</span><span class="blog-meta-dot">•</span><span>7 min read</span></div>
+              <h3 class="blog-card-title"><a href="blog-details.html">Medication Safety at Home: Avoiding the 5 Most Common Errors</a></h3>
+              <p class="blog-excerpt">Medication errors at home are far more common than most families realize. Learn the 5 most frequent mistakes and how our nurses prevent them through rigorous protocols.</p>
+              <div class="blog-footer">
+                <div class="blog-author"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=60&auto=format&fit=crop&q=80" alt="Author"><span class="blog-author-name">Nurse Arjun Kumar</span></div>
+                <a href="blog-details.html" class="read-more">Read →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="blog-card reveal" data-cat="nutrition">
+            <div class="blog-card-img">
+              <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&auto=format&fit=crop&q=80" alt="Recovery nutrition guide" loading="lazy">
+              <span class="blog-category">Nutrition</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-meta"><span>Jul 22, 2025</span><span class="blog-meta-dot">•</span><span>6 min read</span></div>
+              <h3 class="blog-card-title"><a href="blog-details.html">Healing Foods: The Best Nutrition Plan for Post-Surgery Recovery</a></h3>
+              <p class="blog-excerpt">Proper nutrition accelerates healing, reduces inflammation, and strengthens immunity after surgery. Our dietitian shares a detailed, easy-to-follow recovery meal plan.</p>
+              <div class="blog-footer">
+                <div class="blog-author"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=60&auto=format&fit=crop&q=80" alt="Author"><span class="blog-author-name">Dr. Sarah Thomas</span></div>
+                <a href="blog-details.html" class="read-more">Read →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="blog-card reveal reveal-delay-1" data-cat="elderly">
+            <div class="blog-card-img">
+              <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&auto=format&fit=crop&q=80" alt="Preventing falls in seniors" loading="lazy">
+              <span class="blog-category">Elderly Care</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-meta"><span>Jul 15, 2025</span><span class="blog-meta-dot">•</span><span>5 min read</span></div>
+              <h3 class="blog-card-title"><a href="blog-details.html">How to Make Your Home Safe for an Elderly Loved One: A Checklist</a></h3>
+              <p class="blog-excerpt">Falls are the leading cause of injury in seniors at home. Follow this room-by-room safety checklist to create a safe, comfortable environment that preserves independence.</p>
+              <div class="blog-footer">
+                <div class="blog-author"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=60&auto=format&fit=crop&q=80" alt="Author"><span class="blog-author-name">Priya Sundaram</span></div>
+                <a href="blog-details.html" class="read-more">Read →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:48px;">
+          <button style="width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border-medium);background:var(--teal);color:white;font-weight:700;cursor:pointer;">1</button>
+          <button style="width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border-medium);background:var(--bg-card);color:var(--text-primary);cursor:pointer;transition:all 0.2s;" onmouseenter="this.style.background='var(--mist)'" onmouseleave="this.style.background='var(--bg-card)'">2</button>
+          <button style="width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border-medium);background:var(--bg-card);color:var(--text-primary);cursor:pointer;transition:all 0.2s;" onmouseenter="this.style.background='var(--mist)'" onmouseleave="this.style.background='var(--bg-card)'">3</button>
+          <span style="color:var(--text-muted);">...</span>
+          <button style="width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border-medium);background:var(--bg-card);color:var(--text-primary);cursor:pointer;">8</button>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div>
+        <div class="newsletter-widget">
+          <h3>Stay Informed</h3>
+          <p>Get expert care tips and health insights delivered to your inbox weekly.</p>
+          <input type="email" placeholder="Your email address">
+          <button class="btn btn-champagne btn-sm" style="width:100%;justify-content:center;" onclick="Toast.show('Thank you! You\'ve subscribed to our newsletter.')">Subscribe Now</button>
+        </div>
+
+        <div class="sidebar-widget">
+          <h4 class="widget-title">Browse by Topic</h4>
+          <div class="widget-category"><span class="widget-category-name">Recovery Care</span><span class="widget-category-count">12</span></div>
+          <div class="widget-category"><span class="widget-category-name">Elderly Care</span><span class="widget-category-count">18</span></div>
+          <div class="widget-category"><span class="widget-category-name">Physiotherapy</span><span class="widget-category-count">9</span></div>
+          <div class="widget-category"><span class="widget-category-name">Medication Safety</span><span class="widget-category-count">7</span></div>
+          <div class="widget-category"><span class="widget-category-name">Nutrition & Diet</span><span class="widget-category-count">11</span></div>
+          <div class="widget-category"><span class="widget-category-name">Patient Safety</span><span class="widget-category-count">14</span></div>
+          <div class="widget-category"><span class="widget-category-name">Mental Wellbeing</span><span class="widget-category-count">6</span></div>
+        </div>
+
+        <div class="sidebar-widget">
+          <h4 class="widget-title">Recent Posts</h4>
+          <div class="recent-post">
+            <div class="recent-post-img"><img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=100&auto=format&fit=crop&q=80" alt="Recent post"></div>
+            <div><a class="recent-post-title" href="blog-details.html">10 Essential Tips for Post-Surgery Home Recovery</a><div class="recent-post-date">Aug 20, 2025</div></div>
+          </div>
+          <div class="recent-post">
+            <div class="recent-post-img"><img src="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?w=100&auto=format&fit=crop&q=80" alt="Recent post"></div>
+            <div><a class="recent-post-title" href="blog-details.html">Understanding Dementia: A Family Caregiver's Guide</a><div class="recent-post-date">Aug 14, 2025</div></div>
+          </div>
+          <div class="recent-post">
+            <div class="recent-post-img"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=100&auto=format&fit=crop&q=80" alt="Recent post"></div>
+            <div><a class="recent-post-title" href="blog-details.html">5 Gentle Exercises for Stroke Recovery at Home</a><div class="recent-post-date">Aug 08, 2025</div></div>
+          </div>
+          <div class="recent-post">
+            <div class="recent-post-img"><img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=100&auto=format&fit=crop&q=80" alt="Recent post"></div>
+            <div><a class="recent-post-title" href="blog-details.html">Medication Safety at Home: Avoiding Common Errors</a><div class="recent-post-date">Jul 30, 2025</div></div>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <h4 class="widget-title">Popular Tags</h4>
+          <div class="tag-cloud">
+            <span class="tag">Home Nursing</span>
+            <span class="tag">Elderly Care</span>
+            <span class="tag">Wound Care</span>
+            <span class="tag">Medication</span>
+            <span class="tag">Stroke Recovery</span>
+            <span class="tag">Physiotherapy</span>
+            <span class="tag">Dementia</span>
+            <span class="tag">Post-Surgery</span>
+            <span class="tag">Patient Safety</span>
+            <span class="tag">Nutrition</span>
+            <span class="tag">Palliative</span>
+          </div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,var(--champagne),var(--champagne-light));border-radius:var(--radius-lg);padding:28px;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:12px;">📞</div>
+          <h4 style="font-size:1.1rem;margin-bottom:10px;color:var(--charcoal);">Need Immediate Care?</h4>
+          <p style="font-size:0.85rem;color:rgba(38,50,56,0.7);margin-bottom:16px;">Our coordinators are available 24/7 to answer your questions.</p>
+          <a href="tel:+919876543210" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">+91 98765 43210</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top"><div class="container"><div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:48px;">
+    <div><a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex;"><div class="nav-logo-icon">🏥</div><span class="nav-logo-text" style="color:white;">Care<span>Haven</span></span></a><p class="footer-tagline">Delivering compassionate, professional home nursing since 2010.</p><div class="footer-socials"><a href="#" class="footer-social">f</a><a href="#" class="footer-social">𝕏</a><a href="#" class="footer-social">▣</a><a href="#" class="footer-social">in</a></div></div>
+    <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="services.html" class="footer-link">Post-Surgery Care</a></li><li><a href="services.html" class="footer-link">Elderly Care</a></li><li><a href="services.html" class="footer-link">Physiotherapy</a></li><li><a href="services.html" class="footer-link">Wound Dressing</a></li></ul></div>
+    <div><h4 class="footer-heading">Company</h4><ul class="footer-links"><li><a href="about.html" class="footer-link">About Us</a></li><li><a href="caregivers.html" class="footer-link">Our Team</a></li><li><a href="pricing.html" class="footer-link">Pricing</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div>
+    <div><h4 class="footer-heading">Contact</h4><div class="footer-contact-item"><span class="footer-contact-icon">📞</span><span>+91 98765 43210</span></div><div class="footer-contact-item"><span class="footer-contact-icon">✉️</span><span>care@carehaven.in</span></div><div class="footer-contact-item"><span class="footer-contact-icon">🕐</span><span>24/7 Available</span></div></div>
+  </div></div></div>
+  <div class="container"><div class="footer-bottom"><p class="footer-bottom-text">© 2025 CareHaven Home Nursing. All rights reserved.</p><div class="footer-bottom-links"><a href="privacy.html" class="footer-bottom-link">Privacy</a><a href="terms.html" class="footer-bottom-link">Terms</a><a href="sitemap.html" class="footer-bottom-link">Sitemap</a></div></div></div>
+</footer>
+
+<div class="fab-container">
+  <button class="fab fab-top" id="fabTop">↑</button>
+  <a href="tel:+919876543210" class="fab fab-phone">📞</a>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+  // Blog category filter
+  document.querySelectorAll('[data-cat]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-cat]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('#blogGrid .blog-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+
+  // Search
+  document.getElementById('blogSearch').addEventListener('input', function() {
+    const q = this.value.toLowerCase();
+    document.querySelectorAll('#blogGrid .blog-card').forEach(card => {
+      const title = card.querySelector('.blog-card-title')?.textContent.toLowerCase() || '';
+      card.style.display = title.includes(q) || q === '' ? '' : 'none';
+    });
+  });
+</script>
+<style>
+@media(max-width:768px){
+  [style*="grid-template-columns:1.4fr 1fr;gap:0"]{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:1.5fr 1fr 1fr 1.2fr"]{grid-template-columns:1fr!important;}
+  .blog-grid{grid-template-columns:1fr!important;}
+  .filter-btn{font-size:0.75rem!important;padding:7px 14px!important;}
+}
+</style>
+</body>
+</html>
