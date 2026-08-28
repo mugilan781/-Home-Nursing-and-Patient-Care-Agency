@@ -1928,8 +1928,52 @@ footer {
   .fab-container { bottom: 20px; right: 16px; }
 }
 
+/* ─── SVG Vector Icons Utilities ─── */
+svg {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+.icon-svg {
+  width: 1.25em;
+  height: 1.25em;
+  fill: currentColor;
+}
+.icon-stroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nav-logo-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--teal-dark);
+}
+.service-icon svg, .mission-icon svg, .include-icon svg, .add-on-icon svg, .guarantee-icon svg, .accred-icon svg {
+  width: 32px;
+  height: 32px;
+  color: var(--teal);
+}
+.footer-contact-icon svg {
+  width: 18px;
+  height: 18px;
+  color: var(--champagne);
+}
+.footer-social svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+.fab svg {
+  width: 20px;
+  height: 20px;
+}
+
 /* ─── Print ─── */
 @media print {
   #navbar, .fab-container, .page-transition { display: none !important; }
   body { padding-top: 0; }
 }
+

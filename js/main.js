@@ -21,10 +21,12 @@ const ThemeManager = {
   apply(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem(this.KEY, theme);
+    const sunSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+    const moonSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
     const icon = document.getElementById('themeIcon');
-    if (icon) icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    if (icon) icon.innerHTML = theme === 'dark' ? sunSvg : moonSvg;
     const icon2 = document.getElementById('themeIcon2');
-    if (icon2) icon2.textContent = theme === 'dark' ? '☀️' : '🌙';
+    if (icon2) icon2.innerHTML = theme === 'dark' ? sunSvg : moonSvg;
   },
 
   applyDir(dir) {
@@ -477,7 +479,7 @@ const CookieConsent = {
     const banner = document.createElement('div');
     banner.style.cssText = 'position:fixed;bottom:20px;left:20px;right:20px;max-width:500px;background:var(--charcoal);color:rgba(255,255,255,0.85);padding:20px 24px;border-radius:12px;box-shadow:var(--shadow-xl);z-index:9997;font-size:0.85rem;line-height:1.6;display:flex;gap:16px;align-items:center;flex-wrap:wrap;';
     banner.innerHTML = `
-      <div style="flex:1;min-width:200px;">🍪 We use cookies to enhance your experience and analyze our traffic. <a href="privacy.html" style="color:var(--champagne);">Privacy Policy</a></div>
+      <div style="flex:1;min-width:200px;display:flex;align-items:center;gap:8px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--champagne)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>We use cookies to enhance your experience and analyze our traffic. <a href="privacy.html" style="color:var(--champagne);">Privacy Policy</a></span></div>
       <div style="display:flex;gap:10px;flex-shrink:0;">
         <button onclick="CookieConsent.accept(this.closest('div[style]'))" style="background:var(--champagne);color:var(--charcoal);border:none;padding:8px 18px;border-radius:999px;font-weight:700;font-size:0.82rem;cursor:pointer;">Accept</button>
         <button onclick="this.closest('div[style]').remove()" style="background:transparent;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.2);padding:8px 18px;border-radius:999px;font-size:0.82rem;cursor:pointer;">Decline</button>
