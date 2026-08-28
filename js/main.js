@@ -145,7 +145,7 @@ const HeroSlider = {
   init(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
-    this.slides = container.querySelectorAll('.hero-slide');
+    this.slides = container.querySelectorAll('.hero-slide, .hero-slide-wrap');
     this.dots = container.querySelectorAll('.slider-dot');
     if (this.slides.length === 0) return;
     this.show(0);
