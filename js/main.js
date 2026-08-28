@@ -313,8 +313,20 @@ const Toast = {
 const PageTransition = {
   el: null,
 
+  MARKUP: '<div class="pt-inner"><div class="pt-mark"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="5"/></svg></div><div class="pt-name">Care<span>Haven</span></div><div class="pt-spinner"></div></div>',
+
   init() {
     this.el = document.getElementById('pageTransition');
+    if (!this.el) return;
+    this.el.innerHTML = this.MARKUP;
+
+    // Branded loading screen on initial page load
+    this.el.classList.add('active');
+    const hide = () => setTimeout(() => this.el.classList.remove('active'), 500);
+    if (document.readyState === 'complete') hide();
+    else window.addEventListener('load', hide);
+
+    // Intercept same-origin internal links for the transition
     document.querySelectorAll('a[href]').forEach(link => {
       const href = link.getAttribute('href');
       if (!href || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('tel') || href.startsWith('http')) return;
@@ -328,7 +340,7 @@ const PageTransition = {
   navigate(href) {
     if (!this.el) { window.location.href = href; return; }
     this.el.classList.add('active');
-    setTimeout(() => window.location.href = href, 450);
+    setTimeout(() => window.location.href = href, 650);
   }
 };
 

@@ -135,15 +135,52 @@ input, textarea, select { font-family: var(--font-body); }
 .page-transition {
   position: fixed;
   inset: 0;
-  background: var(--teal);
   z-index: 9999;
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  background: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
   pointer-events: none;
 }
 .page-transition.active {
-  transform: scaleY(1);
+  opacity: 1;
+  visibility: visible;
+}
+.page-transition .pt-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.page-transition .pt-mark {
+  color: #fff;
+  animation: pt-pulse 1.2s ease-in-out infinite;
+}
+.page-transition .pt-name {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+.page-transition .pt-name span {
+  color: var(--champagne);
+}
+.page-transition .pt-spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  border-top-color: var(--champagne);
+  animation: pt-spin 0.8s linear infinite;
+}
+@keyframes pt-spin { to { transform: rotate(360deg); } }
+@keyframes pt-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.9); opacity: 0.82; }
 }
 
 /* ─── Typography ─── */
