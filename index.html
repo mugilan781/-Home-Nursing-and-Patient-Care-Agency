@@ -22,6 +22,7 @@
       display: flex;
       align-items: center;
       overflow: hidden;
+      background: linear-gradient(135deg, #0D3545 0%, #164E63 55%, #1E6A82 100%);
     }
     .hero-bg {
       position: absolute;
@@ -31,15 +32,19 @@
     .hero-slide-wrap {
       position: absolute;
       inset: 0;
-      transition: opacity 1.2s ease;
       opacity: 0;
+      transition: opacity 1.2s ease;
+      will-change: opacity;
     }
     .hero-slide-wrap.active { opacity: 1; }
     .hero-slide-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transform: scale(1.02);
+      transition: transform 7s ease;
     }
+    .hero-slide-wrap.active img { transform: scale(1.1); }
     .hero-gradient {
       position: absolute;
       inset: 0;
@@ -499,11 +504,11 @@
       <div class="hero-gradient"></div>
     </div>
     <div class="hero-slide-wrap" id="slide2">
-      <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1800&auto=format&fit=crop&q=80" alt="Home physiotherapy session with caregiver" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1800&auto=format&fit=crop&q=80" alt="Home physiotherapy session with caregiver" loading="eager">
       <div class="hero-gradient"></div>
     </div>
     <div class="hero-slide-wrap" id="slide3">
-      <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=1800&auto=format&fit=crop&q=80" alt="Nurse assisting post-surgery patient at home" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=1800&auto=format&fit=crop&q=80" alt="Nurse assisting post-surgery patient at home" loading="eager">
       <div class="hero-gradient"></div>
     </div>
   </div>
