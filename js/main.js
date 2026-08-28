@@ -492,6 +492,44 @@ const CookieConsent = {
   }
 };
 
+/* ─── Footer — Newsletter & Year (FOOTER-ONLY) ─── */
+const FooterEnhancements = {
+  init() {
+    // Dynamic year
+    const year = new Date().getFullYear();
+    document.querySelectorAll('.footer-year').forEach(el => { el.textContent = year; });
+    document.querySelectorAll('#footerYear').forEach(el => { el.textContent = year; });
+  }
+};
+
+function handleFooterNewsletter(event) {
+  event.preventDefault();
+  const form = event.target;
+  const input = form.querySelector('.footer-newsletter-input') || form.querySelector('input[type="email"]');
+  const email = input ? input.value.trim() : '';
+  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!valid) {
+    if (input) {
+      input.focus();
+      input.style.borderColor = '#E53935';
+      input.style.boxShadow = '0 0 0 3px rgba(229,57,53,0.18)';
+      setTimeout(() => { input.style.borderColor = ''; input.style.boxShadow = ''; }, 2500);
+    }
+    Toast.show('Please enter a valid email address.');
+    return false;
+  }
+  const btn = form.querySelector('button[type="submit"]');
+  const originalText = btn ? btn.textContent : '';
+  if (btn) { btn.textContent = 'Subscribed!'; btn.disabled = true; }
+  Toast.show('Thank you for subscribing! You will receive our latest updates.');
+  form.reset();
+  setTimeout(() => {
+    if (btn) { btn.textContent = originalText || 'Subscribe'; btn.disabled = false; }
+  }, 3000);
+  return false;
+}
+window.handleFooterNewsletter = handleFooterNewsletter;
+
 /* ─── Lazy Images ─── */
 const LazyImages = {
   init() {
@@ -525,6 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
   TOC.init();
   LazyImages.init();
   CookieConsent.init();
+  FooterEnhancements.init();
 
   // Sliders (init per-page)
   if (document.getElementById('heroSlider')) HeroSlider.init('heroSlider');
