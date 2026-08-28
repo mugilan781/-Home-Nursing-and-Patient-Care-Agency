@@ -278,7 +278,7 @@ const FormValidator = {
       btn.innerHTML = '<span class="spinner"></span> Sending...';
       btn.disabled = true;
       setTimeout(() => {
-        btn.innerHTML = '✓ Message Sent Successfully!';
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle;"><polyline points="20 6 9 17 4 12"/></svg> Message Sent Successfully!';
         btn.style.background = '#2E7D32';
         form.reset();
         Toast.show('Thank you! We\'ll contact you within 2 hours.');
