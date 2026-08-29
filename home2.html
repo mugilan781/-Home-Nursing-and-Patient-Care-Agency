@@ -11,35 +11,190 @@
     .h2-hero {
       position: relative;
       min-height: 100vh;
-      max-height: 100vh;
-      background: var(--porcelain);
+      background: var(--bg-primary);
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.05fr 0.95fr;
       overflow: hidden;
+      transition: background-color var(--transition-smooth);
     }
     .h2-hero-left {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: calc(var(--navbar-h) + 16px) 60px 40px 80px;
+      padding: calc(var(--navbar-h) + 24px) 60px 48px 80px;
       position: relative;
       z-index: 2;
     }
     .h2-hero-right {
       position: relative;
       overflow: hidden;
+      height: 100%;
     }
     .h2-hero-right img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
-    .h2-hero-right::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, var(--porcelain) 0%, transparent 30%);
-      z-index: 1;
+
+    /* ─── HOME 2 NAVBAR CUSTOM VISIBILITY & THEME ADAPTATION ─── */
+    #navbar {
+      transition: background-color var(--transition-smooth), box-shadow var(--transition-smooth), height var(--transition-smooth);
+    }
+    /* Light Theme Navbar */
+    #navbar .nav-logo-text {
+      color: var(--teal);
+    }
+    #navbar .nav-logo-text span {
+      color: var(--champagne);
+    }
+    #navbar .nav-link {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    #navbar .nav-link:hover,
+    #navbar .nav-link.active {
+      color: var(--teal);
+    }
+    #navbar .nav-link::after {
+      background: var(--teal);
+    }
+    #navbar .nav-toggle-btn {
+      color: var(--text-primary);
+      border-color: var(--border-medium);
+      background: rgba(22, 78, 99, 0.05);
+    }
+    #navbar .nav-toggle-btn:hover {
+      background: var(--teal);
+      color: var(--white);
+      border-color: var(--teal);
+    }
+    #navbar .hamburger span {
+      background: var(--text-primary);
+    }
+
+    /* Dark Theme Navbar */
+    [data-theme="dark"] #navbar .nav-logo-text {
+      color: var(--white);
+    }
+    [data-theme="dark"] #navbar .nav-logo-text span {
+      color: var(--champagne);
+    }
+    [data-theme="dark"] #navbar .nav-link {
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 600;
+    }
+    [data-theme="dark"] #navbar .nav-link:hover,
+    [data-theme="dark"] #navbar .nav-link.active {
+      color: var(--champagne);
+    }
+    [data-theme="dark"] #navbar .nav-link::after {
+      background: var(--champagne);
+    }
+    [data-theme="dark"] #navbar .nav-toggle-btn {
+      color: var(--champagne);
+      border-color: rgba(200, 178, 125, 0.35);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    [data-theme="dark"] #navbar .nav-toggle-btn:hover {
+      background: var(--champagne);
+      color: var(--charcoal);
+    }
+    [data-theme="dark"] #navbar .hamburger span {
+      background: var(--champagne);
+    }
+
+    /* Scrolled state on dark mode */
+    [data-theme="dark"] #navbar.scrolled {
+      background: rgba(13, 27, 33, 0.96);
+      border-bottom: 1px solid rgba(124, 154, 146, 0.2);
+    }
+
+    /* Hero Theme Adaptations */
+    .h2-hero .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(22,78,99,0.08);
+      border: 1px solid rgba(22,78,99,0.18);
+      color: var(--teal);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .h2-hero-title-accent {
+      font-weight: 600;
+      color: var(--teal);
+    }
+    .h2-hero-stat-num {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: var(--teal);
+    }
+    [data-theme="dark"] .h2-hero {
+      background: var(--bg-primary);
+    }
+    [data-theme="dark"] .h2-hero .hero-eyebrow {
+      background: rgba(200, 178, 125, 0.12);
+      border-color: rgba(200, 178, 125, 0.35);
+      color: var(--champagne);
+    }
+    [data-theme="dark"] .h2-hero-title-accent {
+      color: var(--champagne);
+    }
+    [data-theme="dark"] .h2-hero-stat-num {
+      color: var(--champagne);
+    }
+    [data-theme="dark"] .h2-hero-right {
+      border-left: 1px solid rgba(124, 154, 146, 0.15);
+    }
+    [data-theme="dark"] .cert-badge {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+    }
+    [data-theme="dark"] .cert-badge-text {
+      color: var(--text-primary);
+    }
+    [data-theme="dark"] .cert-badge-sub {
+      color: var(--text-secondary);
+    }
+    [data-theme="dark"] .cert-badge-icon svg {
+      color: var(--champagne);
+      stroke: var(--champagne);
+    }
+    [data-theme="dark"] .safety-icon svg {
+      color: var(--champagne);
+      stroke: var(--champagne);
+    }
+    [data-theme="dark"] .pkg-price {
+      background: rgba(30, 106, 130, 0.3);
+      color: var(--champagne);
+      border: 1px solid rgba(200, 178, 125, 0.3);
+    }
+    .faq-support-box {
+      margin-top: 32px;
+      padding: 24px;
+      background: rgba(22, 78, 99, 0.08);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+    }
+    .faq-support-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--teal);
+    }
+    [data-theme="dark"] .faq-support-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+    }
+    [data-theme="dark"] .faq-support-num {
+      color: var(--champagne);
     }
 
     /* FEATURED SERVICES */
@@ -259,11 +414,11 @@
 <!-- SECTION 1: SPLIT HERO -->
 <section class="h2-hero">
   <div class="h2-hero-left">
-    <div class="hero-eyebrow" style="display:inline-flex;align-items:center;gap:10px;background:rgba(22,78,99,0.1);border:1px solid rgba(22,78,99,0.2);color:var(--teal);padding:8px 18px;border-radius:999px;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;">
+    <div class="hero-eyebrow">
       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span> Professional Home Healthcare
     </div>
     <h1 style="font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:300;color:var(--text-primary);line-height:1.06;margin-bottom:16px;">
-      Expert Care,<br><span style="font-weight:600;color:var(--teal);">Delivered with<br>Dignity</span>
+      Expert Care,<br><span class="h2-hero-title-accent">Delivered with<br>Dignity</span>
     </h1>
     <p class="lead" style="margin-bottom:24px;max-width:480px;">Our NABH-certified caregivers bring hospital-standard expertise directly to your home, ensuring your loved ones receive compassionate, professional care without leaving their comfort zone.</p>
     <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:24px;">
@@ -272,15 +427,15 @@
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:20px;border-top:1px solid var(--border-light);">
       <div style="text-align:center;">
-        <div style="font-family:var(--font-display);font-size:1.9rem;font-weight:600;color:var(--teal);" data-count="5000" data-suffix="+">5000+</div>
+        <div class="h2-hero-stat-num" data-count="5000" data-suffix="+">5000+</div>
         <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-top:4px;">Patients Served</div>
       </div>
       <div style="text-align:center;border-left:1px solid var(--border-light);border-right:1px solid var(--border-light);">
-        <div style="font-family:var(--font-display);font-size:1.9rem;font-weight:600;color:var(--teal);" data-count="200" data-suffix="+">200+</div>
+        <div class="h2-hero-stat-num" data-count="200" data-suffix="+">200+</div>
         <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-top:4px;">Expert Caregivers</div>
       </div>
       <div style="text-align:center;">
-        <div style="font-family:var(--font-display);font-size:1.9rem;font-weight:600;color:var(--teal);" data-count="15" data-suffix=" yrs">15 yrs</div>
+        <div class="h2-hero-stat-num" data-count="15" data-suffix=" yrs">15 yrs</div>
         <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-top:4px;">Experience</div>
       </div>
     </div>
@@ -479,9 +634,9 @@
         <div class="divider-line"></div>
         <p style="color:var(--text-secondary);line-height:1.75;margin-bottom:28px;">Have more questions? Our care coordinators are available 24/7 to answer any concerns you might have.</p>
         <a href="contact.html" class="btn btn-primary">Ask Us Anything</a>
-        <div style="margin-top:32px;padding:24px;background:var(--mist);border-radius:var(--radius-lg);">
+        <div class="faq-support-box">
           <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--champagne);margin-bottom:8px;">24/7 Support Line</div>
-          <a href="tel:+919876543210" style="font-family:var(--font-display);font-size:2rem;font-weight:600;color:var(--teal);">+91 98765 43210</a>
+          <a href="tel:+919876543210" class="faq-support-num">+91 98765 43210</a>
         </div>
       </div>
       <div class="reveal reveal-delay-1">
