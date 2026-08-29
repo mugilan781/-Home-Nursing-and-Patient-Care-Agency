@@ -37,6 +37,120 @@
       gap: 24px;
     }
 
+    .caregiver-overlay {
+      display: none !important;
+    }
+    .caregiver-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .caregiver-info {
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .caregiver-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
+    .caregiver-role {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 12px;
+    }
+    .caregiver-tags {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 5px;
+      align-items: center;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .caregiver-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: var(--mist);
+      color: var(--teal);
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+    .caregiver-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-light);
+    }
+    .caregiver-btn-preview {
+      padding: 7px 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border-medium);
+      background: transparent;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .caregiver-btn-preview:hover {
+      background: var(--mist);
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+    .caregiver-btn-book {
+      padding: 7px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      background: var(--champagne);
+      color: var(--charcoal);
+      border: 1.5px solid var(--champagne);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      text-align: center;
+    }
+    .caregiver-btn-book:hover {
+      background: #b59b58;
+      border-color: #b59b58;
+      transform: translateY(-1px);
+    }
+
+    /* Dark theme overrides */
+    [data-theme="dark"] .caregiver-tag {
+      background: rgba(200, 178, 125, 0.12);
+      color: var(--champagne);
+      border: 1px solid rgba(200, 178, 125, 0.25);
+    }
+    [data-theme="dark"] .caregiver-btn-preview {
+      border-color: rgba(200, 178, 125, 0.35);
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.04);
+    }
+    [data-theme="dark"] .caregiver-btn-preview:hover {
+      background: rgba(200, 178, 125, 0.15);
+      border-color: var(--champagne);
+      color: var(--champagne);
+    }
+
     .qual-section { background: var(--bg-secondary); }
     .qual-step {
       display: flex;
@@ -219,12 +333,6 @@
       <div class="caregiver-card" data-category="nurse">
         <div class="caregiver-img-wrap">
           <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&auto=format&fit=crop&q=80" alt="Nurse Meera Iyer" loading="lazy">
-          <div class="caregiver-overlay">
-            <div class="caregiver-socials">
-              <button class="caregiver-social" onclick="openProfile(this)" data-name="Nurse Meera Iyer" data-role="Senior Registered Nurse" data-exp="8" data-spec="Post-Surgery & ICU Care" data-lang="Tamil, English, Hindi" data-qual="B.Sc Nursing, NABH Certified, BLS Certified" aria-label="View Profile"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <a href="contact.html" class="caregiver-social" aria-label="Book Caregiver"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></a>
-            </div>
-          </div>
         </div>
         <div class="caregiver-info">
           <div class="caregiver-name">Nurse Meera Iyer</div>
@@ -234,26 +342,28 @@
             <span class="caregiver-tag">ICU Care</span>
             <span class="caregiver-tag">8 yrs exp</span>
           </div>
+          <div class="caregiver-actions">
+            <button type="button" class="caregiver-btn-preview" onclick="openProfile(this)" data-name="Nurse Meera Iyer" data-role="Senior Registered Nurse" data-exp="8" data-spec="Post-Surgery & ICU Care" data-lang="Tamil, English, Hindi" data-qual="B.Sc Nursing, NABH Certified, BLS Certified">Preview</button>
+            <a href="contact.html" class="caregiver-btn-book">Book</a>
+          </div>
         </div>
       </div>
       <!-- Physio -->
       <div class="caregiver-card" data-category="physio">
         <div class="caregiver-img-wrap">
           <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=500&auto=format&fit=crop&q=80" alt="Physio Kavitha Raj" loading="lazy">
-          <div class="caregiver-overlay">
-            <div class="caregiver-socials">
-              <button class="caregiver-social" onclick="openProfile(this)" data-name="Kavitha Raj" data-role="Physiotherapy Specialist" data-exp="6" data-spec="Stroke Rehab & Orthopedics" data-lang="Tamil, English" data-qual="MPT (Neurology), BPT, Certified Rehab Specialist" aria-label="View Profile"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <a href="contact.html" class="caregiver-social" aria-label="Book Caregiver"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></a>
-            </div>
-          </div>
         </div>
         <div class="caregiver-info">
           <div class="caregiver-name">Kavitha Raj</div>
           <div class="caregiver-role">Physiotherapy Specialist</div>
           <div class="caregiver-tags">
             <span class="caregiver-tag">Stroke Rehab</span>
-            <span class="caregiver-tag">Orthopedics</span>
+            <span class="caregiver-tag">Ortho</span>
             <span class="caregiver-tag">6 yrs exp</span>
+          </div>
+          <div class="caregiver-actions">
+            <button type="button" class="caregiver-btn-preview" onclick="openProfile(this)" data-name="Kavitha Raj" data-role="Physiotherapy Specialist" data-exp="6" data-spec="Stroke Rehab & Orthopedics" data-lang="Tamil, English" data-qual="MPT (Neurology), BPT, Certified Rehab Specialist">Preview</button>
+            <a href="contact.html" class="caregiver-btn-book">Book</a>
           </div>
         </div>
       </div>
@@ -261,12 +371,6 @@
       <div class="caregiver-card" data-category="elderly">
         <div class="caregiver-img-wrap">
           <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&auto=format&fit=crop&q=80" alt="Priya Sundaram, Elderly Care" loading="lazy">
-          <div class="caregiver-overlay">
-            <div class="caregiver-socials">
-              <button class="caregiver-social" onclick="openProfile(this)" data-name="Priya Sundaram" data-role="Elderly Care Specialist" data-exp="10" data-spec="Dementia & Palliative Care" data-lang="Tamil, Telugu, English" data-qual="GNM, Certified Dementia Practitioner, Palliative Care Cert." aria-label="View Profile"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <a href="contact.html" class="caregiver-social" aria-label="Book Caregiver"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></a>
-            </div>
-          </div>
         </div>
         <div class="caregiver-info">
           <div class="caregiver-name">Priya Sundaram</div>
@@ -276,26 +380,28 @@
             <span class="caregiver-tag">Palliative</span>
             <span class="caregiver-tag">10 yrs exp</span>
           </div>
+          <div class="caregiver-actions">
+            <button type="button" class="caregiver-btn-preview" onclick="openProfile(this)" data-name="Priya Sundaram" data-role="Elderly Care Specialist" data-exp="10" data-spec="Dementia & Palliative Care" data-lang="Tamil, Telugu, English" data-qual="GNM, Certified Dementia Practitioner, Palliative Care Cert.">Preview</button>
+            <a href="contact.html" class="caregiver-btn-book">Book</a>
+          </div>
         </div>
       </div>
       <!-- Wound -->
       <div class="caregiver-card" data-category="wound">
         <div class="caregiver-img-wrap">
           <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&auto=format&fit=crop&q=80" alt="Nurse Arjun Kumar, Wound Care" loading="lazy">
-          <div class="caregiver-overlay">
-            <div class="caregiver-socials">
-              <button class="caregiver-social" onclick="openProfile(this)" data-name="Nurse Arjun Kumar" data-role="Wound Care RN" data-exp="7" data-spec="Wound Management & Diabetic Care" data-lang="Tamil, English, Kannada" data-qual="B.Sc Nursing, Wound Care Cert., WOCN Certified" aria-label="View Profile"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <a href="contact.html" class="caregiver-social" aria-label="Book Caregiver"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></a>
-            </div>
-          </div>
         </div>
         <div class="caregiver-info">
           <div class="caregiver-name">Nurse Arjun Kumar</div>
           <div class="caregiver-role">Wound Care Specialist RN</div>
           <div class="caregiver-tags">
             <span class="caregiver-tag">Wound Care</span>
-            <span class="caregiver-tag">Diabetic Foot</span>
+            <span class="caregiver-tag">Diabetic</span>
             <span class="caregiver-tag">7 yrs exp</span>
+          </div>
+          <div class="caregiver-actions">
+            <button type="button" class="caregiver-btn-preview" onclick="openProfile(this)" data-name="Nurse Arjun Kumar" data-role="Wound Care RN" data-exp="7" data-spec="Wound Management & Diabetic Care" data-lang="Tamil, English, Kannada" data-qual="B.Sc Nursing, Wound Care Cert., WOCN Certified">Preview</button>
+            <a href="contact.html" class="caregiver-btn-book">Book</a>
           </div>
         </div>
       </div>
@@ -303,12 +409,6 @@
       <div class="caregiver-card" data-category="nurse">
         <div class="caregiver-img-wrap">
           <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=500&auto=format&fit=crop&q=80" alt="Nurse Deepa Krishnan" loading="lazy">
-          <div class="caregiver-overlay">
-            <div class="caregiver-socials">
-              <button class="caregiver-social" onclick="openProfile(this)" data-name="Nurse Deepa Krishnan" data-role="Pediatric & Adult Nurse" data-exp="5" data-spec="Pediatric Care & Medication Management" data-lang="Malayalam, Tamil, English" data-qual="B.Sc Nursing, Pediatric Nursing Cert." aria-label="View Profile"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <a href="contact.html" class="caregiver-social" aria-label="Book Caregiver"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></a>
-            </div>
-          </div>
         </div>
         <div class="caregiver-info">
           <div class="caregiver-name">Nurse Deepa Krishnan</div>
@@ -318,18 +418,16 @@
             <span class="caregiver-tag">Medication</span>
             <span class="caregiver-tag">5 yrs exp</span>
           </div>
+          <div class="caregiver-actions">
+            <button type="button" class="caregiver-btn-preview" onclick="openProfile(this)" data-name="Nurse Deepa Krishnan" data-role="Pediatric & Adult Nurse" data-exp="5" data-spec="Pediatric Care & Medication Management" data-lang="Malayalam, Tamil, English" data-qual="B.Sc Nursing, Pediatric Nursing Cert.">Preview</button>
+            <a href="contact.html" class="caregiver-btn-book">Book</a>
+          </div>
         </div>
       </div>
       <!-- Elderly 2 -->
       <div class="caregiver-card" data-category="elderly nurse">
         <div class="caregiver-img-wrap">
           <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&auto=format&fit=crop&q=80" alt="Nurse Anand Pillai" loading="lazy">
-          <div class="caregiver-overlay">
-            <div class="caregiver-socials">
-              <button class="caregiver-social" onclick="openProfile(this)" data-name="Nurse Anand Pillai" data-role="Senior Geriatric Nurse" data-exp="12" data-spec="Geriatric Care & Chronic Disease Management" data-lang="Malayalam, Tamil, Hindi, English" data-qual="M.Sc Nursing (Geriatrics), GNM, ACLS Certified" aria-label="View Profile"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <a href="contact.html" class="caregiver-social" aria-label="Book Caregiver"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></a>
-            </div>
-          </div>
         </div>
         <div class="caregiver-info">
           <div class="caregiver-name">Nurse Anand Pillai</div>
@@ -339,26 +437,28 @@
             <span class="caregiver-tag">Chronic Care</span>
             <span class="caregiver-tag">12 yrs exp</span>
           </div>
+          <div class="caregiver-actions">
+            <button type="button" class="caregiver-btn-preview" onclick="openProfile(this)" data-name="Nurse Anand Pillai" data-role="Senior Geriatric Nurse" data-exp="12" data-spec="Geriatric Care & Chronic Disease Management" data-lang="Malayalam, Tamil, Hindi, English" data-qual="M.Sc Nursing (Geriatrics), GNM, ACLS Certified">Preview</button>
+            <a href="contact.html" class="caregiver-btn-book">Book</a>
+          </div>
         </div>
       </div>
       <!-- Physio 2 -->
       <div class="caregiver-card" data-category="physio">
         <div class="caregiver-img-wrap">
           <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&auto=format&fit=crop&q=80" alt="Physio Sridhar Nair" loading="lazy">
-          <div class="caregiver-overlay">
-            <div class="caregiver-socials">
-              <button class="caregiver-social" onclick="openProfile(this)" data-name="Sridhar Nair" data-role="Sports & Ortho Physiotherapist" data-exp="9" data-spec="Sports Injury & Orthopedic Rehabilitation" data-lang="Malayalam, English, Tamil" data-qual="MPT (Orthopedics), BPT, Certified Sports Physio" aria-label="View Profile"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <a href="contact.html" class="caregiver-social" aria-label="Book Caregiver"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></a>
-            </div>
-          </div>
         </div>
         <div class="caregiver-info">
           <div class="caregiver-name">Sridhar Nair</div>
           <div class="caregiver-role">Ortho Physiotherapist</div>
           <div class="caregiver-tags">
-            <span class="caregiver-tag">Orthopedic</span>
+            <span class="caregiver-tag">Ortho</span>
             <span class="caregiver-tag">Sports Rehab</span>
             <span class="caregiver-tag">9 yrs exp</span>
+          </div>
+          <div class="caregiver-actions">
+            <button type="button" class="caregiver-btn-preview" onclick="openProfile(this)" data-name="Sridhar Nair" data-role="Sports & Ortho Physiotherapist" data-exp="9" data-spec="Sports Injury & Orthopedic Rehabilitation" data-lang="Malayalam, English, Tamil" data-qual="MPT (Orthopedics), BPT, Certified Sports Physio">Preview</button>
+            <a href="contact.html" class="caregiver-btn-book">Book</a>
           </div>
         </div>
       </div>
@@ -366,12 +466,6 @@
       <div class="caregiver-card" data-category="nurse wound">
         <div class="caregiver-img-wrap">
           <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=500&auto=format&fit=crop&q=80" alt="Nurse Revathy Suresh" loading="lazy">
-          <div class="caregiver-overlay">
-            <div class="caregiver-socials">
-              <button class="caregiver-social" onclick="openProfile(this)" data-name="Nurse Revathy Suresh" data-role="ICU & Critical Care Nurse" data-exp="11" data-spec="ICU, Ventilator & Critical Care" data-lang="Tamil, English" data-qual="B.Sc Nursing, Critical Care Cert., ACLS, BLS" aria-label="View Profile"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <a href="contact.html" class="caregiver-social" aria-label="Book Caregiver"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></a>
-            </div>
-          </div>
         </div>
         <div class="caregiver-info">
           <div class="caregiver-name">Nurse Revathy Suresh</div>
@@ -380,6 +474,10 @@
             <span class="caregiver-tag">ICU</span>
             <span class="caregiver-tag">Critical Care</span>
             <span class="caregiver-tag">11 yrs exp</span>
+          </div>
+          <div class="caregiver-actions">
+            <button type="button" class="caregiver-btn-preview" onclick="openProfile(this)" data-name="Nurse Revathy Suresh" data-role="ICU & Critical Care Nurse" data-exp="11" data-spec="ICU, Ventilator & Critical Care" data-lang="Tamil, English" data-qual="B.Sc Nursing, Critical Care Cert., ACLS, BLS">Preview</button>
+            <a href="contact.html" class="caregiver-btn-book">Book</a>
           </div>
         </div>
       </div>
@@ -450,7 +548,7 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;">
       <div class="reveal">
-        <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&auto=format&fit=crop&q=80" alt="Join CareHaven as a caregiver" style="border-radius:var(--radius-xl);width:100%;object-fit:cover;aspect-ratio:4/3;" data-zoom>
+        <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&auto=format&fit=crop&q=80" alt="Join CareHaven as a caregiver" style="border-radius:var(--radius-xl);width:100%;object-fit:cover;aspect-ratio:4/3;">
       </div>
       <div class="reveal reveal-delay-1">
         <span class="label">Join Our Team</span>
