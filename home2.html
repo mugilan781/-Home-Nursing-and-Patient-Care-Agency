@@ -282,28 +282,64 @@
       background: rgba(255,255,255,0.04);
     }
     .fs-card {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
       border-radius: var(--radius-lg);
       padding: 32px 28px;
       transition: all var(--transition-smooth);
-      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
     }
     .fs-card:hover {
-      background: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.16);
       transform: translateY(-6px);
-      border-color: rgba(200,178,125,0.4);
+      border-color: rgba(200,178,125,0.5);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.25);
     }
     .fs-number {
       font-family: var(--font-display);
-      font-size: 3rem;
+      font-size: 1.85rem;
       font-weight: 700;
-      color: rgba(255,255,255,0.12);
-      margin-bottom: 16px;
+      color: var(--champagne);
+      opacity: 0.95;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
       line-height: 1;
     }
-    .fs-card h3 { color: white; font-size: 1.15rem; margin-bottom: 10px; }
-    .fs-card p { color: rgba(255,255,255,0.65); font-size: 0.88rem; line-height: 1.7; }
+    .fs-card h3 {
+      color: white;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      line-height: 1.35;
+      min-height: 2.7em;
+    }
+    .fs-card p {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    .fs-card .fs-link {
+      color: var(--champagne);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+      align-self: flex-start;
+      transition: gap 0.2s ease, color 0.2s ease;
+    }
+    .fs-card:hover .fs-link {
+      gap: 10px;
+      color: var(--champagne-light);
+    }
 
     /* CAREGIVER SPOTLIGHT */
     .spotlight { background: var(--bg-secondary); }
@@ -374,26 +410,28 @@
     .packages-section { background: var(--bg-secondary); }
     .package-timeline {
       position: relative;
-      padding-left: 48px;
+      padding-left: 36px;
     }
     .package-timeline::before {
       content: '';
       position: absolute;
-      left: 14px;
-      top: 0;
-      bottom: 0;
+      left: 10px;
+      transform: translateX(-50%);
+      top: 10px;
+      bottom: 10px;
       width: 2px;
       background: var(--border-medium);
     }
     .pkg-item {
       position: relative;
-      padding: 0 0 36px 24px;
+      padding: 0 0 36px 0;
     }
     .pkg-item::before {
       content: '';
       position: absolute;
-      left: -34px;
-      top: 6px;
+      left: -26px;
+      transform: translateX(-50%);
+      top: 4px;
       width: 14px;
       height: 14px;
       border-radius: 50%;
@@ -429,6 +467,24 @@
     /* FAQ SECTION */
     .faq-section { background: var(--bg-primary); }
     .faq-split { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start; }
+
+    [data-theme="dark"] .faq-question {
+      color: var(--text-primary);
+    }
+    [data-theme="dark"] .faq-question:hover {
+      color: var(--champagne);
+    }
+    [data-theme="dark"] .faq-icon {
+      background: rgba(200, 178, 125, 0.15);
+      color: var(--champagne);
+      border: 1px solid rgba(200, 178, 125, 0.3);
+    }
+    [data-theme="dark"] .faq-question:hover .faq-icon,
+    [data-theme="dark"] .faq-item.open .faq-icon {
+      background: var(--champagne);
+      color: var(--charcoal);
+      border-color: var(--champagne);
+    }
 
     @media (max-width: 1200px) {
       .h2-hero-left { padding: 24px 32px 24px max(24px, calc((100vw - var(--container-w)) / 2 + 24px)); }
@@ -551,37 +607,37 @@
         <div class="fs-number">01</div>
         <h3>Post-Surgery Recovery Care</h3>
         <p>Comprehensive in-home nursing after surgical procedures — wound care, IV management, vital monitoring, and rehabilitation coordination.</p>
-        <a href="services.html#post-surgery" style="color:var(--champagne);font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;margin-top:16px;transition:gap 0.2s;">Learn More →</a>
+        <a href="services.html#post-surgery" class="fs-link">Learn More →</a>
       </div>
       <div class="fs-card reveal reveal-delay-1">
         <div class="fs-number">02</div>
         <h3>Elderly Companion & Daily Care</h3>
         <p>Warm, respectful companionship and daily assistance — mobility support, cognitive activities, personal hygiene, and social engagement for seniors.</p>
-        <a href="services.html#elderly-care" style="color:var(--champagne);font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;margin-top:16px;">Learn More →</a>
+        <a href="services.html#elderly-care" class="fs-link">Learn More →</a>
       </div>
       <div class="fs-card reveal reveal-delay-2">
         <div class="fs-number">03</div>
         <h3>Home Physiotherapy Assistance</h3>
         <p>Certified physiotherapy aides assist stroke, fracture, and joint replacement patients with prescribed therapeutic exercise routines and pain management.</p>
-        <a href="services.html#physiotherapy" style="color:var(--champagne);font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;margin-top:16px;">Learn More →</a>
+        <a href="services.html#physiotherapy" class="fs-link">Learn More →</a>
       </div>
       <div class="fs-card reveal reveal-delay-1">
         <div class="fs-number">04</div>
         <h3>Professional Wound Dressing</h3>
         <p>Sterile wound assessment and dressing changes by trained nurses using medical-grade materials — reducing infection risk and accelerating healing.</p>
-        <a href="services.html#wound-care" style="color:var(--champagne);font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;margin-top:16px;">Learn More →</a>
+        <a href="services.html#wound-care" class="fs-link">Learn More →</a>
       </div>
       <div class="fs-card reveal reveal-delay-2">
         <div class="fs-number">05</div>
         <h3>Medication Administration</h3>
         <p>Accurate, timely medication management by certified nurses — dosage tracking, prescription adherence, pharmacy coordination, and reaction monitoring.</p>
-        <a href="services.html#medication" style="color:var(--champagne);font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;margin-top:16px;">Learn More →</a>
+        <a href="services.html#medication" class="fs-link">Learn More →</a>
       </div>
       <div class="fs-card reveal reveal-delay-3">
         <div class="fs-number">06</div>
         <h3>Chronic & Palliative Care</h3>
         <p>Long-term support for patients managing chronic conditions like diabetes, COPD, or heart disease — focused on comfort, quality of life, and dignity.</p>
-        <a href="services.html" style="color:var(--champagne);font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;margin-top:16px;">Learn More →</a>
+        <a href="services.html" class="fs-link">Learn More →</a>
       </div>
     </div>
   </div>
@@ -632,7 +688,7 @@
       </div>
       <div class="reveal reveal-delay-1">
         <div class="spotlight-img">
-          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=80" alt="Certified CareHaven nurse in professional uniform" data-zoom>
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=80" alt="Certified CareHaven nurse in professional uniform">
           <span class="spotlight-tag">NABH Certified</span>
         </div>
       </div>
@@ -710,7 +766,7 @@
         <a href="pricing.html" class="btn btn-primary" style="margin-top:8px;">View Detailed Pricing</a>
       </div>
       <div class="reveal reveal-delay-1">
-        <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=800&auto=format&fit=crop&q=80" alt="Home nurse providing daily care support" style="border-radius:var(--radius-xl);width:100%;object-fit:cover;aspect-ratio:4/5;" data-zoom>
+        <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=800&auto=format&fit=crop&q=80" alt="Home nurse providing daily care support" style="border-radius:var(--radius-xl);width:100%;object-fit:cover;aspect-ratio:4/5;">
       </div>
     </div>
   </div>

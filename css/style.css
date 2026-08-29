@@ -2748,6 +2748,24 @@ svg {
   color: var(--text-primary);
 }
 
+[data-theme="dark"] .faq-question {
+  color: var(--text-primary);
+}
+[data-theme="dark"] .faq-question:hover {
+  color: var(--champagne);
+}
+[data-theme="dark"] .faq-icon {
+  background: rgba(200, 178, 125, 0.15);
+  color: var(--champagne);
+  border: 1px solid rgba(200, 178, 125, 0.3);
+}
+[data-theme="dark"] .faq-question:hover .faq-icon,
+[data-theme="dark"] .faq-item.open .faq-icon {
+  background: var(--champagne);
+  color: var(--charcoal);
+  border-color: var(--champagne);
+}
+
 /* ─── Print ─── */
 @media print {
   #navbar, .fab-container, .page-transition { display: none !important; }
