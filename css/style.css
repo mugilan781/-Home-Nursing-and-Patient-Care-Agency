@@ -2766,6 +2766,15 @@ svg {
   border-color: var(--champagne);
 }
 
+[data-theme="dark"] .mission-icon svg,
+[data-theme="dark"] .include-icon svg,
+[data-theme="dark"] .add-on-icon svg,
+[data-theme="dark"] .guarantee-icon svg,
+[data-theme="dark"] .accred-icon svg {
+  color: var(--champagne);
+  stroke: var(--champagne);
+}
+
 /* ─── Print ─── */
 @media print {
   #navbar, .fab-container, .page-transition { display: none !important; }

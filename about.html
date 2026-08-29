@@ -12,16 +12,76 @@
       inset: 0;
       background: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1800&auto=format&fit=crop&q=80') center/cover no-repeat;
     }
+
+    /* JOURNEY SECTION */
+    .journey-img-wrap {
+      position: relative;
+      border-radius: var(--radius-xl);
+      padding-bottom: 24px;
+    }
+    .journey-img {
+      width: 100%;
+      aspect-ratio: 4/3.4;
+      max-height: 460px;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      display: block;
+    }
+    .journey-badge {
+      position: absolute;
+      bottom: 0;
+      left: 28px;
+      background: var(--teal);
+      border-radius: var(--radius-lg);
+      padding: 18px 24px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(200, 178, 125, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 320px;
+      z-index: 2;
+    }
+    .journey-badge-num {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--champagne);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .journey-badge-txt {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.35;
+    }
+    [data-theme="dark"] .journey-badge {
+      background: var(--bg-card);
+      border-color: var(--border-light);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    /* MISSION / PURPOSE */
     .mission-card {
       background: var(--bg-card);
       border-radius: var(--radius-lg);
-      padding: 36px;
+      padding: 36px 28px;
       border: 1px solid var(--border-light);
       text-align: center;
       transition: all var(--transition-smooth);
     }
     .mission-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-    .mission-icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .mission-icon {
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+    }
     .mission-card h3 { font-size: 1.15rem; color: var(--teal); margin-bottom: 10px; }
     .mission-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
 
@@ -30,6 +90,7 @@
       gap: 20px;
       align-items: flex-start;
       padding: 24px;
+      background: var(--bg-card);
       border-radius: var(--radius-lg);
       border: 1px solid var(--border-light);
       transition: all var(--transition-smooth);
@@ -46,6 +107,7 @@
     .value-item h4 { font-size: 1rem; margin-bottom: 6px; }
     .value-item p { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.65; }
 
+    /* CREDENTIALS */
     .accred-badge {
       display: flex;
       align-items: center;
@@ -57,10 +119,17 @@
       transition: all var(--transition-fast);
     }
     .accred-badge:hover { border-color: var(--champagne); box-shadow: var(--shadow-sm); }
-    .accred-icon { font-size: 2rem; flex-shrink: 0; }
+    .accred-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+    }
     .accred-name { font-weight: 700; font-size: 0.9rem; color: var(--text-primary); }
     .accred-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
 
+    /* LEADERSHIP TEAM */
     .team-card {
       background: var(--bg-card);
       border-radius: var(--radius-lg);
@@ -68,55 +137,140 @@
       box-shadow: var(--shadow-sm);
       border: 1px solid var(--border-light);
       transition: all var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
-    .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(200, 178, 125, 0.4); }
     .team-img {
       aspect-ratio: 1;
       overflow: hidden;
     }
     .team-img img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
     .team-card:hover .team-img img { transform: scale(1.05); }
-    .team-info { padding: 20px; text-align: center; }
-    .team-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; }
-    .team-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--champagne); margin-top: 4px; }
-    .team-quals { font-size: 0.8rem; color: var(--text-muted); margin-top: 6px; }
+    .team-info { padding: 22px 18px; text-align: center; display: flex; flex-direction: column; flex: 1; }
+    .team-name { font-family: var(--font-display); font-size: 1.18rem; font-weight: 600; color: var(--text-primary); }
+    .team-title { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--champagne); margin-top: 4px; }
+    .team-quals { font-size: 0.76rem; color: var(--text-muted); margin-top: 4px; }
+    .team-bio { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-light); }
 
+    /* HISTORY TIMELINE (NO OVERLAP) */
     .timeline-item {
       display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 28px;
-      padding-bottom: 36px;
+      grid-template-columns: 64px 24px 1fr;
+      gap: 16px;
+      padding-bottom: 28px;
       position: relative;
+      align-items: start;
     }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: 49px;
-      top: 36px;
-      bottom: 0;
-      width: 2px;
-      background: var(--border-medium);
-    }
-    .timeline-item:last-child::before { display: none; }
     .timeline-year {
       font-family: var(--font-display);
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--champagne);
-      text-align: center;
-      padding-top: 4px;
+      text-align: right;
+      line-height: 1;
+      padding-top: 3px;
+    }
+    .timeline-spine {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      height: 100%;
+    }
+    .timeline-spine::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      bottom: -28px;
+      width: 2px;
+      background: var(--border-medium);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .timeline-item:last-child .timeline-spine::before {
+      display: none;
     }
     .timeline-dot {
       width: 14px;
       height: 14px;
       border-radius: 50%;
       background: var(--teal);
-      position: absolute;
-      left: 43px;
-      top: 10px;
+      border: 2px solid var(--bg-secondary);
+      box-shadow: 0 0 0 2px var(--teal);
+      position: relative;
+      z-index: 2;
+      margin-top: 2px;
+      transition: all var(--transition-fast);
+    }
+    .timeline-item:hover .timeline-dot {
+      background: var(--champagne);
+      box-shadow: 0 0 0 3px var(--champagne);
+      transform: scale(1.15);
     }
     .timeline-content h4 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
     .timeline-content p { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.65; }
+
+    /* ─── DARK THEME OVERRIDES ─── */
+    [data-theme="dark"] .mission-card {
+      background: var(--bg-card);
+      border-color: var(--border-light);
+    }
+    [data-theme="dark"] .mission-card:hover {
+      background: var(--bg-card);
+      border-color: rgba(200, 178, 125, 0.45);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+    [data-theme="dark"] .mission-icon svg {
+      color: var(--champagne);
+      stroke: var(--champagne);
+    }
+    [data-theme="dark"] .mission-card h3 {
+      color: var(--champagne);
+    }
+    [data-theme="dark"] .value-item {
+      background: var(--bg-card);
+      border-color: var(--border-light);
+    }
+    [data-theme="dark"] .value-item:hover {
+      background: rgba(30, 106, 130, 0.22);
+      border-color: rgba(200, 178, 125, 0.4);
+    }
+    [data-theme="dark"] .value-item h4 {
+      color: var(--text-primary);
+    }
+    [data-theme="dark"] .timeline-dot {
+      background: var(--champagne);
+      border-color: var(--bg-secondary);
+      box-shadow: 0 0 0 2px var(--champagne);
+    }
+    [data-theme="dark"] .timeline-spine::before {
+      background: rgba(124, 154, 146, 0.25);
+    }
+    [data-theme="dark"] .timeline-content h4 {
+      color: var(--text-primary);
+    }
+    [data-theme="dark"] .timeline-content p {
+      color: var(--text-secondary);
+    }
+    [data-theme="dark"] .accred-badge {
+      background: var(--bg-card);
+      border-color: var(--border-light);
+    }
+    [data-theme="dark"] .accred-badge:hover {
+      background: rgba(30, 106, 130, 0.2);
+      border-color: rgba(200, 178, 125, 0.4);
+    }
+    [data-theme="dark"] .accred-icon svg {
+      color: var(--champagne);
+      stroke: var(--champagne);
+    }
+    [data-theme="dark"] .accred-name {
+      color: var(--text-primary);
+    }
+    [data-theme="dark"] .accred-desc {
+      color: var(--text-secondary);
+    }
   </style>
 </head>
 <body>
@@ -189,14 +343,11 @@
         <p style="color:var(--text-secondary);line-height:1.8;">Today, every member of the CareHaven family is united by a single belief: that compassionate, dignified care is not a luxury — it is a right that every patient and family deserves.</p>
       </div>
       <div class="reveal reveal-delay-1">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&auto=format&fit=crop&q=80" alt="Dr. Priya Nair, CareHaven founder" style="border-radius:var(--radius-lg);width:100%;aspect-ratio:3/4;object-fit:cover;" data-zoom>
-          <div style="display:flex;flex-direction:column;gap:16px;">
-            <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&auto=format&fit=crop&q=80" alt="CareHaven team at work" style="border-radius:var(--radius-lg);width:100%;flex:1;object-fit:cover;" data-zoom>
-            <div style="background:var(--teal);border-radius:var(--radius-lg);padding:24px;text-align:center;">
-              <div style="font-family:var(--font-display);font-size:3rem;font-weight:700;color:var(--champagne);line-height:1;">15+</div>
-              <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:8px;">Years of Compassionate Excellence</div>
-            </div>
+        <div class="journey-img-wrap">
+          <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=800&auto=format&fit=crop&q=80" alt="CareHaven compassionate nursing at home" class="journey-img" data-zoom>
+          <div class="journey-badge">
+            <div class="journey-badge-num">15+</div>
+            <div class="journey-badge-txt">Years of Compassionate Excellence</div>
           </div>
         </div>
       </div>
@@ -265,7 +416,8 @@
         <div class="team-info">
           <div class="team-name">Dr. Priya Nair</div>
           <div class="team-title">Founder & CEO</div>
-          <div class="team-quals">RN, B.Sc Nursing, MBA Healthcare Management</div>
+          <div class="team-quals">RN, B.Sc Nursing, MBA Healthcare</div>
+          <p class="team-bio">18+ years in critical care nursing. Dr. Priya pioneered hospital-grade home care protocols in South India with a patient-first ethos.</p>
         </div>
       </div>
       <div class="team-card reveal reveal-delay-1">
@@ -274,6 +426,7 @@
           <div class="team-name">Dr. Arjun Mehta</div>
           <div class="team-title">Medical Director</div>
           <div class="team-quals">MBBS, MD Internal Medicine, FICP</div>
+          <p class="team-bio">Senior physician leading clinical governance, doctor-nurse care integration, and acute post-surgery recovery pathways.</p>
         </div>
       </div>
       <div class="team-card reveal reveal-delay-2">
@@ -282,6 +435,7 @@
           <div class="team-name">Kavitha Srinivasan</div>
           <div class="team-title">Head of Nursing</div>
           <div class="team-quals">M.Sc Nursing, Certified Care Manager</div>
+          <p class="team-bio">Supervises 200+ certified nursing staff, driving continuous NABH standards, bedside training, and custom caregiver matching.</p>
         </div>
       </div>
       <div class="team-card reveal reveal-delay-3">
@@ -289,7 +443,8 @@
         <div class="team-info">
           <div class="team-name">Ravi Krishnan</div>
           <div class="team-title">Operations Director</div>
-          <div class="team-quals">MBA, Certified Healthcare Administrator</div>
+          <div class="team-quals">MBA, Certified Healthcare Admin</div>
+          <p class="team-bio">Manages 24/7 rapid emergency dispatch systems and healthcare operations across all 7 metropolitan branches.</p>
         </div>
       </div>
     </div>
@@ -310,48 +465,48 @@
       <div class="reveal reveal-delay-1">
         <div class="timeline-item">
           <div class="timeline-year">2010</div>
+          <div class="timeline-spine"><div class="timeline-dot"></div></div>
           <div class="timeline-content">
-            <div class="timeline-dot"></div>
             <h4>CareHaven Founded in Chennai</h4>
             <p>Dr. Priya Nair launches CareHaven with 5 nurses and a vision to transform home healthcare in India.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-year">2013</div>
+          <div class="timeline-spine"><div class="timeline-dot"></div></div>
           <div class="timeline-content">
-            <div class="timeline-dot"></div>
             <h4>NABH Accreditation Achieved</h4>
             <p>CareHaven becomes one of the first home care agencies in Tamil Nadu to receive national NABH accreditation.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-year">2016</div>
+          <div class="timeline-spine"><div class="timeline-dot"></div></div>
           <div class="timeline-content">
-            <div class="timeline-dot"></div>
             <h4>Expansion to Bangalore & Hyderabad</h4>
             <p>Rapid growth enables expansion to two new cities, with a team of 75 certified caregivers serving 1,000+ patients.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-year">2019</div>
+          <div class="timeline-spine"><div class="timeline-dot"></div></div>
           <div class="timeline-content">
-            <div class="timeline-dot"></div>
             <h4>Digital Care Management Platform</h4>
             <p>Launch of our proprietary digital platform for real-time care monitoring, family reporting, and remote physician consultation.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-year">2022</div>
+          <div class="timeline-spine"><div class="timeline-dot"></div></div>
           <div class="timeline-content">
-            <div class="timeline-dot"></div>
             <h4>National Healthcare Excellence Award</h4>
             <p>Recognized by the Ministry of Health & Family Welfare as one of India's Top 10 Home Care Agencies.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-year">2025</div>
+          <div class="timeline-spine"><div class="timeline-dot"></div></div>
           <div class="timeline-content">
-            <div class="timeline-dot"></div>
             <h4>7 Cities, 200+ Caregivers, 5,000+ Patients</h4>
             <p>CareHaven reaches a landmark milestone as India's most trusted home nursing and patient care brand.</p>
           </div>
