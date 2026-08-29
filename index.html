@@ -56,10 +56,13 @@
         transparent 100%
       );
     }
-    .hero-content {
+    .hero .hero-content {
       position: relative;
       z-index: 5;
+      max-width: 780px;
+      margin: 0 auto;
       padding: calc(var(--navbar-h) + 8px) 0 24px;
+      text-align: center;
     }
     .hero-eyebrow {
       display: inline-flex;
@@ -104,6 +107,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
+      justify-content: center;
       animation: fadeInUp 1s 0.3s ease both;
     }
     .hero-trust {
@@ -115,6 +119,7 @@
       border-top: 1px solid rgba(255,255,255,0.15);
       animation: fadeInUp 1s 0.4s ease both;
       flex-wrap: wrap;
+      justify-content: center;
     }
     .hero-trust-item {
       display: flex;
@@ -210,7 +215,7 @@
       position: relative;
       border-radius: var(--radius-xl);
       overflow: hidden;
-      min-height: 550px;
+      height: 560px;
     }
     .why-image-col img {
       width: 100%;
@@ -295,16 +300,9 @@
       border-radius: 50%;
       background: rgba(255,255,255,0.03);
     }
-    .process-number-dark { color: rgba(255,255,255,0.1) !important; }
+    .process-number-dark { color: rgba(255,255,255,0.92) !important; }
     .process-content-dark h3 { color: var(--white); }
     .process-content-dark p { color: rgba(255,255,255,0.65); }
-
-    /* STATS BAND */
-    .stats-band {
-      background: var(--charcoal);
-      padding: 64px 0;
-    }
-    .stats-band .stat-label { color: rgba(255,255,255,0.5); }
 
     /* TESTIMONIALS */
     .testimonials-section { background: var(--bg-primary); }
@@ -400,40 +398,6 @@
     /* BLOG PREVIEW */
     .blog-preview { background: var(--bg-primary); }
 
-    /* PARTNERS STRIP */
-    .partners-strip {
-      background: var(--bg-secondary);
-      padding: 48px 0;
-      border-top: 1px solid var(--border-light);
-      border-bottom: 1px solid var(--border-light);
-    }
-    .partners-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      text-align: center;
-      margin-bottom: 24px;
-    }
-    .partners-grid {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-    .partner-logo {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      opacity: 0.6;
-      transition: opacity var(--transition-fast), color var(--transition-fast);
-      letter-spacing: 0.03em;
-    }
-    .partner-logo:hover { opacity: 1; color: var(--teal); }
-
     /* Mobile adjustments */
     @media (max-width: 1024px) {
       .inquiry-card { padding: 36px; }
@@ -442,7 +406,7 @@
     @media (max-width: 768px) {
       .hero-title { font-size: 2.2rem; }
       .testimonial-track { grid-template-columns: 1fr; }
-      .why-image-col { min-height: 350px; }
+      .why-image-col { height: 380px; }
       .inquiry-card { padding: 24px; }
     }
   </style>
@@ -626,7 +590,7 @@
           <div class="why-badge-txt">Years of<br>Excellence</div>
         </div>
         <!-- Floating cert badge -->
-        <div style="position:absolute;top:30px;right:-20px;background:var(--teal);color:white;border-radius:var(--radius-md);padding:14px 18px;box-shadow:var(--shadow-lg);text-align:center;animation:float 5s 1s ease-in-out infinite;">
+        <div style="position:absolute;top:24px;right:24px;background:var(--teal);color:white;border-radius:var(--radius-md);padding:14px 18px;box-shadow:var(--shadow-lg);text-align:center;animation:float 5s 1s ease-in-out infinite;">
           <div style="font-size:1.8rem;margin-bottom:4px;color:var(--champagne);display:flex;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></div>
           <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--champagne);">NABH<br>Certified</div>
         </div>
@@ -781,32 +745,6 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════
-     STATS BAND
-     ═══════════════════════════════════════════════════ -->
-<div class="stats-band">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
-      <div class="stat-item reveal">
-        <span class="stat-number" data-count="5000" data-suffix="+">5000+</span>
-        <div class="stat-label">Patients Served</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-1">
-        <span class="stat-number" data-count="200" data-suffix="+">200+</span>
-        <div class="stat-label">Expert Caregivers</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-2">
-        <span class="stat-number" data-count="98" data-suffix="%">98%</span>
-        <div class="stat-label">Satisfaction Rate</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-3">
-        <span class="stat-number" data-count="15" data-suffix="+">15+</span>
-        <div class="stat-label">Years of Excellence</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════
      SECTION 5 — TESTIMONIALS
      ═══════════════════════════════════════════════════ -->
 <section class="testimonials-section section-py">
@@ -835,7 +773,7 @@
         <div class="testimonial-quote">"</div>
         <p class="testimonial-text">My mother has dementia and finding the right companion was so difficult. CareHaven matched her with Priya, who has been absolutely extraordinary — patient, warm, and skilled. We are forever grateful.</p>
         <div class="testimonial-author">
-          <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&auto=format&fit=crop&q=80" alt="Anitha Sharma" class="testimonial-avatar">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" alt="Anitha Sharma" class="testimonial-avatar">
           <div>
             <div class="testimonial-name">Anitha Sharma</div>
             <div class="testimonial-role">Daughter of Patient, Bangalore</div>
@@ -1076,21 +1014,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- PARTNERS -->
-<div class="partners-strip">
-  <div class="container">
-    <p class="partners-label">Trusted by Leading Healthcare Institutions</p>
-    <div class="partners-grid">
-      <span class="partner-logo">Apollo Hospitals</span>
-      <span class="partner-logo">AIIMS Delhi</span>
-      <span class="partner-logo">Fortis Healthcare</span>
-      <span class="partner-logo">Manipal Health</span>
-      <span class="partner-logo">Narayana Health</span>
-      <span class="partner-logo">Max Healthcare</span>
     </div>
   </div>
 </div>
