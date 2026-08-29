@@ -339,6 +339,16 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--white);
   transform: translateY(-2px);
 }
+[data-theme="dark"] .btn-outline {
+  background: transparent;
+  color: var(--champagne);
+  border: 1.5px solid var(--champagne);
+}
+[data-theme="dark"] .btn-outline:hover {
+  background: var(--champagne);
+  color: var(--charcoal);
+  border-color: var(--champagne);
+}
 .btn-outline-white {
   background: transparent;
   color: var(--white);
@@ -844,20 +854,28 @@ h1, h2, h3, h4, h5, h6 {
   border-color: transparent;
 }
 .service-icon {
-  width: 66px;
-  height: 66px;
+  width: 68px;
+  height: 68px;
   border-radius: 20px;
   background: linear-gradient(135deg, var(--teal), var(--teal-dark));
-  color: #fff;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
   margin: 0 auto 22px;
-  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
-  box-shadow: 0 12px 28px rgba(22,78,99,0.28);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), background var(--transition-smooth);
+  box-shadow: 0 10px 24px rgba(22,78,99,0.22);
+  flex-shrink: 0;
 }
-.service-card:hover .service-icon { transform: scale(1.1) rotate(5deg); }
+.service-icon svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+  margin: auto;
+  color: #ffffff;
+  stroke: #ffffff;
+}
+.service-card:hover .service-icon { transform: scale(1.08) rotate(3deg); }
 .service-card h3 {
   font-size: 1.25rem;
   margin-bottom: 12px;
@@ -868,19 +886,21 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-secondary);
   line-height: 1.7;
 }
-.service-card .service-link {
+.service-card .service-link,
+.service-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--teal);
   margin-top: 20px;
   transition: gap var(--transition-fast), color var(--transition-fast);
 }
-.service-card .service-link:hover { gap: 10px; color: var(--champagne); }
+.service-card .service-link:hover,
+.service-link:hover { gap: 10px; color: var(--champagne); }
 
 /* ─── Glassmorphism ─── */
 .glass {
@@ -2495,7 +2515,7 @@ footer {
 .breadcrumb-sep { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
 .breadcrumb-current { font-size: 0.82rem; font-weight: 700; color: var(--champagne); }
 
-/* ─── Service Cards (existing style update) ─── */
+/* ─── Service Cards ─── */
 .service-card {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
@@ -2507,6 +2527,7 @@ footer {
   cursor: pointer;
   display: block;
   color: var(--text-primary);
+  text-align: center;
 }
 .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--sage-light); }
 .service-card::before {
@@ -2520,10 +2541,8 @@ footer {
   transform-origin: left;
 }
 .service-card:hover::before { transform: scaleX(1); }
-.service-icon { font-size: 2.5rem; margin-bottom: 18px; display: block; }
 .service-card h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
 .service-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px; }
-.service-link { font-size: 0.82rem; font-weight: 700; color: var(--champagne); letter-spacing: 0.06em; }
 
 /* ─── Grid Utilities ─── */
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
@@ -2620,7 +2639,7 @@ svg {
   height: 24px;
   color: var(--teal-dark);
 }
-.service-icon svg, .mission-icon svg, .include-icon svg, .add-on-icon svg, .guarantee-icon svg, .accred-icon svg {
+.mission-icon svg, .include-icon svg, .add-on-icon svg, .guarantee-icon svg, .accred-icon svg {
   width: 32px;
   height: 32px;
   color: var(--teal);
@@ -2638,6 +2657,95 @@ svg {
 .fab svg {
   width: 20px;
   height: 20px;
+}
+
+/* ─── Global Dark Theme Overrides & Contrast Enhancements ─── */
+[data-theme="dark"] .home-stat-card {
+  background: var(--bg-card);
+  border-color: var(--border-light);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+[data-theme="dark"] .home-stat-number {
+  color: var(--champagne);
+}
+[data-theme="dark"] .home-stat-label {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .why-feature-icon {
+  background: rgba(30, 106, 130, 0.25);
+  border: 1px solid rgba(124, 154, 146, 0.3);
+  color: var(--champagne);
+}
+[data-theme="dark"] .why-feature-icon svg {
+  color: var(--champagne);
+  stroke: var(--champagne);
+}
+[data-theme="dark"] .why-feature h4 {
+  color: var(--text-primary);
+}
+[data-theme="dark"] .why-feature p {
+  color: var(--text-secondary);
+}
+[data-theme="dark"] .why-badge {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.5);
+}
+[data-theme="dark"] .why-badge-num {
+  color: var(--champagne);
+}
+[data-theme="dark"] .why-badge-txt {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .service-card {
+  background: var(--bg-card);
+  border-color: var(--border-light);
+}
+[data-theme="dark"] .service-card:hover {
+  border-color: rgba(200, 178, 125, 0.4);
+}
+[data-theme="dark"] .service-icon {
+  background: linear-gradient(135deg, rgba(30, 106, 130, 0.55), rgba(13, 53, 69, 0.95));
+  border: 1px solid rgba(200, 178, 125, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  color: var(--champagne);
+}
+[data-theme="dark"] .service-icon svg {
+  color: var(--champagne);
+  stroke: var(--champagne);
+}
+[data-theme="dark"] .service-card .service-link,
+[data-theme="dark"] .service-link {
+  color: var(--champagne);
+}
+[data-theme="dark"] .service-card .service-link:hover,
+[data-theme="dark"] .service-link:hover {
+  color: var(--champagne-light);
+}
+
+[data-theme="dark"] .read-more {
+  color: var(--champagne);
+}
+[data-theme="dark"] .read-more:hover {
+  color: var(--champagne-light);
+}
+[data-theme="dark"] .blog-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+}
+[data-theme="dark"] .blog-card-title a {
+  color: var(--text-primary);
+}
+[data-theme="dark"] .blog-card-title a:hover {
+  color: var(--champagne);
+}
+[data-theme="dark"] .blog-excerpt {
+  color: var(--text-secondary);
+}
+[data-theme="dark"] .blog-author-name {
+  color: var(--text-primary);
 }
 
 /* ─── Print ─── */
