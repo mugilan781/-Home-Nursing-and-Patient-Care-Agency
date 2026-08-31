@@ -186,21 +186,77 @@
     }
 
     /* Testimonials Alignment (Caregiver Voices) */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      align-items: stretch;
+    }
     .testimonial-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 100% !important;
+    }
+    .testimonial-content {
       display: flex;
       flex-direction: column;
-      height: 100%;
+      flex-grow: 1;
     }
     .testimonial-text {
-      flex: 1 1 auto;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.7;
       margin-bottom: 24px;
+      flex-grow: 1;
     }
     .testimonial-author {
-      margin-top: auto;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding-top: 12px;
+      margin-top: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 14px !important;
+      padding-top: 18px !important;
+      border-top: 1px solid var(--border-light) !important;
+      min-height: 64px !important;
+    }
+    .testimonial-avatar {
+      width: 48px !important;
+      height: 48px !important;
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      border: 2px solid var(--champagne) !important;
+      flex-shrink: 0 !important;
+    }
+    .testimonial-author-meta {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      min-width: 0 !important;
+    }
+    .testimonial-name {
+      font-weight: 700 !important;
+      font-size: 0.95rem !important;
+      color: var(--text-primary) !important;
+      line-height: 1.25 !important;
+      margin-bottom: 3px !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    .testimonial-role {
+      font-size: 0.78rem !important;
+      color: var(--text-muted) !important;
+      line-height: 1.25 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
     }
 
     .qual-section { background: var(--bg-secondary); }
@@ -701,32 +757,47 @@
       <h2 class="h2">What Our Caregivers Say</h2>
       <div class="divider-line"></div>
     </div>
-    <div class="grid-3">
+    <div class="testimonial-grid">
       <div class="testimonial-card reveal">
-        <div class="stars" style="color:var(--champagne);display:flex;gap:4px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">Working at CareHaven has been the most fulfilling chapter of my nursing career. The support, training, and the genuine impact I make daily — it's everything I hoped for when I chose this profession.</p>
+        <div class="testimonial-content">
+          <div class="stars" style="color:var(--champagne);display:flex;gap:4px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Working at CareHaven has been the most fulfilling chapter of my nursing career. The support, training, and the genuine impact I make daily — it's everything I hoped for when I chose this profession.</p>
+        </div>
         <div class="testimonial-author">
           <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=60&auto=format&fit=crop&q=80" alt="Nurse Meera" class="testimonial-avatar">
-          <div><div class="testimonial-name">Nurse Meera Iyer</div><div class="testimonial-role">Senior RN • 3 years at CareHaven</div></div>
+          <div class="testimonial-author-meta">
+            <div class="testimonial-name">Nurse Meera Iyer</div>
+            <div class="testimonial-role">Senior RN • 3 Yrs Exp</div>
+          </div>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
-        <div class="stars" style="color:var(--champagne);display:flex;gap:4px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">The flexibility here is unmatched. I can manage my work around my family, pursue my specialization, and grow professionally — all while doing work that genuinely changes people's lives.</p>
+        <div class="testimonial-content">
+          <div class="stars" style="color:var(--champagne);display:flex;gap:4px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">The flexibility here is unmatched. I can manage my work around my family, pursue my specialization, and grow professionally — all while doing work that genuinely changes people's lives.</p>
+        </div>
         <div class="testimonial-author">
           <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=60&auto=format&fit=crop&q=80" alt="Kavitha" class="testimonial-avatar">
-          <div><div class="testimonial-name">Kavitha Raj</div><div class="testimonial-role">Physiotherapy Specialist • 2 years at CareHaven</div></div>
+          <div class="testimonial-author-meta">
+            <div class="testimonial-name">Kavitha Raj</div>
+            <div class="testimonial-role">Physio Specialist • 2 Yrs Exp</div>
+          </div>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
-        <div class="stars" style="color:var(--champagne);display:flex;gap:4px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">CareHaven's commitment to caregiver wellbeing is real. The training is excellent, the management is supportive, and the satisfaction of seeing your patient recover at home is beyond words.</p>
+        <div class="testimonial-content">
+          <div class="stars" style="color:var(--champagne);display:flex;gap:4px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">CareHaven's commitment to caregiver wellbeing is real. The training is excellent, the management is supportive, and the satisfaction of seeing your patient recover at home is beyond words.</p>
+        </div>
         <div class="testimonial-author">
           <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=60&auto=format&fit=crop&q=80" alt="Arjun" class="testimonial-avatar">
-          <div><div class="testimonial-name">Nurse Arjun Kumar</div><div class="testimonial-role">Wound Care Specialist • 4 years at CareHaven</div></div>
+          <div class="testimonial-author-meta">
+            <div class="testimonial-name">Nurse Arjun Kumar</div>
+            <div class="testimonial-role">Wound Care RN • 4 Yrs Exp</div>
+          </div>
         </div>
       </div>
     </div>
