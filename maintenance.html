@@ -7,11 +7,13 @@
   <title>Site Under Maintenance — CareHaven Home Nursing & Patient Care</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
   <style>
     :root {
       --teal: #164E63;
       --teal-dark: #0D3545;
       --champagne: #C8B27D;
+      --champagne-light: #E0CFA6;
       --mist: #E8F0EF;
       --porcelain: #FAFBF8;
       --charcoal: #263238;
@@ -21,29 +23,26 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: var(--font-body);
-      background: var(--porcelain);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: stretch;
-      justify-content: flex-start;
+      align-items: center;
+      justify-content: center;
       padding: 0;
       overflow-x: hidden;
       overflow-y: auto;
       position: relative;
-    }
-    body > .orb,
-    body > .grid-overlay {
-      position: fixed;
+      background: #0D3545;
     }
     /* Animated background */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: linear-gradient(135deg, #0D3545 0%, #164E63 40%, #1E6A82 70%, #0D3545 100%);
+      background: linear-gradient(135deg, #071924 0%, #0D3545 35%, #164E63 70%, #071924 100%);
       background-size: 400% 400%;
-      animation: gradientShift 12s ease infinite;
+      animation: gradientShift 14s ease infinite;
+      z-index: 0;
     }
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
@@ -54,18 +53,19 @@
     .orb {
       position: fixed;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(200,178,125,0.15), transparent);
+      background: radial-gradient(circle, rgba(200,178,125,0.18), transparent 70%);
       animation: floatOrb linear infinite;
       pointer-events: none;
+      z-index: 1;
     }
-    .orb-1 { width: 400px; height: 400px; top: -100px; right: -100px; animation-duration: 18s; }
-    .orb-2 { width: 300px; height: 300px; bottom: -100px; left: -50px; animation-duration: 24s; animation-delay: -8s; }
-    .orb-3 { width: 200px; height: 200px; top: 50%; left: 20%; animation-duration: 15s; animation-delay: -4s; opacity: 0.5; }
+    .orb-1 { width: 440px; height: 440px; top: -120px; right: -120px; animation-duration: 18s; }
+    .orb-2 { width: 340px; height: 340px; bottom: -120px; left: -60px; animation-duration: 24s; animation-delay: -8s; }
+    .orb-3 { width: 220px; height: 220px; top: 45%; left: 15%; animation-duration: 15s; animation-delay: -4s; opacity: 0.6; }
     @keyframes floatOrb {
       0%, 100% { transform: translate(0, 0) scale(1); }
-      25% { transform: translate(20px, -30px) scale(1.05); }
-      50% { transform: translate(-10px, 20px) scale(0.95); }
-      75% { transform: translate(30px, 10px) scale(1.02); }
+      25% { transform: translate(25px, -35px) scale(1.05); }
+      50% { transform: translate(-15px, 25px) scale(0.95); }
+      75% { transform: translate(35px, 15px) scale(1.02); }
     }
     /* Grid overlay */
     .grid-overlay {
@@ -74,106 +74,104 @@
       background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
       background-size: 60px 60px;
       pointer-events: none;
+      z-index: 1;
+    }
+
+    .maintenance-topbar {
+      position: absolute;
+      top: 24px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 clamp(20px, 4vw, 48px);
+      z-index: 15;
     }
 
     .maintenance-card {
       position: relative;
       z-index: 10;
       text-align: center;
-      max-width: 640px;
+      max-width: 660px;
       width: 100%;
-      margin: 0 auto;
-      flex: 1;
+      margin: auto;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 88vh;
-      padding: 48px 24px;
-    }
-    .site-footer {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      margin-top: auto;
+      min-height: 100vh;
+      padding: 72px 24px 48px;
+      box-sizing: border-box;
     }
 
     .maintenance-logo {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 36px;
+      gap: 12px;
+      margin-bottom: 28px;
+      text-decoration: none;
     }
     .logo-icon {
       width: 52px;
       height: 52px;
       border-radius: 50%;
-      background: rgba(200,178,125,0.2);
-      border: 2px solid rgba(200,178,125,0.4);
+      background: rgba(200,178,125,0.22);
+      border: 2px solid rgba(200,178,125,0.45);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
     .logo-text {
       font-family: var(--font-display);
-      font-size: 1.6rem;
-      color: white;
-      font-weight: 500;
+      font-size: 1.8rem;
+      color: #FFFFFF;
+      font-weight: 600;
+      letter-spacing: 0.02em;
     }
     .logo-text span { color: var(--champagne); }
-
-    .maintenance-icon {
-      font-size: 4rem;
-      display: block;
-      margin-bottom: 20px;
-      animation: spin 8s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
 
     .maintenance-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: rgba(200,178,125,0.2);
-      border: 1px solid rgba(200,178,125,0.4);
-      color: var(--champagne);
-      font-size: 0.72rem;
+      border: 1.5px solid rgba(200,178,125,0.45);
+      color: var(--champagne-light);
+      font-size: 0.74rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      padding: 7px 18px;
+      padding: 8px 20px;
       border-radius: 999px;
       margin-bottom: 20px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
     }
     .badge-dot {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--champagne);
+      box-shadow: 0 0 8px var(--champagne);
       animation: pulse 1.5s ease-in-out infinite;
     }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.85); } }
 
     .maintenance-title {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 500;
-      color: white;
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 600;
+      color: #FFFFFF;
       line-height: 1.15;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
     .maintenance-subtitle {
       font-size: 1.05rem;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.8);
       line-height: 1.75;
-      margin-bottom: 40px;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-bottom: 36px;
+      max-width: 540px;
     }
 
     /* Countdown */
@@ -181,57 +179,63 @@
       display: flex;
       gap: 16px;
       justify-content: center;
-      margin-bottom: 44px;
+      margin-bottom: 36px;
       flex-wrap: wrap;
     }
     .countdown-unit {
       background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(12px);
       border-radius: 16px;
-      padding: 20px 28px;
-      min-width: 90px;
+      padding: 18px 26px;
+      min-width: 96px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
     .countdown-num {
       font-family: var(--font-display);
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: white;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #FFFFFF;
       line-height: 1;
       display: block;
     }
     .countdown-label {
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
+      color: var(--champagne-light);
       display: block;
       margin-top: 6px;
     }
 
     /* Progress bar */
     .progress-container {
-      margin-bottom: 40px;
+      width: 100%;
+      max-width: 440px;
+      margin-bottom: 36px;
     }
     .progress-label {
       display: flex;
       justify-content: space-between;
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.5);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
       margin-bottom: 10px;
     }
     .progress-bar {
-      height: 6px;
-      background: rgba(255,255,255,0.1);
+      height: 8px;
+      background: rgba(255,255,255,0.15);
       border-radius: 999px;
       overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.2);
     }
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--champagne), #E8D4A0);
+      background: linear-gradient(90deg, var(--champagne), #F3E5C8);
       border-radius: 999px;
       width: 0%;
+      box-shadow: 0 0 12px rgba(200, 178, 125, 0.6);
       animation: progressLoad 2s ease forwards 0.5s;
     }
     @keyframes progressLoad { to { width: 73%; } }
@@ -239,67 +243,98 @@
     /* Contact section */
     .contact-row {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
     }
     .contact-chip {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      padding: 10px 18px;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.22);
+      padding: 10px 20px;
       border-radius: 999px;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.85);
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: #FFFFFF;
       text-decoration: none;
-      transition: all 0.2s;
+      transition: all var(--transition-fast);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
-    .contact-chip:hover { background: rgba(200,178,125,0.2); border-color: rgba(200,178,125,0.4); color: var(--champagne); }
+    .contact-chip:hover {
+      background: var(--champagne);
+      border-color: var(--champagne);
+      color: var(--charcoal);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+    .contact-chip svg {
+      color: var(--champagne-light);
+    }
+    .contact-chip:hover svg {
+      color: var(--charcoal);
+    }
 
     /* Notify form */
     .notify-form {
       display: flex;
       gap: 10px;
-      max-width: 420px;
+      max-width: 440px;
+      width: 100%;
       margin: 0 auto 32px;
     }
     .notify-form input {
       flex: 1;
-      padding: 13px 18px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
+      padding: 13px 20px;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.28);
       border-radius: 999px;
-      font-size: 0.9rem;
-      color: white;
+      font-size: 0.92rem;
+      color: #FFFFFF;
       outline: none;
       font-family: var(--font-body);
-      transition: border-color 0.2s;
+      transition: all var(--transition-fast);
     }
-    .notify-form input::placeholder { color: rgba(255,255,255,0.4); }
-    .notify-form input:focus { border-color: var(--champagne); }
+    .notify-form input::placeholder { color: rgba(255,255,255,0.55); }
+    .notify-form input:focus {
+      border-color: var(--champagne);
+      background: rgba(255,255,255,0.18);
+      box-shadow: 0 0 0 3px rgba(200, 178, 125, 0.25);
+    }
     .notify-btn {
-      padding: 13px 24px;
+      padding: 13px 26px;
       background: var(--champagne);
       color: var(--charcoal);
       border: none;
       border-radius: 999px;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 700;
       font-family: var(--font-body);
       cursor: pointer;
       white-space: nowrap;
-      transition: all 0.2s;
+      transition: all var(--transition-fast);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
     }
-    .notify-btn:hover { background: #E8D4A0; transform: scale(1.02); }
+    .notify-btn:hover {
+      background: #E8D4A0;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
 
     .footer-note {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.3);
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
     }
-    .footer-note a { color: rgba(200,178,125,0.7); }
+    .footer-note a {
+      color: var(--champagne-light);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
 
     /* Toast */
     .toast {
@@ -307,13 +342,13 @@
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%) translateY(100px);
-      background: white;
+      background: #FFFFFF;
       color: var(--charcoal);
-      padding: 12px 24px;
+      padding: 14px 28px;
       border-radius: 999px;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 600;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      box-shadow: 0 10px 36px rgba(0,0,0,0.3);
       z-index: 9999;
       transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
@@ -321,14 +356,13 @@
     .toast.success { border-left: 4px solid #4CAF50; }
 
     @media(max-width:480px) {
-      .countdown-unit { padding: 14px 18px; min-width: 70px; }
+      .countdown-unit { padding: 14px 18px; min-width: 72px; }
       .countdown-num { font-size: 2rem; }
       .maintenance-title { font-size: 2.2rem; }
       .notify-form { flex-direction: column; }
       .notify-form input, .notify-btn { width: 100%; border-radius: 12px; }
     }
   </style>
-  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="orb orb-1"></div>
@@ -336,12 +370,17 @@
   <div class="orb orb-3"></div>
   <div class="grid-overlay"></div>
 
+  <!-- Top bar with theme toggle -->
+  <div class="maintenance-topbar">
+    <button class="nav-toggle-btn" data-theme-toggle aria-label="Toggle Theme" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:white;"><span id="themeIcon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+  </div>
+
   <div class="maintenance-card">
     <!-- Logo -->
-    <div class="maintenance-logo">
+    <a href="index.html" class="maintenance-logo" aria-label="CareHaven Home">
       <div class="logo-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--champagne)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="5"/></svg></div>
       <div class="logo-text">Care<span>Haven</span></div>
-    </div>
+    </a>
 
     <!-- Status badge -->
     <div class="maintenance-badge">
@@ -349,24 +388,21 @@
       Scheduled Maintenance
     </div>
 
-    <!-- Icon -->
-    <span class="maintenance-icon" style="display:flex;justify-content:center;color:var(--champagne);"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></span>
-
     <h1 class="maintenance-title">We're Making<br>Things Better</h1>
     <p class="maintenance-subtitle">Our team is performing scheduled maintenance to enhance your care experience. We'll be back online shortly — even better than before. Our 24/7 care line remains fully operational.</p>
 
     <!-- Countdown -->
     <div class="countdown">
       <div class="countdown-unit">
-        <span class="countdown-num" id="cd-hours">04</span>
+        <span class="countdown-num" id="cd-hours">03</span>
         <span class="countdown-label">Hours</span>
       </div>
       <div class="countdown-unit">
-        <span class="countdown-num" id="cd-mins">00</span>
+        <span class="countdown-num" id="cd-mins">59</span>
         <span class="countdown-label">Minutes</span>
       </div>
       <div class="countdown-unit">
-        <span class="countdown-num" id="cd-secs">00</span>
+        <span class="countdown-num" id="cd-secs">37</span>
         <span class="countdown-label">Seconds</span>
       </div>
     </div>
@@ -383,7 +419,7 @@
     </div>
 
     <!-- Emergency Contact -->
-    <p style="color:rgba(200,178,125,0.9);font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Urgent Care? We're Still Here</p>
+    <p style="color:rgba(200,178,125,0.95);font-size:0.82rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Urgent Care? We're Still Here</p>
     <div class="contact-row">
       <a href="tel:+919876543210" class="contact-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +91 98765 43210</a>
       <a href="https://wa.me/919876543210" class="contact-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp</a>
@@ -391,19 +427,19 @@
     </div>
 
     <!-- Notify Form -->
-    <p style="color:rgba(255,255,255,0.5);font-size:0.82rem;margin-bottom:14px;">Get notified when we're back online:</p>
+    <p style="color:rgba(255,255,255,0.7);font-size:0.85rem;margin-bottom:14px;">Get notified when we're back online:</p>
     <div class="notify-form">
       <input type="email" id="notifyEmail" placeholder="Your email address">
       <button class="notify-btn" onclick="subscribeNotify()">Notify Me</button>
     </div>
 
-    <p class="footer-note">© 2025 CareHaven Home Nursing. All rights reserved. | <a href="mailto:support@carehaven.in">Emergency Support</a></p>
+    <p class="footer-note">© 2026 CareHaven Home Nursing. All rights reserved. | <a href="mailto:support@carehaven.in">Emergency Support</a></p>
   </div>
 
   <div class="toast" id="toast"></div>
 
   <script>
-    // Countdown timer — set to 4 hours from page load
+    // Countdown timer — 4 hours
     const endTime = Date.now() + 4 * 60 * 60 * 1000;
     function updateCountdown() {
       const remaining = Math.max(0, endTime - Date.now());
@@ -435,96 +471,27 @@
       setTimeout(() => t.classList.remove('show'), 4000);
     }
 
-    // Theme from localStorage
-    const savedTheme = localStorage.getItem('careHavenTheme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
+    // Theme toggle support
+    const themeKey = 'careHavenTheme';
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem(themeKey, theme);
+      const icon = document.getElementById('themeIcon');
+      if (icon) {
+        icon.innerHTML = theme === 'dark' 
+          ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`
+          : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+      }
+    }
+    const savedTheme = localStorage.getItem(themeKey) || 'light';
+    applyTheme(savedTheme);
+
+    document.querySelectorAll('[data-theme-toggle]').forEach(el => {
+      el.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        applyTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    });
   </script>
-<!-- STANDARDIZED FOOTER — Unified across all pages (FOOTER-ONLY) -->
-<footer class="site-footer" role="contentinfo" aria-label="Site footer">
-  <div class="footer-top">
-    <div class="container">
-      <div class="footer-grid">
-        <!-- COL 1 — COMPANY -->
-        <div class="footer-col footer-col--brand">
-          <a href="index.html" class="nav-logo footer-logo" aria-label="CareHaven home">
-            <div class="nav-logo-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="5"/></svg></div>
-            <span class="nav-logo-text" style="color:white;">Care<span>Haven</span></span>
-          </a>
-          <p class="footer-description">CareHaven is a premium home nursing and patient care agency delivering hospital-quality care at home since 2010. We provide post-surgery care, elderly companion support, physiotherapy assistance, wound dressing and medication management through 200+ certified caregivers across 7 Indian cities.</p>
-          <div class="footer-socials">
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram — CareHaven"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Facebook — CareHaven"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="X / Twitter — CareHaven"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="YouTube — CareHaven"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .505 6.186C0 8.07 0 12 0 12s0 3.93.505 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-          </div>
-        </div>
-        <!-- COL 2 — QUICK LINKS -->
-        <div class="footer-col">
-          <h4 class="footer-heading">Quick Links</h4>
-          <ul class="footer-links" role="list">
-            <li><a href="index.html" class="footer-link">Home</a></li>
-            <li><a href="home2.html" class="footer-link">Home 2</a></li>
-            <li><a href="about.html" class="footer-link">About</a></li>
-            <li><a href="services.html" class="footer-link">Services</a></li>
-            <li><a href="caregivers.html" class="footer-link">Caregivers</a></li>
-            <li><a href="pricing.html" class="footer-link">Pricing</a></li>
-            <li><a href="blog.html" class="footer-link">Blog</a></li>
-            <li><a href="contact.html" class="footer-link">Contact</a></li>
-          </ul>
-        </div>
-        <!-- COL 3 — CONTACT US -->
-        <div class="footer-col">
-          <h4 class="footer-heading">Contact Us</h4>
-          <ul class="footer-contact-list" role="list">
-            <li class="footer-contact-item">
-              <span class="footer-contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-              <a href="https://maps.google.com/?q=142+Wellness+Avenue+Medical+District+Chennai+600001" target="_blank" rel="noopener noreferrer" class="footer-contact-link">142 Wellness Avenue, Medical District<br>Chennai - 600001, Tamil Nadu, India</a>
-            </li>
-            <li class="footer-contact-item">
-              <span class="footer-contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-              <a href="tel:+919876543210" class="footer-contact-link">+91 98765 43210</a>
-            </li>
-            <li class="footer-contact-item">
-              <span class="footer-contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-              <a href="mailto:care@carehaven.in" class="footer-contact-link">care@carehaven.in</a>
-            </li>
-            <li class="footer-contact-item">
-              <span class="footer-contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
-              <span class="footer-contact-text">24/7 Available — Coordinator: Mon–Sat 8am–8pm</span>
-            </li>
-          </ul>
-        </div>
-        <!-- COL 4 — NEWSLETTER -->
-        <div class="footer-col footer-col--newsletter">
-          <h4 class="footer-heading">Newsletter</h4>
-          <p class="footer-newsletter-desc">Subscribe to receive the latest updates, health tips, care guides and exclusive offers.</p>
-          <form class="footer-newsletter-form" novalidate onsubmit="return handleFooterNewsletter(event)">
-            <label for="footer-newsletter-email" class="sr-only">Email address</label>
-            <div class="footer-newsletter-field">
-              <input type="email" id="footer-newsletter-email" class="footer-newsletter-input" placeholder="Your email address" aria-label="Email address for newsletter" required autocomplete="email">
-              <button type="submit" class="footer-newsletter-btn">Subscribe</button>
-            </div>
-          </form>
-          <p class="footer-newsletter-note">No spam — unsubscribe anytime.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="footer-legal">
-    <div class="container">
-      <div class="footer-bottom">
-        <p class="footer-bottom-text">© <span class="footer-year">2026</span> CareHaven. All rights reserved.</p>
-        <nav class="footer-legal-nav" aria-label="Legal">
-          <a href="privacy.html" class="footer-bottom-link">Privacy Policy</a>
-          <span class="footer-legal-sep" aria-hidden="true">|</span>
-          <a href="terms.html" class="footer-bottom-link">Terms &amp; Conditions</a>
-          <span class="footer-legal-sep" aria-hidden="true">|</span>
-          <a href="sitemap.html" class="footer-bottom-link">Sitemap</a>
-        </nav>
-      </div>
-    </div>
-  </div>
-</footer>
-<script src="js/main.js"></script>
 </body>
 </html>
