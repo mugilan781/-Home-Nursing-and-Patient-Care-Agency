@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contact CareHaven — Book a certified caregiver, request a free consultation, or reach our 24/7 care coordination team for home nursing services.">
-  <title>Contact Us — CareHaven Home Nursing & Patient Care</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .contact-hero-bg { position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1800&auto=format&fit=crop&q=80') center/cover; }
     .contact-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: start; }
 
     .contact-info-card {
@@ -17,6 +15,7 @@
       color: white;
       position: relative;
       overflow: hidden;
+      box-shadow: var(--shadow-lg);
     }
     .contact-info-card::before {
       content: '';
@@ -29,41 +28,65 @@
       background: rgba(255,255,255,0.06);
     }
     .contact-info-card h2 { font-family: var(--font-display); font-size: 1.8rem; color: white; margin-bottom: 10px; }
-    .contact-info-card > p { color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.75; margin-bottom: 32px; }
+    .contact-info-card > p { color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.75; margin-bottom: 32px; }
     .contact-info-item {
       display: flex;
       align-items: flex-start;
       gap: 14px;
       padding: 16px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
     }
     .contact-info-item:last-of-type { border-bottom: none; }
     .contact-info-icon {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.18);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1rem;
       flex-shrink: 0;
+      color: #FFFFFF;
     }
-    .contact-info-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--champagne); margin-bottom: 4px; }
-    .contact-info-value { font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.55; }
-    .contact-info-value a { color: rgba(255,255,255,0.85); font-weight: 600; }
+    .contact-info-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--champagne-light); margin-bottom: 4px; }
+    .contact-info-value { font-size: 0.9rem; color: #FFFFFF; line-height: 1.55; }
+    .contact-info-value a { color: #FFFFFF; font-weight: 600; }
     .contact-info-value a:hover { color: var(--champagne); }
 
     .office-hours {
       margin-top: 24px;
       padding: 20px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.1);
       border-radius: var(--radius-md);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
     }
-    .office-hours h4 { color: var(--champagne); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
-    .office-hours-row { display: flex; justify-content: space-between; font-size: 0.85rem; color: rgba(255,255,255,0.7); padding: 4px 0; }
-    .office-hours-row.highlight { color: white; font-weight: 600; }
+    .office-hours h4 { color: var(--champagne-light); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    .office-hours-row { display: flex; justify-content: space-between; font-size: 0.85rem; color: rgba(255,255,255,0.85); padding: 4px 0; }
+    .office-hours-row.highlight { color: white; font-weight: 700; }
+
+    /* Social icons inside contact info */
+    .contact-social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      color: #FFFFFF !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-fast);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      text-decoration: none;
+    }
+    .contact-social-btn:hover {
+      background: var(--champagne);
+      border-color: var(--champagne);
+      color: var(--charcoal) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    }
 
     .contact-form-card {
       background: var(--bg-card);
@@ -90,35 +113,46 @@
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--text-secondary);
+      background: var(--bg-card);
     }
     .service-check input[type="checkbox"] { accent-color: var(--teal); width: 16px; height: 16px; }
     .service-check:has(input:checked) { border-color: var(--teal); background: var(--mist); color: var(--teal); }
 
     .map-section { background: var(--bg-secondary); }
-    .map-placeholder {
+    .map-container {
       border-radius: var(--radius-xl);
       overflow: hidden;
-      height: 400px;
-      background: linear-gradient(135deg, var(--mist), var(--bg-secondary));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
       position: relative;
-      border: 2px dashed var(--border-medium);
+      border: 1.5px solid var(--border-medium);
+      box-shadow: var(--shadow-lg);
+      background: var(--bg-card);
+      height: 420px;
     }
-    .map-label {
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    .map-floating-badge {
       position: absolute;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       background: var(--teal);
-      color: white;
-      padding: 8px 20px;
+      color: #FFFFFF;
+      padding: 10px 24px;
       border-radius: var(--radius-full);
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 600;
       white-space: nowrap;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
     }
 
     .office-card {
@@ -132,6 +166,167 @@
     .office-city { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--champagne); margin-bottom: 6px; }
     .office-name { font-weight: 700; font-size: 1rem; margin-bottom: 12px; }
     .office-details { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; }
+
+    .emergency-cta-section {
+      background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+      padding: 80px 0;
+    }
+    .emergency-cta-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      border: 1px solid rgba(255,255,255,0.18);
+      text-align: center;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       DARK MODE HIGH CONTRAST & READABILITY
+       ════════════════════════════════════════════════════════════ */
+    [data-theme="dark"] .contact-info-card {
+      background: linear-gradient(160deg, #103848 0%, #081D26 100%);
+      border: 1.5px solid rgba(200, 178, 125, 0.32);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+    }
+    [data-theme="dark"] .contact-info-card h2 {
+      color: #FFFFFF;
+    }
+    [data-theme="dark"] .contact-info-card > p {
+      color: #CBD5E1;
+    }
+    [data-theme="dark"] .contact-info-label {
+      color: var(--champagne-light);
+    }
+    [data-theme="dark"] .contact-info-value {
+      color: #F1F5F9;
+    }
+    [data-theme="dark"] .contact-info-value a {
+      color: #F8FAFC;
+    }
+    [data-theme="dark"] .contact-info-value a:hover {
+      color: var(--champagne);
+    }
+    [data-theme="dark"] .office-hours {
+      background: rgba(0, 0, 0, 0.35);
+      border-color: rgba(200, 178, 125, 0.25);
+    }
+    [data-theme="dark"] .office-hours h4 {
+      color: var(--champagne-light);
+    }
+    [data-theme="dark"] .office-hours-row {
+      color: #94A3B8;
+    }
+    [data-theme="dark"] .office-hours-row.highlight {
+      color: #FFFFFF;
+    }
+
+    [data-theme="dark"] .contact-social-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(200, 178, 125, 0.45);
+      color: #FFFFFF !important;
+    }
+    [data-theme="dark"] .contact-social-btn:hover {
+      background: var(--champagne);
+      color: var(--charcoal) !important;
+      border-color: var(--champagne);
+    }
+
+    [data-theme="dark"] .contact-form-card {
+      background: var(--bg-card);
+      border-color: var(--border-medium);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+    }
+    [data-theme="dark"] .contact-form-card .label {
+      color: var(--champagne);
+    }
+    [data-theme="dark"] .contact-form-card h2.h3 {
+      color: #F8FAFC;
+    }
+    [data-theme="dark"] .contact-form-card p {
+      color: #CBD5E1;
+    }
+    [data-theme="dark"] .form-label {
+      color: #E2E8F0;
+      font-weight: 600;
+    }
+    [data-theme="dark"] .form-control {
+      background: var(--bg-primary) !important;
+      color: #F8FAFC !important;
+      border-color: var(--border-medium) !important;
+    }
+    [data-theme="dark"] .form-control:focus {
+      border-color: var(--champagne) !important;
+      box-shadow: 0 0 0 3px rgba(200, 178, 125, 0.2) !important;
+    }
+    [data-theme="dark"] select.form-control option {
+      background: #0B1E28;
+      color: #F8FAFC;
+    }
+
+    [data-theme="dark"] .service-check {
+      background: var(--bg-primary);
+      border-color: var(--border-medium);
+      color: #CBD5E1;
+    }
+    [data-theme="dark"] .service-check svg {
+      color: var(--champagne);
+    }
+    [data-theme="dark"] .service-check:has(input:checked) {
+      border-color: var(--champagne);
+      background: rgba(200, 178, 125, 0.14);
+      color: #FFFFFF;
+    }
+
+    [data-theme="dark"] .map-container {
+      border-color: var(--border-medium);
+    }
+    [data-theme="dark"] .map-floating-badge {
+      background: #0B1E28;
+      color: var(--champagne-light);
+      border-color: var(--champagne);
+    }
+
+    [data-theme="dark"] .office-card {
+      background: var(--bg-card);
+      border-color: var(--border-medium);
+    }
+    [data-theme="dark"] .office-card:hover {
+      border-color: var(--champagne);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    [data-theme="dark"] .office-city {
+      color: var(--champagne-light);
+    }
+    [data-theme="dark"] .office-name {
+      color: #F8FAFC;
+    }
+    [data-theme="dark"] .office-details {
+      color: #CBD5E1;
+    }
+    [data-theme="dark"] .office-details svg {
+      color: var(--champagne);
+    }
+
+    [data-theme="dark"] .emergency-cta-section {
+      background: linear-gradient(135deg, #071924, #0F2F3D);
+    }
+    [data-theme="dark"] .emergency-cta-card {
+      background: rgba(0, 0, 0, 0.35);
+      border-color: rgba(200, 178, 125, 0.25);
+    }
+
+    [data-theme="dark"] .faq-item {
+      background: var(--bg-card);
+      border-color: var(--border-medium);
+    }
+    [data-theme="dark"] .faq-question h4 {
+      color: #F8FAFC;
+    }
+    [data-theme="dark"] .faq-icon {
+      color: var(--champagne);
+    }
+    [data-theme="dark"] .faq-answer p {
+      color: #CBD5E1;
+    }
 
     @media(max-width:1024px) { .contact-layout { grid-template-columns: 1fr; } }
     @media(max-width:768px) {
@@ -185,10 +380,10 @@
 <section class="page-hero" style="min-height:48vh;position:relative;background:linear-gradient(135deg,#0D3545,#164E63,#1E6A82);">
   <div class="container" style="position:relative;z-index:1;">
     <div class="page-hero-content">
-      <nav class="breadcrumb" style="margin-bottom:16px;"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Contact Us</span></nav>
+      <nav class="breadcrumb" style="margin-bottom:16px;justify-content:center;"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Contact Us</span></nav>
       <h1>Get in Touch</h1>
       <p style="color:rgba(255,255,255,0.75);max-width:560px;font-size:1.05rem;line-height:1.75;">Our care coordinators are standing by 24/7 to answer your questions, conduct a free needs assessment, or dispatch an urgent caregiver to your loved one's home.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:28px;">
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:28px;justify-content:center;">
         <a href="tel:+919876543210" class="btn btn-champagne btn-lg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Now: +91 98765 43210</a>
         <a href="https://wa.me/919876543210" class="btn btn-outline-white btn-lg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp Us</a>
       </div>
@@ -240,11 +435,11 @@
             <div class="office-hours-row"><span>Care Assessment</span><span>Mon–Sat: 9am–7pm</span></div>
             <div class="office-hours-row"><span>Caregiver Dispatch</span><span>24/7 Available</span></div>
           </div>
-          <div style="display:flex;gap:10px;margin-top:24px;">
-            <a href="#" class="footer-social" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="#" class="footer-social" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-            <a href="#" class="footer-social" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-            <a href="#" class="footer-social" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <div style="display:flex;gap:12px;margin-top:24px;">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="Facebook — CareHaven"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="X / Twitter — CareHaven"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="Instagram — CareHaven"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="YouTube — CareHaven"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .505 6.186C0 8.07 0 12 0 12s0 3.93.505 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
           </div>
         </div>
       </div>
@@ -357,13 +552,20 @@
       <div class="divider-line"></div>
       <p>Headquartered in Chennai, with care operations in 7 major Indian cities. Find the office nearest to you.</p>
     </div>
-    <div class="map-placeholder reveal">
-      <div style="text-align:center;">
-        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;color:var(--teal);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <p style="font-size:1rem;font-weight:600;color:var(--text-secondary);">CareHaven — India Operations Map</p>
-        <p style="font-size:0.85rem;color:var(--text-muted);">Chennai • Bangalore • Mumbai • Delhi • Hyderabad • Pune • Coimbatore</p>
+    <div class="map-container reveal">
+      <iframe
+        src="https://maps.google.com/maps?q=Chennai%20Tamil%20Nadu%20India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        width="100%"
+        height="420"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="CareHaven India Operations Map — Chennai Headquarters">
+      </iframe>
+      <div class="map-floating-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>CareHaven HQ — 142 Wellness Avenue, Chennai - 600001</span>
       </div>
-      <div class="map-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 142 Wellness Avenue, Chennai - 600001</div>
     </div>
     <div class="grid-3" style="margin-top:36px;">
       <div class="office-card reveal">
@@ -386,20 +588,20 @@
 </section>
 
 <!-- SECTION 3: EMERGENCY & WHATSAPP -->
-<section style="background:linear-gradient(135deg,var(--teal-dark),var(--teal));padding:80px 0;">
+<section class="emergency-cta-section">
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;" class="reveal">
-      <div style="background:rgba(255,255,255,0.1);border-radius:var(--radius-xl);padding:40px;border:1px solid rgba(255,255,255,0.15);text-align:center;">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;color:white;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div class="emergency-cta-card">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;color:var(--champagne-light);"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         <h3 style="color:white;font-size:1.4rem;margin-bottom:12px;">Medical Emergency?</h3>
-        <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.7;margin-bottom:24px;">If you're experiencing a medical emergency, call our 24/7 emergency coordination line immediately. Our BLS-certified nurses and emergency coordinators will respond within minutes.</p>
+        <p style="color:rgba(255,255,255,0.8);font-size:0.9rem;line-height:1.7;margin-bottom:24px;">If you're experiencing a medical emergency, call our 24/7 emergency coordination line immediately. Our BLS-certified nurses and emergency coordinators will respond within minutes.</p>
         <a href="tel:+919876543210" class="btn btn-champagne btn-lg" style="width:100%;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +91 98765 43210</a>
       </div>
-      <div style="background:rgba(255,255,255,0.1);border-radius:var(--radius-xl);padding:40px;border:1px solid rgba(255,255,255,0.15);text-align:center;">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;color:white;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <div class="emergency-cta-card">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;color:var(--champagne-light);"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
         <h3 style="color:white;font-size:1.4rem;margin-bottom:12px;">Chat on WhatsApp</h3>
-        <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.7;margin-bottom:24px;">Prefer messaging? Chat with our care team on WhatsApp. Share documents, ask questions, or request a callback — all on a platform you're already comfortable with.</p>
-        <a href="https://wa.me/919876543210" class="btn btn-outline-white btn-lg" style="width:100%;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> Start WhatsApp Chat</a>
+        <p style="color:rgba(255,255,255,0.8);font-size:0.9rem;line-height:1.7;margin-bottom:24px;">Prefer messaging? Chat with our care team on WhatsApp. Share documents, ask questions, or request a callback — all on a platform you're already comfortable with.</p>
+        <a href="https://wa.me/919876543210" class="btn btn-outline-white btn-lg" style="width:100%;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> Start WhatsApp Chat</a>
       </div>
     </div>
   </div>
