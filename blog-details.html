@@ -24,6 +24,12 @@
       border-radius: var(--radius-full);
       margin-bottom: 18px;
     }
+    .page-hero-content .article-category {
+      background: rgba(200, 178, 125, 0.22) !important;
+      color: #FFFFFF !important;
+      border: 1.5px solid rgba(200, 178, 125, 0.5) !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    }
     .article-title {
       font-family: var(--font-display);
       font-size: clamp(2rem, 4vw, 3.2rem);
@@ -48,7 +54,7 @@
       gap: 10px;
     }
     .article-author img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--champagne); }
-    .article-author-name { font-weight: 700; font-size: 0.88rem; }
+    .article-author-name { font-weight: 700; font-size: 0.88rem; color: var(--text-primary); }
     .article-author-role { font-size: 0.75rem; color: var(--text-muted); }
     .article-meta-item { font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
 
@@ -141,6 +147,179 @@
     .comment-reply { font-size: 0.78rem; font-weight: 700; color: var(--teal); cursor: pointer; margin-top: 8px; display: inline-block; transition: color var(--transition-fast); }
     .comment-reply:hover { color: var(--champagne); }
 
+    /* ════════════════════════════════════════════════════════════
+       DARK MODE HIGH CONTRAST RULES
+       ════════════════════════════════════════════════════════════ */
+    [data-theme="dark"] .article-category {
+      background: rgba(200, 178, 125, 0.18) !important;
+      color: var(--champagne-light) !important;
+      border: 1px solid rgba(200, 178, 125, 0.4) !important;
+    }
+    [data-theme="dark"] .article-meta {
+      border-color: rgba(255, 255, 255, 0.14) !important;
+    }
+    [data-theme="dark"] .article-author-name {
+      color: #F8FAFC !important;
+    }
+    [data-theme="dark"] .article-author-role {
+      color: #94A3B8 !important;
+    }
+    [data-theme="dark"] .article-meta-item {
+      color: #94A3B8 !important;
+    }
+
+    [data-theme="dark"] .article-content {
+      color: #CBD5E1 !important;
+    }
+    [data-theme="dark"] .article-content h2,
+    [data-theme="dark"] .article-content h3 {
+      color: #F8FAFC !important;
+    }
+    [data-theme="dark"] .article-content p,
+    [data-theme="dark"] .article-content li {
+      color: #CBD5E1 !important;
+    }
+    [data-theme="dark"] .article-content strong {
+      color: #FFFFFF !important;
+      font-weight: 700;
+    }
+
+    [data-theme="dark"] .article-content blockquote {
+      background: rgba(200, 178, 125, 0.08) !important;
+      border-left-color: var(--champagne) !important;
+      color: #F1F5F9 !important;
+    }
+
+    [data-theme="dark"] .article-content .callout {
+      background: rgba(22, 78, 99, 0.28) !important;
+      border: 1px solid rgba(56, 189, 248, 0.35) !important;
+    }
+    [data-theme="dark"] .callout-title {
+      color: #38BDF8 !important;
+    }
+    [data-theme="dark"] .article-content .callout li {
+      color: #E2E8F0 !important;
+    }
+
+    [data-theme="dark"] .tip-box {
+      background: rgba(200, 178, 125, 0.12) !important;
+      border: 1px solid rgba(200, 178, 125, 0.4) !important;
+    }
+    [data-theme="dark"] .tip-icon {
+      color: var(--champagne) !important;
+    }
+    [data-theme="dark"] .tip-label {
+      color: var(--champagne-light) !important;
+    }
+    [data-theme="dark"] .tip-text {
+      color: #E2E8F0 !important;
+    }
+
+    [data-theme="dark"] .tag {
+      background: rgba(200, 178, 125, 0.12) !important;
+      color: var(--champagne) !important;
+      border: 1px solid rgba(200, 178, 125, 0.35) !important;
+    }
+    [data-theme="dark"] .tag:hover {
+      background: var(--champagne) !important;
+      color: var(--charcoal) !important;
+      border-color: var(--champagne) !important;
+    }
+
+    [data-theme="dark"] .author-bio-card {
+      background: var(--bg-card) !important;
+      border: 1px solid var(--border-medium) !important;
+    }
+    [data-theme="dark"] #bioAuthorName {
+      color: #F8FAFC !important;
+    }
+    [data-theme="dark"] #bioAuthorRole {
+      color: #94A3B8 !important;
+    }
+    [data-theme="dark"] #bioAuthorDesc {
+      color: #CBD5E1 !important;
+    }
+
+    [data-theme="dark"] #commentsCountTitle {
+      color: #F8FAFC !important;
+    }
+    [data-theme="dark"] .comment-item {
+      border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    [data-theme="dark"] .comment-author {
+      color: #F8FAFC !important;
+    }
+    [data-theme="dark"] .comment-date {
+      color: #94A3B8 !important;
+    }
+    [data-theme="dark"] .comment-text {
+      color: #CBD5E1 !important;
+    }
+    [data-theme="dark"] .comment-reply {
+      color: var(--champagne) !important;
+    }
+    [data-theme="dark"] .comment-reply:hover {
+      color: var(--champagne-light) !important;
+    }
+
+    [data-theme="dark"] .comment-form-card {
+      background: var(--bg-card) !important;
+      border: 1px solid var(--border-medium) !important;
+    }
+    [data-theme="dark"] .comment-form-card h4 {
+      color: #F8FAFC !important;
+    }
+    [data-theme="dark"] .comment-form-card .form-label {
+      color: #E2E8F0 !important;
+    }
+    [data-theme="dark"] .comment-form-card .form-control {
+      background: var(--bg-primary) !important;
+      color: #F8FAFC !important;
+      border-color: var(--border-medium) !important;
+    }
+
+    [data-theme="dark"] .sidebar-widget {
+      background: var(--bg-card) !important;
+      border-color: var(--border-medium) !important;
+    }
+    [data-theme="dark"] .sidebar-widget h4 {
+      color: var(--champagne) !important;
+    }
+    [data-theme="dark"] #toc a {
+      color: #94A3B8 !important;
+      border-left-color: rgba(255, 255, 255, 0.12) !important;
+    }
+    [data-theme="dark"] #toc a:hover,
+    [data-theme="dark"] #toc a.active {
+      color: var(--champagne) !important;
+      border-left-color: var(--champagne) !important;
+      font-weight: 600;
+    }
+
+    [data-theme="dark"] .share-btn {
+      background: var(--bg-card) !important;
+      color: #CBD5E1 !important;
+      border-color: var(--border-medium) !important;
+    }
+    [data-theme="dark"] .share-btn:hover {
+      background: var(--teal) !important;
+      color: #FFFFFF !important;
+      border-color: var(--teal) !important;
+    }
+
+    [data-theme="dark"] .related-card {
+      border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+    }
+    [data-theme="dark"] .related-title {
+      color: #F1F5F9 !important;
+    }
+    [data-theme="dark"] .related-title:hover {
+      color: var(--champagne) !important;
+    }
+    [data-theme="dark"] .related-date {
+      color: #94A3B8 !important;
+    }
+
     @media(max-width:1024px) { .article-layout { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -188,7 +367,7 @@
 <!-- ARTICLE HERO -->
 <section style="background:linear-gradient(135deg,#0D3545,#164E63,#1E6A82);padding:calc(var(--navbar-h) + 48px) 0 60px;position:relative;overflow:hidden;">
   <div class="container" style="position:relative;z-index:1;">
-    <nav class="breadcrumb" style="margin-bottom:20px;"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><a href="blog.html">Blog</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current" id="breadcrumbTitle">Post-Surgery Recovery Guide</span></nav>
+    <nav class="breadcrumb" style="margin-bottom:20px;justify-content:center;"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><a href="blog.html">Blog</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current" id="breadcrumbTitle">Post-Surgery Recovery Guide</span></nav>
     <div class="page-hero-content" style="max-width:800px;margin:0 auto;text-align:center;">
       <span class="article-category" id="heroCategory">Recovery Care</span>
       <h1 id="heroTitle" style="font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:600;color:white;line-height:1.2;margin-bottom:20px;">The Complete Guide to Post-Surgery Home Recovery</h1>
@@ -242,7 +421,7 @@
         </div>
 
         <!-- Author Card -->
-        <div style="margin-top:36px;background:var(--bg-secondary);border-radius:var(--radius-xl);padding:36px;display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+        <div class="author-bio-card" style="margin-top:36px;background:var(--bg-secondary);border-radius:var(--radius-xl);padding:36px;display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
           <img id="bioAuthorAvatar" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&auto=format&fit=crop&q=80" alt="Author" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--champagne);flex-shrink:0;">
           <div style="flex:1;min-width:200px;">
             <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--champagne);margin-bottom:4px;">Article Author</div>
@@ -260,7 +439,7 @@
           </div>
 
           <!-- Comment Form -->
-          <div style="margin-top:36px;padding:32px;background:var(--bg-secondary);border-radius:var(--radius-xl);">
+          <div class="comment-form-card" style="margin-top:36px;padding:32px;background:var(--bg-secondary);border-radius:var(--radius-xl);">
             <h4 style="font-size:1.2rem;margin-bottom:20px;">Leave a Comment</h4>
             <form data-validate onsubmit="return handleCommentSubmit(event)">
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
@@ -470,7 +649,7 @@ const BLOG_POSTS = {
       {
         name: 'Anitha Sharma',
         date: 'Aug 26, 2025 at 14:32',
-        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&auto=format&fit=crop&q=80',
+        avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&auto=format&fit=crop&q=80',
         text: 'The medication management tips are so practical. We had no idea about tracking interactions — we immediately called CareHaven after reading this and they were incredibly helpful.'
       },
       {
