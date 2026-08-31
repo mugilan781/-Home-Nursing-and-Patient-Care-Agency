@@ -12,10 +12,10 @@
       background: var(--bg-card);
       border-radius: var(--radius-lg);
       padding: 32px;
-      border: 1px solid var(--border-light);
+      border: 1.5px solid var(--border-light);
       transition: all var(--transition-smooth);
     }
-    .sitemap-group:hover { box-shadow: var(--shadow-sm); border-color: var(--sage-light); }
+    .sitemap-group:hover { box-shadow: var(--shadow-md); border-color: var(--sage-light); }
     .sitemap-group-title {
       display: flex;
       align-items: center;
@@ -27,30 +27,75 @@
       color: var(--champagne);
       margin-bottom: 20px;
     }
-    .sitemap-group-icon { font-size: 1.3rem; }
+    .sitemap-group-icon { font-size: 1.3rem; display: inline-flex; align-items: center; }
     .sitemap-link-item {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      padding: 10px 0;
+      padding: 12px 0;
       border-bottom: 1px solid var(--border-light);
       transition: all var(--transition-fast);
     }
     .sitemap-link-item:last-child { border-bottom: none; }
-    .sitemap-link-item:hover { padding-left: 4px; }
-    .sitemap-link-arrow { color: var(--champagne); font-size: 0.8rem; margin-top: 3px; flex-shrink: 0; }
+    .sitemap-link-item:hover { padding-left: 6px; }
+    .sitemap-link-arrow { color: var(--champagne); font-size: 0.9rem; margin-top: 2px; flex-shrink: 0; transition: transform var(--transition-fast); }
+    .sitemap-link-item:hover .sitemap-link-arrow { transform: translateX(3px); color: var(--champagne-light); }
     .sitemap-link-item a {
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--text-primary);
       transition: color var(--transition-fast);
+      text-decoration: none;
     }
     .sitemap-link-item a:hover { color: var(--teal); }
     .sitemap-link-desc {
       font-size: 0.8rem;
       color: var(--text-muted);
-      margin-top: 3px;
-      line-height: 1.5;
+      margin-top: 4px;
+      line-height: 1.55;
+    }
+
+    .sitemap-quick-actions {
+      margin-top: 60px;
+      padding: 40px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border-radius: var(--radius-xl);
+      text-align: center;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       DARK MODE HIGH CONTRAST & HOVER RULES
+       ════════════════════════════════════════════════════════════ */
+    [data-theme="dark"] .sitemap-group {
+      background: var(--bg-card);
+      border-color: var(--border-medium);
+    }
+    [data-theme="dark"] .sitemap-group:hover {
+      border-color: var(--champagne);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    [data-theme="dark"] .sitemap-group-title {
+      color: var(--champagne-light);
+    }
+    [data-theme="dark"] .sitemap-link-item {
+      border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
+    [data-theme="dark"] .sitemap-link-item a {
+      color: #F8FAFC;
+    }
+    [data-theme="dark"] .sitemap-link-item a:hover,
+    [data-theme="dark"] .sitemap-link-item:hover a {
+      color: var(--champagne) !important;
+    }
+    [data-theme="dark"] .sitemap-link-arrow {
+      color: var(--champagne);
+    }
+    [data-theme="dark"] .sitemap-link-desc {
+      color: #94A3B8;
+    }
+    [data-theme="dark"] .sitemap-quick-actions {
+      background: linear-gradient(135deg, #071924, #0F2F3D);
+      border: 1px solid rgba(200, 178, 125, 0.25);
     }
   </style>
 </head>
@@ -98,7 +143,7 @@
 <section class="page-hero" style="background:linear-gradient(135deg,#0D3545,#164E63,#1E6A82);min-height:32vh;">
   <div class="container" style="position:relative;z-index:1;">
     <div class="page-hero-content">
-      <nav class="breadcrumb" style="margin-bottom:16px;"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Sitemap</span></nav>
+      <nav class="breadcrumb" style="margin-bottom:16px;justify-content:center;"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Sitemap</span></nav>
       <h1>Website Sitemap</h1>
       <p style="color:rgba(255,255,255,0.7);max-width:500px;font-size:1rem;line-height:1.75;">A complete directory of all pages on the CareHaven website to help you quickly find what you're looking for.</p>
     </div>
@@ -232,7 +277,7 @@
     </div>
 
     <!-- Quick Links -->
-    <div style="margin-top:60px;padding:40px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:var(--radius-xl);text-align:center;" class="reveal">
+    <div class="sitemap-quick-actions reveal">
       <span class="label" style="color:var(--champagne);">Quick Actions</span>
       <h2 style="font-family:var(--font-display);font-size:2rem;color:white;margin:14px 0 20px;font-weight:400;">What Would You Like to Do?</h2>
       <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
