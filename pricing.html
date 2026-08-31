@@ -57,6 +57,7 @@
       padding: 4px 10px;
       border-radius: var(--radius-full);
       border: 1px solid rgba(200,178,125,0.35);
+      transition: all var(--transition-fast);
     }
 
     /* Care Packages Grid & Cards */
@@ -221,26 +222,35 @@
       height: 100%;
     }
     .add-on-card:hover {
-      border-color: var(--champagne);
-      box-shadow: var(--shadow-sm);
+      border-color: var(--teal);
+      box-shadow: var(--shadow-md);
       transform: translateY(-3px);
     }
     .add-on-icon {
       width: 48px;
       height: 48px;
       border-radius: 12px;
-      background: var(--mist);
+      background: rgba(22, 78, 99, 0.08);
       color: var(--teal);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      border: 1px solid rgba(22, 78, 99, 0.1);
+      border: 1px solid rgba(22, 78, 99, 0.15);
       transition: all var(--transition-fast);
+    }
+    .add-on-icon svg {
+      stroke: currentColor;
+      transition: stroke var(--transition-fast);
     }
     .add-on-card:hover .add-on-icon {
       background: var(--teal);
-      color: white;
+      color: #FFFFFF;
+      border-color: var(--teal);
+      box-shadow: 0 4px 12px rgba(22, 78, 99, 0.25);
+    }
+    .add-on-card:hover .add-on-icon svg {
+      stroke: #FFFFFF !important;
     }
     .add-on-body {
       display: flex;
@@ -297,7 +307,7 @@
       transition: all var(--transition-smooth);
     }
     .insurance-card:hover {
-      border-color: var(--champagne);
+      border-color: var(--teal);
       box-shadow: var(--shadow-sm);
       transform: translateY(-3px);
     }
@@ -317,7 +327,8 @@
     }
     .insurance-card:hover .insurance-icon-wrap {
       background: var(--teal);
-      color: white;
+      color: #FFFFFF;
+      border-color: var(--teal);
     }
     .insurance-name {
       font-weight: 700;
@@ -343,6 +354,35 @@
       margin-top: auto;
     }
 
+    /* Centered Coverage Disclaimer */
+    .coverage-note-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-top: 36px;
+    }
+    .coverage-note {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      padding: 12px 28px;
+      border-radius: var(--radius-full);
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      max-width: 680px;
+      line-height: 1.45;
+    }
+    .coverage-note svg {
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
     /* Service Guarantees */
     .guarantee-item {
       display: flex;
@@ -357,20 +397,33 @@
     .guarantee-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
     .guarantee-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; }
 
-    /* Dark Mode Overrides */
+    /* ══════════════════════════════════════════════════════
+       DARK MODE OVERRIDES
+       ══════════════════════════════════════════════════════ */
+    
+    /* Toggle: Sky Cyan theme (High contrast, No gold) */
     [data-theme="dark"] .toggle-label {
-      color: var(--text-muted);
+      color: #94A3B8;
     }
     [data-theme="dark"] .toggle-label.active {
-      color: var(--champagne) !important;
+      color: #38BDF8 !important; /* Sky Cyan */
+      font-weight: 700;
     }
     [data-theme="dark"] .toggle-switch {
-      background: rgba(200, 178, 125, 0.3);
-      border: 1.5px solid var(--champagne);
+      background: #0C3342 !important;
+      border: 1.5px solid #38BDF8 !important;
     }
     [data-theme="dark"] .toggle-switch::after {
-      background: var(--champagne);
+      background: #38BDF8 !important;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
     }
+    [data-theme="dark"] .save-badge {
+      background: rgba(56, 189, 248, 0.15) !important;
+      color: #38BDF8 !important;
+      border-color: rgba(56, 189, 248, 0.35) !important;
+    }
+
+    /* Pricing Cards in Dark Mode */
     [data-theme="dark"] .pricing-card:not(.featured) {
       background: var(--bg-card);
       border-color: var(--border-medium);
@@ -393,14 +446,28 @@
       border-color: var(--champagne);
       color: var(--champagne);
     }
+
+    /* Add-On Cards in Dark Mode */
+    [data-theme="dark"] .add-on-card:hover {
+      border-color: var(--champagne);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
     [data-theme="dark"] .add-on-icon {
       background: rgba(200, 178, 125, 0.12);
       color: var(--champagne);
       border-color: rgba(200, 178, 125, 0.25);
     }
+    [data-theme="dark"] .add-on-icon svg {
+      stroke: var(--champagne) !important;
+    }
     [data-theme="dark"] .add-on-card:hover .add-on-icon {
-      background: var(--champagne);
-      color: var(--charcoal);
+      background: rgba(200, 178, 125, 0.25) !important;
+      color: #FFFFFF !important;
+      border-color: var(--champagne) !important;
+      box-shadow: 0 0 16px rgba(200, 178, 125, 0.35) !important;
+    }
+    [data-theme="dark"] .add-on-card:hover .add-on-icon svg {
+      stroke: #FFFFFF !important;
     }
     [data-theme="dark"] .add-on-price {
       color: var(--champagne) !important;
@@ -408,14 +475,36 @@
     [data-theme="dark"] .add-on-price span {
       color: var(--text-secondary);
     }
+
+    /* Insurance Cards in Dark Mode */
+    [data-theme="dark"] .insurance-card:hover {
+      border-color: var(--champagne);
+    }
     [data-theme="dark"] .insurance-icon-wrap {
       background: rgba(200, 178, 125, 0.12) !important;
       color: var(--champagne) !important;
       border-color: rgba(200, 178, 125, 0.25) !important;
     }
+    [data-theme="dark"] .insurance-icon-wrap svg {
+      stroke: var(--champagne) !important;
+    }
     [data-theme="dark"] .insurance-card:hover .insurance-icon-wrap {
-      background: var(--champagne);
-      color: var(--charcoal);
+      background: rgba(200, 178, 125, 0.25) !important;
+      color: #FFFFFF !important;
+      border-color: var(--champagne) !important;
+      box-shadow: 0 0 16px rgba(200, 178, 125, 0.35) !important;
+    }
+    [data-theme="dark"] .insurance-card:hover .insurance-icon-wrap svg {
+      stroke: #FFFFFF !important;
+    }
+    [data-theme="dark"] .coverage-note {
+      background: var(--bg-card);
+      border-color: var(--border-medium);
+      color: var(--text-primary);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    [data-theme="dark"] .coverage-note svg {
+      color: var(--champagne);
     }
 
     @media (max-width: 1024px) {
@@ -783,8 +872,15 @@
         </div>
         <div class="insurance-name">Care Health Insurance</div>
         <div class="insurance-coverage">Home care packages</div>
+      </div>
     </div>
-    <p style="text-align:center;font-size:0.85rem;color:var(--text-muted);margin-top:24px;">Coverage varies by plan. Contact us to verify your specific policy benefits.</p>
+
+    <div class="coverage-note-wrap reveal">
+      <div class="coverage-note">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>Coverage varies by plan. Contact us to verify your specific policy benefits and claim eligibility.</span>
+      </div>
+    </div>
   </div>
 </section>
 
