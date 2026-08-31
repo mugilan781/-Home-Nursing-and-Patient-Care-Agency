@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" dir="ltr">
+<html lang="en" data-theme="dark" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,18 +77,6 @@
       z-index: 1;
     }
 
-    .maintenance-topbar {
-      position: absolute;
-      top: 24px;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 0 clamp(20px, 4vw, 48px);
-      z-index: 15;
-    }
-
     .maintenance-card {
       position: relative;
       z-index: 10;
@@ -101,7 +89,7 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      padding: 72px 24px 48px;
+      padding: 60px 24px;
       box-sizing: border-box;
     }
 
@@ -370,11 +358,6 @@
   <div class="orb orb-3"></div>
   <div class="grid-overlay"></div>
 
-  <!-- Top bar with theme toggle -->
-  <div class="maintenance-topbar">
-    <button class="nav-toggle-btn" data-theme-toggle aria-label="Toggle Theme" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:white;"><span id="themeIcon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
-  </div>
-
   <div class="maintenance-card">
     <!-- Logo -->
     <a href="index.html" class="maintenance-logo" aria-label="CareHaven Home">
@@ -470,28 +453,6 @@
       setTimeout(() => t.classList.add('show'), 10);
       setTimeout(() => t.classList.remove('show'), 4000);
     }
-
-    // Theme toggle support
-    const themeKey = 'careHavenTheme';
-    function applyTheme(theme) {
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem(themeKey, theme);
-      const icon = document.getElementById('themeIcon');
-      if (icon) {
-        icon.innerHTML = theme === 'dark' 
-          ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`
-          : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
-      }
-    }
-    const savedTheme = localStorage.getItem(themeKey) || 'light';
-    applyTheme(savedTheme);
-
-    document.querySelectorAll('[data-theme-toggle]').forEach(el => {
-      el.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme') || 'light';
-        applyTheme(current === 'dark' ? 'light' : 'dark');
-      });
-    });
   </script>
 </body>
 </html>
