@@ -628,6 +628,21 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-nav-link:hover { color: var(--teal); padding-left: 8px; }
 .mobile-nav .btn { width: 100%; justify-content: center; margin-top: 24px; }
 
+/* ─── Navbar when mobile menu is open ───
+   Transparent navbar sits above the light drawer (z-index) — white logo /
+   hamburger would vanish against it. Give navbar a solid surface + dark
+   brand while the drawer is open (mirrors .scrolled colors). */
+#navbar.menu-open { background: var(--bg-card); box-shadow: var(--shadow-sm); }
+#navbar.menu-open .nav-logo-text { color: var(--teal); }
+#navbar.menu-open .nav-link { color: var(--text-primary); }
+#navbar.menu-open .hamburger span { background: var(--text-primary); }
+#navbar.menu-open .nav-toggle-btn { color: var(--text-primary); border-color: var(--border-light); }
+[data-theme="dark"] #navbar.menu-open { background: rgba(13,27,33,0.98); border-bottom: 1px solid var(--border-light); }
+[data-theme="dark"] #navbar.menu-open .nav-logo-text { color: var(--white); }
+[data-theme="dark"] #navbar.menu-open .nav-link { color: rgba(255,255,255,0.88); }
+[data-theme="dark"] #navbar.menu-open .hamburger span { background: var(--champagne); }
+[data-theme="dark"] #navbar.menu-open .nav-toggle-btn { color: var(--champagne); border-color: rgba(200,178,125,0.35); }
+
 /* ─── Hero Slider Base ─── */
 .hero-slider {
   position: relative;
@@ -2942,6 +2957,8 @@ svg {
   /* 8 nav links + CTA overflow ~976px containers → hamburger from 1024 */
   body .nav-menu { display: none; }
   body .hamburger { display: flex; }
+  /* Header "Book Now" hidden here — already inside the hamburger drawer */
+  body .nav-cta { display: none; }
   body .grid-3 { grid-template-columns: repeat(2, 1fr); }
   body aside[style*="position:sticky"] { position: static !important; }
   body iframe { max-width: 100%; }

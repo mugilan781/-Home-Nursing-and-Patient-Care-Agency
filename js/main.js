@@ -117,13 +117,16 @@ const Navbar = {
     hamburger?.classList.toggle('open');
     mobileNav?.classList.toggle('open');
     overlay?.classList.toggle('open');
-    document.body.style.overflow = mobileNav?.classList.contains('open') ? 'hidden' : '';
+    const isOpen = mobileNav?.classList.contains('open') === true;
+    this.el?.classList.toggle('menu-open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   },
 
   closeMobile() {
     document.getElementById('hamburger')?.classList.remove('open');
     document.getElementById('mobileNav')?.classList.remove('open');
     document.getElementById('mobileOverlay')?.classList.remove('open');
+    this.el?.classList.remove('menu-open');
     document.body.style.overflow = '';
   },
 
