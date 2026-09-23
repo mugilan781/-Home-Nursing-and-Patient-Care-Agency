@@ -2978,6 +2978,29 @@ svg {
   body .faq-question { font-size: 0.92rem; }
 }
 
+/* ─── Header responsive — logo + actions must fit 320px ─── */
+@media (max-width: 480px) {
+  body .nav-container { padding: 0 16px; gap: 12px; }
+  body .nav-logo { gap: 8px; min-width: 0; }
+  body .nav-logo-icon { width: 36px; height: 36px; border-radius: 10px; }
+  body .nav-logo-text { font-size: 1.15rem; white-space: nowrap; }
+  body .nav-actions { gap: 6px; margin-left: auto; }
+  body .nav-toggle-btn { width: 32px; height: 32px; font-size: 0.85rem; }
+  body .hamburger { width: 32px; height: 32px; padding: 6px; }
+  body .hamburger span { width: 19px; }
+  body .mobile-nav { padding: 90px 24px 32px; }
+  body .mobile-nav-link { font-size: 1.35rem; }
+  body .mobile-nav [style*="display:flex"] { flex-wrap: wrap !important; }
+}
+
+@media (max-width: 360px) {
+  body .nav-container { padding: 0 12px; gap: 8px; }
+  body .nav-logo-icon { width: 34px; height: 34px; }
+  body .nav-logo-text { font-size: 1.05rem; }
+  body .mobile-nav { padding: 84px 20px 28px; }
+  body .mobile-nav-link { font-size: 1.25rem; padding: 8px 0; }
+}
+
 /* ─── Print ─── */
 @media print {
   #navbar, .fab-container, .page-transition { display: none !important; }
