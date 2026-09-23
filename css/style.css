@@ -2843,6 +2843,10 @@ svg {
   height: 32px;
   color: var(--teal);
 }
+.mission-card:hover .mission-icon svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
 .footer-contact-icon svg {
   width: 18px;
   height: 18px;
@@ -2972,6 +2976,10 @@ svg {
 [data-theme="dark"] .accred-icon svg {
   color: var(--champagne);
   stroke: var(--champagne);
+}
+[data-theme="dark"] .mission-card:hover .mission-icon svg {
+  color: #162832 !important;
+  stroke: #162832 !important;
 }
 
 /* ─── Responsive Patch — 320 / 360 / 480 / 760 / 1024 ───

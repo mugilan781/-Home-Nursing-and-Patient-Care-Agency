@@ -75,21 +75,102 @@
     .mission-card {
       background: var(--bg-card);
       border-radius: var(--radius-lg);
-      padding: 36px 28px;
       border: 1px solid var(--border-light);
       text-align: center;
       transition: all var(--transition-smooth);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-shadow: var(--shadow-sm);
     }
-    .mission-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .mission-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(200, 178, 125, 0.45);
+    }
+    .mission-card-img {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+    .mission-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform var(--transition-slow);
+    }
+    .mission-card:hover .mission-card-img img {
+      transform: scale(1.06);
+    }
+    .mission-card-tag {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      background: rgba(13, 53, 69, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(200, 178, 125, 0.4);
+      color: var(--champagne);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+    .mission-card-body {
+      padding: 28px 24px 32px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
     .mission-icon {
-      margin-bottom: 16px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(22, 78, 99, 0.08);
+      border: 1px solid rgba(22, 78, 99, 0.15);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--teal);
+      margin-bottom: 16px;
+      transition: all var(--transition-fast);
     }
-    .mission-card h3 { font-size: 1.15rem; color: var(--teal); margin-bottom: 10px; }
-    .mission-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+    .mission-icon svg {
+      width: 26px !important;
+      height: 26px !important;
+      color: var(--teal) !important;
+      stroke: var(--teal) !important;
+      transition: all var(--transition-fast);
+    }
+    .mission-card:hover .mission-icon {
+      background: var(--teal) !important;
+      border-color: var(--teal) !important;
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(22, 78, 99, 0.32);
+    }
+    .mission-card:hover .mission-icon svg {
+      color: #FFFFFF !important;
+      stroke: #FFFFFF !important;
+    }
+    .mission-card h3 {
+      font-size: 1.25rem;
+      color: var(--teal);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .mission-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0;
+    }
 
     .value-item {
       display: flex;
@@ -393,12 +474,30 @@
     }
     [data-theme="dark"] .mission-card:hover {
       background: var(--bg-card);
+      border-color: rgba(200, 178, 125, 0.5);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    }
+    [data-theme="dark"] .mission-card-tag {
+      background: rgba(10, 21, 32, 0.9);
       border-color: rgba(200, 178, 125, 0.45);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      color: var(--champagne);
+    }
+    [data-theme="dark"] .mission-icon {
+      background: rgba(200, 178, 125, 0.15) !important;
+      border-color: rgba(200, 178, 125, 0.3) !important;
     }
     [data-theme="dark"] .mission-icon svg {
-      color: var(--champagne);
-      stroke: var(--champagne);
+      color: var(--champagne) !important;
+      stroke: var(--champagne) !important;
+    }
+    [data-theme="dark"] .mission-card:hover .mission-icon {
+      background: var(--champagne) !important;
+      border-color: var(--champagne) !important;
+      box-shadow: 0 6px 20px rgba(200, 178, 125, 0.4) !important;
+    }
+    [data-theme="dark"] .mission-card:hover .mission-icon svg {
+      color: #162832 !important;
+      stroke: #162832 !important;
     }
     [data-theme="dark"] .mission-card h3 {
       color: var(--champagne);
@@ -610,19 +709,37 @@
     <!-- MISSION / VISION / PROMISE CARDS -->
     <div class="grid-3" style="margin:64px 0;">
       <div class="mission-card reveal">
-        <div class="mission-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-        <h3>Our Mission</h3>
-        <p>To deliver exceptional, compassionate home healthcare that restores health, preserves dignity, and enriches the quality of life for every patient we serve — making professional hospital-grade care accessible to all.</p>
+        <div class="mission-card-img">
+          <img src="images/about_mission.jpg" alt="CareHaven clinical mission — expert home bedside nursing" loading="lazy">
+          <span class="mission-card-tag">Our Mission</span>
+        </div>
+        <div class="mission-card-body">
+          <div class="mission-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <h3>Our Mission</h3>
+          <p>To deliver exceptional, compassionate home healthcare that restores health, preserves dignity, and enriches the quality of life for every patient we serve — making professional hospital-grade care accessible to all.</p>
+        </div>
       </div>
       <div class="mission-card reveal reveal-delay-1">
-        <div class="mission-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg></div>
-        <h3>Our Vision</h3>
-        <p>To be India's most trusted home nursing and healthcare brand — where every family has access to clinical excellence without leaving the comfort, privacy, and emotional security of their own home.</p>
+        <div class="mission-card-img">
+          <img src="images/about_vision.jpg" alt="CareHaven vision — personalized home care recovery plan" loading="lazy">
+          <span class="mission-card-tag">Our Vision</span>
+        </div>
+        <div class="mission-card-body">
+          <div class="mission-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg></div>
+          <h3>Our Vision</h3>
+          <p>To be India's most trusted home nursing and healthcare brand — where every family has access to clinical excellence without leaving the comfort, privacy, and emotional security of their own home.</p>
+        </div>
       </div>
       <div class="mission-card reveal reveal-delay-2">
-        <div class="mission-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
-        <h3>Our Sacred Promise</h3>
-        <p>We promise to care for every patient as if they were our own family — with the same clinical vigilance, personal gentleness, and uncompromising dedication to their speedy recovery and everyday comfort.</p>
+        <div class="mission-card-img">
+          <img src="images/about_promise.jpg" alt="CareHaven sacred promise — compassionate familial elder care" loading="lazy">
+          <span class="mission-card-tag">Our Sacred Promise</span>
+        </div>
+        <div class="mission-card-body">
+          <div class="mission-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
+          <h3>Our Sacred Promise</h3>
+          <p>We promise to care for every patient as if they were our own family — with the same clinical vigilance, personal gentleness, and uncompromising dedication to their speedy recovery and everyday comfort.</p>
+        </div>
       </div>
     </div>
 
