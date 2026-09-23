@@ -259,6 +259,21 @@
       border-color: var(--border-light);
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
     }
+    .purpose-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--teal);
+      margin: 12px 0 16px;
+      line-height: 1.25;
+      font-weight: 600;
+    }
+    .purpose-subheading {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--teal);
+      font-weight: 600;
+      margin-top: 8px;
+    }
     .purpose-feature-list {
       display: flex;
       flex-direction: column;
@@ -502,6 +517,10 @@
     [data-theme="dark"] .mission-card h3 {
       color: var(--champagne);
     }
+    [data-theme="dark"] .purpose-heading,
+    [data-theme="dark"] .purpose-subheading {
+      color: #FFFFFF !important;
+    }
     [data-theme="dark"] .value-item {
       background: var(--bg-card);
       border-color: var(--border-light);
@@ -670,7 +689,7 @@
       </div>
       <div>
         <span class="label">Agency Purpose</span>
-        <h3 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);color:var(--teal);margin:12px 0 16px;line-height:1.25;">Restoring Health and Dignity in the Sanctuary of Home</h3>
+        <h3 class="purpose-heading">Restoring Health and Dignity in the Sanctuary of Home</h3>
         <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:14px;">For millions of families, hospital discharge is only the beginning of a complex, anxious recovery journey. Post-surgical wound complications, medication mismanagement, elderly fragility, and physical limitations create severe burdens on loved ones. CareHaven exists to bridge this critical gap — transforming home environments into safe, sterile, and supportive clinical sanctuaries.</p>
         <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:20px;">We operate not just as a staffing agency, but as an integrated clinical care partner. Every patient care plan is tailored by senior physicians and registered nurses to address physical healing, emotional dignity, and family reassurance.</p>
         
@@ -754,7 +773,7 @@
       </div>
       <div>
         <span class="label">Care Delivery Model</span>
-        <h3 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);color:var(--teal);margin:12px 0 16px;line-height:1.25;">How We Provide Care: Our 4-Step Framework</h3>
+        <h3 class="purpose-heading">How We Provide Care: Our 4-Step Framework</h3>
         <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:20px;">Quality in home care does not happen by accident. CareHaven operates under a rigorous, doctor-guided care delivery framework that guarantees clinical accuracy, safety, and comfort from day one.</p>
         
         <div class="care-steps-grid">
@@ -794,7 +813,7 @@
     <div style="margin-top:20px;">
       <div style="text-align:center;margin-bottom:32px;" class="reveal">
         <span class="label">Guiding Principles</span>
-        <h3 style="font-family:var(--font-display);font-size:1.8rem;color:var(--teal);">The Core Values That Guide Every Caregiver</h3>
+        <h3 class="purpose-subheading">The Core Values That Guide Every Caregiver</h3>
       </div>
       <div class="grid-2">
         <div class="value-item reveal">
