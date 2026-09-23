@@ -984,8 +984,14 @@
   .profile-modal-card{padding:24px!important;}
   [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
 }
+@media(max-width:1024px){
+  .testimonial-grid{grid-template-columns:repeat(2,1fr)!important;}
+}
 @media(max-width:760px){
   .testimonial-grid{grid-template-columns:1fr!important;}
+  .testimonial-card{padding:24px 20px!important;}
+  .testimonial-name,.testimonial-role{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;}
+  .testimonial-text{font-size:0.95rem!important;}
   .caregiver-tags{flex-wrap:wrap!important;}
 }
 @media(max-width:360px){

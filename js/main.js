@@ -73,6 +73,12 @@ const Navbar = {
     window.addEventListener('scroll', () => this.onScroll(), { passive: true });
     this.initMobile();
     this.setActive();
+    // FIX: drawer open-ல இருக்கும்போது desktop width-க்கு resize/devtools
+    // toggle பண்ணா drawer stuck ஆகாம auto-close பண்ணு (hamburger ≤1024 மட்டும்)
+    const desktopMQ = window.matchMedia('(min-width: 1025px)');
+    const closeOnDesktop = (e) => { if (e.matches) this.closeMobile(); };
+    if (desktopMQ.addEventListener) desktopMQ.addEventListener('change', closeOnDesktop);
+    else if (desktopMQ.addListener) desktopMQ.addListener(closeOnDesktop);
   },
 
   onScroll() {

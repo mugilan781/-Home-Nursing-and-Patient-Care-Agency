@@ -686,9 +686,13 @@
 <style>
 @media(max-width:768px){
   [style*="grid-template-columns:1fr 1fr;gap:72px"],[style*="grid-template-columns:1fr 1fr;gap:80px"],[style*="grid-template-columns:1.5fr 1fr 1fr 1.2fr"]{grid-template-columns:1fr!important;}
-  .timeline-item{grid-template-columns:70px 1fr!important;gap:16px!important;}
-  .timeline-item::before{left:34px!important;}
-  .timeline-dot{left:28px!important;}
+  /* Timeline keeps year | dot-line | text columns — compact, never wraps */
+  .timeline-item{grid-template-columns:46px 20px 1fr!important;gap:12px!important;padding-bottom:24px!important;}
+  .timeline-year{font-size:1.05rem!important;}
+  .timeline-spine::before{top:10px!important;bottom:-24px!important;}
+  .timeline-dot{width:12px!important;height:12px!important;}
+  .timeline-content h4{font-size:0.92rem!important;}
+  .timeline-content p{font-size:0.82rem!important;}
 }
 @media(max-width:480px){
   .journey-badge{left:16px!important;right:16px;max-width:none!important;padding:14px 18px!important;}
