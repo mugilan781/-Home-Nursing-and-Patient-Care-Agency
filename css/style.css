@@ -148,6 +148,7 @@ input, textarea, select { font-family: var(--font-body); }
 .page-transition.active {
   opacity: 1;
   visibility: visible;
+  pointer-events: all;
 }
 .page-transition .pt-inner {
   display: flex;

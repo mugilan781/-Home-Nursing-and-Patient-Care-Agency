@@ -312,6 +312,7 @@ const Toast = {
 /* ─── Page Transition ─── */
 const PageTransition = {
   el: null,
+  isNavigating: false,
 
   MARKUP: '<div class="pt-inner"><div class="pt-mark"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="5"/></svg></div><div class="pt-name">Care<span>Haven</span></div><div class="pt-spinner"></div></div>',
 
@@ -319,18 +320,44 @@ const PageTransition = {
     this.el = document.getElementById('pageTransition');
     if (!this.el) return;
     this.el.innerHTML = this.MARKUP;
+    this.isNavigating = false;
 
     // Branded loading screen on initial page load
     this.el.classList.add('active');
-    const hide = () => setTimeout(() => this.el.classList.remove('active'), 500);
-    if (document.readyState === 'complete') hide();
-    else window.addEventListener('load', hide);
+    const hide = () => {
+      if (!this.el) return;
+      this.el.classList.remove('active');
+      this.isNavigating = false;
+    };
+    const hideSoon = (delay) => setTimeout(hide, delay);
+    if (document.readyState === 'complete') hideSoon(500);
+    else window.addEventListener('load', () => hideSoon(500), { once: true });
+
+    // FIX: Back/Forward button (bfcache restore) — 'load' & 'DOMContentLoaded'
+    // do NOT fire again, so the overlay would stay stuck on 'active'.
+    // 'pageshow' fires on normal load + bfcache restore.
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) hideSoon(100);
+      else hideSoon(100);
+    });
+
+    // Safety net: never leave the loader stuck (e.g. slow 'load', cached restore)
+    setTimeout(hide, 3000);
 
     // Intercept same-origin internal links for the transition
     document.querySelectorAll('a[href]').forEach(link => {
       const href = link.getAttribute('href');
-      if (!href || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('tel') || href.startsWith('http')) return;
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
+      // Skip external links, new-tab links and downloads
+      if (link.target === '_blank' || link.hasAttribute('download') || link.getAttribute('rel') === 'external') return;
+      if (/^(https?:)?\/\//i.test(href)) return;
+      // Skip same-page hash links like "index.html#faq"
+      const [linkPath, linkHash] = href.split('#');
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      if (linkHash && (!linkPath || linkPath === currentPath)) return;
       link.addEventListener('click', (e) => {
+        // Let modified clicks (new tab) and non-left clicks behave normally
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
         e.preventDefault();
         this.navigate(href);
       });
@@ -339,6 +366,8 @@ const PageTransition = {
 
   navigate(href) {
     if (!this.el) { window.location.href = href; return; }
+    if (this.isNavigating) return;
+    this.isNavigating = true;
     this.el.classList.add('active');
     setTimeout(() => window.location.href = href, 650);
   }
