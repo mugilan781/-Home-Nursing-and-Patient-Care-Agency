@@ -113,6 +113,175 @@
     .value-item h4 { font-size: 1rem; margin-bottom: 6px; }
     .value-item p { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.65; }
 
+    /* PURPOSE SECTION ENHANCEMENTS */
+    .purpose-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-bottom: 72px;
+    }
+    .purpose-block.reverse {
+      direction: rtl;
+    }
+    .purpose-block.reverse > * {
+      direction: ltr;
+    }
+    .purpose-img-wrap {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: visible;
+    }
+    .purpose-img {
+      width: 100%;
+      aspect-ratio: 4/3.2;
+      max-height: 440px;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      display: block;
+      border: 1px solid var(--border-light);
+    }
+    .purpose-badge {
+      position: absolute;
+      bottom: -18px;
+      left: 28px;
+      background: var(--teal);
+      border-radius: var(--radius-lg);
+      padding: 16px 22px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(200, 178, 125, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      max-width: 320px;
+      z-index: 2;
+    }
+    .purpose-badge-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--champagne);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .purpose-badge-txt {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.35;
+    }
+    [data-theme="dark"] .purpose-badge {
+      background: var(--bg-card);
+      border-color: var(--border-light);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+    }
+    .purpose-feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .purpose-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 18px;
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      transition: all var(--transition-fast);
+    }
+    .purpose-feature-item:hover {
+      border-color: var(--teal);
+      transform: translateX(4px);
+    }
+    .purpose-feature-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(22, 78, 99, 0.1);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .purpose-feature-title {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+    .purpose-feature-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+    .care-steps-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .care-step-card {
+      display: flex;
+      gap: 18px;
+      padding: 18px 22px;
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      transition: all var(--transition-fast);
+      align-items: flex-start;
+    }
+    .care-step-card:hover {
+      border-color: var(--champagne);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
+    }
+    .care-step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--teal-light));
+      color: white;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .care-step-content h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .care-step-content p {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    @media (max-width: 900px) {
+      .purpose-block, .purpose-block.reverse {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        direction: ltr !important;
+      }
+      .purpose-img {
+        max-height: 340px;
+      }
+      .purpose-badge {
+        bottom: -14px;
+        left: 16px;
+        padding: 12px 18px;
+      }
+    }
+
     /* CREDENTIALS */
     .accred-badge {
       display: flex;
@@ -245,6 +414,30 @@
     [data-theme="dark"] .value-item h4 {
       color: var(--text-primary);
     }
+    [data-theme="dark"] .purpose-feature-item,
+    [data-theme="dark"] .care-step-card {
+      background: var(--bg-card);
+      border-color: var(--border-light);
+    }
+    [data-theme="dark"] .purpose-feature-item:hover,
+    [data-theme="dark"] .care-step-card:hover {
+      border-color: var(--champagne);
+      background: rgba(30, 106, 130, 0.22);
+    }
+    [data-theme="dark"] .purpose-feature-icon {
+      background: rgba(200, 178, 125, 0.15);
+      color: var(--champagne);
+    }
+    [data-theme="dark"] .purpose-feature-icon svg {
+      stroke: var(--champagne);
+    }
+    [data-theme="dark"] .care-step-num {
+      background: linear-gradient(135deg, var(--teal-light), var(--champagne));
+      color: #0D1B21;
+    }
+    [data-theme="dark"] .care-step-content h4 {
+      color: var(--text-primary);
+    }
     [data-theme="dark"] .timeline-dot {
       background: var(--champagne);
       border-color: var(--bg-secondary);
@@ -357,47 +550,152 @@
   </div>
 </section>
 
-<!-- SECTION 2: MISSION / VISION / VALUES -->
+<!-- SECTION 2: OUR PURPOSE & CARE PHILOSOPHY -->
 <section class="section-py" style="background:var(--bg-secondary);">
   <div class="container">
     <div class="section-header centered reveal">
-      <span class="label">Our Purpose</span>
-      <h2 class="h2">Mission, Vision & Core Values</h2>
+      <span class="label">Our Purpose & Care Philosophy</span>
+      <h2 class="h2">Why We Exist & How We Deliver Care</h2>
       <div class="divider-line"></div>
+      <p style="max-width:680px;margin:0 auto;color:var(--text-secondary);">CareHaven was founded on a simple conviction: patients heal faster, live with greater dignity, and experience deeper peace of mind in the familiar warmth of their own homes. Here is our purpose, our approach, and our standard of clinical care.</p>
     </div>
-    <div class="grid-3" style="margin-bottom:60px;">
+
+    <!-- PURPOSE SHOWCASE 1: AGENCY PURPOSE & CLINICAL PHILOSOPHY -->
+    <div class="purpose-block reveal" style="margin-top:48px;">
+      <div class="purpose-img-wrap">
+        <img src="images/about_purpose_care.jpg" alt="CareHaven registered nurse providing compassionate home bedside care" class="purpose-img">
+        <div class="purpose-badge">
+          <div class="purpose-badge-num">100%</div>
+          <div class="purpose-badge-txt">NABH Clinical Protocols & Hospital-Grade Care</div>
+        </div>
+      </div>
+      <div>
+        <span class="label">Agency Purpose</span>
+        <h3 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);color:var(--teal);margin:12px 0 16px;line-height:1.25;">Restoring Health and Dignity in the Sanctuary of Home</h3>
+        <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:14px;">For millions of families, hospital discharge is only the beginning of a complex, anxious recovery journey. Post-surgical wound complications, medication mismanagement, elderly fragility, and physical limitations create severe burdens on loved ones. CareHaven exists to bridge this critical gap — transforming home environments into safe, sterile, and supportive clinical sanctuaries.</p>
+        <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:20px;">We operate not just as a staffing agency, but as an integrated clinical care partner. Every patient care plan is tailored by senior physicians and registered nurses to address physical healing, emotional dignity, and family reassurance.</p>
+        
+        <div class="purpose-feature-list">
+          <div class="purpose-feature-item">
+            <div class="purpose-feature-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <div class="purpose-feature-title">Evidence-Based Clinical Protocols</div>
+              <div class="purpose-feature-desc">All nursing interventions follow strict NABH hospital-grade clinical checklists, from sterile dressings to IV infusions.</div>
+            </div>
+          </div>
+          <div class="purpose-feature-item">
+            <div class="purpose-feature-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </div>
+            <div>
+              <div class="purpose-feature-title">Dignity-Centered Companionship</div>
+              <div class="purpose-feature-desc">Treating the human behind the condition with deep empathy, respectful assistance, and heartfelt companionship.</div>
+            </div>
+          </div>
+          <div class="purpose-feature-item">
+            <div class="purpose-feature-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div>
+              <div class="purpose-feature-title">24/7 Digital Health Tracking & Family Visibility</div>
+              <div class="purpose-feature-desc">Transparent daily vitals logs, supervisor monitoring, and continuous progress reports give families complete peace of mind.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MISSION / VISION / PROMISE CARDS -->
+    <div class="grid-3" style="margin:64px 0;">
       <div class="mission-card reveal">
         <div class="mission-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
         <h3>Our Mission</h3>
-        <p>To deliver exceptional, compassionate home healthcare that restores health, preserves dignity, and enriches the quality of life for every patient we serve — making professional care accessible to all.</p>
+        <p>To deliver exceptional, compassionate home healthcare that restores health, preserves dignity, and enriches the quality of life for every patient we serve — making professional hospital-grade care accessible to all.</p>
       </div>
       <div class="mission-card reveal reveal-delay-1">
         <div class="mission-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg></div>
         <h3>Our Vision</h3>
-        <p>To be India's most trusted home nursing brand — where every family has access to hospital-quality care without leaving the comfort and security of their own home.</p>
+        <p>To be India's most trusted home nursing and healthcare brand — where every family has access to clinical excellence without leaving the comfort, privacy, and emotional security of their own home.</p>
       </div>
       <div class="mission-card reveal reveal-delay-2">
         <div class="mission-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
-        <h3>Our Promise</h3>
-        <p>We promise to treat every patient as if they were our own family — with the same medical expertise, the same personal attention, and the same fierce dedication to their wellbeing and recovery.</p>
+        <h3>Our Sacred Promise</h3>
+        <p>We promise to care for every patient as if they were our own family — with the same clinical vigilance, personal gentleness, and uncompromising dedication to their speedy recovery and everyday comfort.</p>
       </div>
     </div>
-    <div class="grid-2">
-      <div class="value-item reveal">
-        <div class="value-num">01</div>
-        <div><h4>Compassion Above All</h4><p>We lead with empathy, always listening to the patient's voice and responding to their emotional and psychological needs alongside their clinical ones.</p></div>
+
+    <!-- PURPOSE SHOWCASE 2: HOW WE PROVIDE CARE (CARE DELIVERY FRAMEWORK) -->
+    <div class="purpose-block reverse reveal" style="margin-bottom:64px;">
+      <div class="purpose-img-wrap">
+        <img src="images/about_purpose_how.jpg" alt="Certified physiotherapist assisting elderly patient with recovery walking at home" class="purpose-img">
+        <div class="purpose-badge">
+          <div class="purpose-badge-num">24/7</div>
+          <div class="purpose-badge-txt">Doctor Support & Supervised Nursing Care</div>
+        </div>
       </div>
-      <div class="value-item reveal reveal-delay-1">
-        <div class="value-num">02</div>
-        <div><h4>Clinical Excellence</h4><p>We uphold the highest standards of medical practice, investing in continuous training and evidence-based protocols to deliver superior clinical outcomes.</p></div>
+      <div>
+        <span class="label">Care Delivery Model</span>
+        <h3 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);color:var(--teal);margin:12px 0 16px;line-height:1.25;">How We Provide Care: Our 4-Step Framework</h3>
+        <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:20px;">Quality in home care does not happen by accident. CareHaven operates under a rigorous, doctor-guided care delivery framework that guarantees clinical accuracy, safety, and comfort from day one.</p>
+        
+        <div class="care-steps-grid">
+          <div class="care-step-card">
+            <div class="care-step-num">1</div>
+            <div class="care-step-content">
+              <h4>Comprehensive In-Home Clinical Assessment</h4>
+              <p>A senior nursing supervisor visits the home to evaluate medical history, hospital discharge summaries, medication schedules, mobility limitations, and room ergonomics.</p>
+            </div>
+          </div>
+          <div class="care-step-card">
+            <div class="care-step-num">2</div>
+            <div class="care-step-content">
+              <h4>Precision Caregiver & Nurse Matching</h4>
+              <p>We select certified caregivers whose medical specialty (geriatric, post-surgery, stroke, palliative) and language preferences align with your loved one's comfort.</p>
+            </div>
+          </div>
+          <div class="care-step-card">
+            <div class="care-step-num">3</div>
+            <div class="care-step-content">
+              <h4>Doctor-Approved Care Plan Execution</h4>
+              <p>Daily delivery of vital sign tracking, accurate medication administration, sterile wound dressing, physiotherapy assistance, and nutritional support.</p>
+            </div>
+          </div>
+          <div class="care-step-card">
+            <div class="care-step-num">4</div>
+            <div class="care-step-content">
+              <h4>Continuous Quality Oversight & Family Updates</h4>
+              <p>Weekly supervisor audit visits, 24/7 on-call medical director escalation, and transparent digital care logs delivered directly to the family's mobile devices.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="value-item reveal reveal-delay-2">
-        <div class="value-num">03</div>
-        <div><h4>Dignity & Respect</h4><p>Every patient, regardless of condition or background, receives care that honors their dignity, preferences, culture, and right to be fully informed.</p></div>
+    </div>
+
+    <!-- CORE VALUES -->
+    <div style="margin-top:20px;">
+      <div style="text-align:center;margin-bottom:32px;" class="reveal">
+        <span class="label">Guiding Principles</span>
+        <h3 style="font-family:var(--font-display);font-size:1.8rem;color:var(--teal);">The Core Values That Guide Every Caregiver</h3>
       </div>
-      <div class="value-item reveal reveal-delay-3">
-        <div class="value-num">04</div>
-        <div><h4>Transparency & Trust</h4><p>We communicate openly and honestly with families — about care plans, progress, concerns, and costs — building lasting relationships built on complete trust.</p></div>
+      <div class="grid-2">
+        <div class="value-item reveal">
+          <div class="value-num">01</div>
+          <div><h4>Compassion Above All</h4><p>We lead with empathy, always listening to the patient's voice and responding to their emotional and psychological needs alongside their clinical ones.</p></div>
+        </div>
+        <div class="value-item reveal reveal-delay-1">
+          <div class="value-num">02</div>
+          <div><h4>Clinical Excellence</h4><p>We uphold the highest standards of medical practice, investing in continuous training and evidence-based protocols to deliver superior clinical outcomes.</p></div>
+        </div>
+        <div class="value-item reveal reveal-delay-2">
+          <div class="value-num">03</div>
+          <div><h4>Dignity & Respect</h4><p>Every patient, regardless of condition or background, receives care that honors their dignity, preferences, culture, and right to be fully informed.</p></div>
+        </div>
+        <div class="value-item reveal reveal-delay-3">
+          <div class="value-num">04</div>
+          <div><h4>Transparency & Trust</h4><p>We communicate openly and honestly with families — about care plans, progress, concerns, and costs — building lasting relationships built on complete trust.</p></div>
+        </div>
       </div>
     </div>
   </div>
