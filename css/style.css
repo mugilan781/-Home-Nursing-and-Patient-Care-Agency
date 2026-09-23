@@ -2935,6 +2935,49 @@ svg {
   stroke: var(--champagne);
 }
 
+/* ─── Responsive Patch — 320 / 360 / 480 / 760 / 1024 ───
+   Covers every page/section. Higher-specificity (body prefix) so these
+   win over equal-specificity rules in per-page inline <style> blocks. */
+@media (max-width: 1024px) {
+  /* 8 nav links + CTA overflow ~976px containers → hamburger from 1024 */
+  body .nav-menu { display: none; }
+  body .hamburger { display: flex; }
+  body .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  body aside[style*="position:sticky"] { position: static !important; }
+  body iframe { max-width: 100%; }
+}
+
+@media (max-width: 760px) {
+  body .grid-3 { grid-template-columns: 1fr; }
+  body .slider-arrows { display: none; }
+  body .testimonial-name,
+  body .testimonial-role { white-space: normal; overflow: visible; text-overflow: clip; }
+  body .home-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  body .display-1 { font-size: clamp(2.6rem, 13vw, 3.5rem); }
+}
+
+@media (max-width: 480px) {
+  body .container { padding: 0 16px; }
+  body .grid-4 { grid-template-columns: 1fr; }
+  body .btn { padding: 13px 24px; white-space: normal; text-align: center; justify-content: center; }
+  body .btn-lg { padding: 14px 24px; }
+  body .process-step { flex-direction: column; gap: 12px; }
+  body .process-number { font-size: 2.8rem; }
+  body .fab-container { bottom: 16px; right: 12px; }
+  body .home-stat-card { padding: 20px 12px; }
+  body .home-stat-number { font-size: 1.6rem; }
+  body .cta-content h2 br { display: none; }
+  body .cta-content h2 { font-size: clamp(1.9rem, 8vw, 2.4rem); }
+  body .section-header { margin-bottom: 40px; }
+}
+
+@media (max-width: 360px) {
+  body .grid-auto { grid-template-columns: 1fr; }
+  body .home-stats-grid { gap: 12px; }
+  body .home-stat-card { padding: 16px 8px; }
+  body .faq-question { font-size: 0.92rem; }
+}
+
 /* ─── Print ─── */
 @media print {
   #navbar, .fab-container, .page-transition { display: none !important; }

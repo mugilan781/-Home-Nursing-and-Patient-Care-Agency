@@ -942,6 +942,17 @@
   [style*="grid-template-columns:1fr 1fr;gap:80px"] { grid-template-columns:1fr!important; }
   [style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns:1fr!important; }
 }
+@media (max-width: 1024px) {
+  .faq-split { gap: 40px !important; }
+}
+@media (max-width: 760px) {
+  .spotlight-img { aspect-ratio: 16/10 !important; }
+}
+@media (max-width: 480px) {
+  body .h2-hero .hero-eyebrow, body .hero-eyebrow { max-width: 100% !important; width: auto !important; flex-wrap: wrap !important; white-space: normal !important; }
+  .h2-hero-stats { grid-template-columns: 1fr !important; }
+  .faq-support-num { font-size: clamp(1.4rem, 7vw, 2rem) !important; overflow-wrap: anywhere; }
+}
 </style>
 </body>
 </html>
